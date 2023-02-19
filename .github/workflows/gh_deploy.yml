@@ -2,13 +2,15 @@ name: Doc Build
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 0 * * *'  # runs at 00:00 UTC every day
 
 jobs:
   deploy:
-    name: Build a website
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
@@ -18,7 +20,7 @@ jobs:
           pip3 install --user -r requirements.txt
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - uses: peaceiris/actions-gh-pages@v3
         run: | 
           mkdocs gh-deploy 
  
