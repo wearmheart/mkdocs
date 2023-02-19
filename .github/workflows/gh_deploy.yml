@@ -20,6 +20,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
           
       - name: Install requirements
         run: |
@@ -27,8 +28,6 @@ jobs:
           pip3 install --user -r requirements.txt
           git config --global user.email "ttlarva@qq.com"
           git config --global user.name "ttlarva"
-        
-      - name: Deploy
-        run: | 
-         mkdocs gh-deploy 
+          mkdocs gh-deploy 
+         
  
