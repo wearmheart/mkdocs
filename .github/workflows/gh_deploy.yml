@@ -3,20 +3,19 @@ name: Doc Build
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
     name: Build a website
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0 
           python-version: 3.10
-      run: |
-        python3 -m pip install --upgrade pip
-        pip3 install --user -r requirements.txt
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install --user -r requirements.txt
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
