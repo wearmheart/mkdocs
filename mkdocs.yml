@@ -80,4 +80,6 @@ plugins:
 
 # Primary navigation
 nav:
-  - Home: index.md
+  - Home: index.md 
+  - Linux:
+    - ssh的简单应用: Linux/ssh_简单使用.md
