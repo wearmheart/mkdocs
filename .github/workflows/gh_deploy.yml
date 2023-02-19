@@ -14,7 +14,7 @@ jobs:
         with:
           fetch-depth: 0 
           python-version: 3.10
-      run: |
+      - run: |
         python3 -m pip install --upgrade pip
         pip3 install --user -r requirements.txt
 
