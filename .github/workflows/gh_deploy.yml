@@ -2,7 +2,7 @@ name: ci
 on:
   push:
     branches: 
-      - master # 监测的分支
+      - main # 监测的分支
 jobs:
   deploy:
     runs-on: ubuntu-latest # 拉去虚拟环境镜像
