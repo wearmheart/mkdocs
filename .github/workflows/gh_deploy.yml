@@ -17,19 +17,19 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        with:
+          personal_token: ${{ secrets.ACCESS_TOKEN }}
 
       #安装依赖
       - name: Install mkdocs
-        run: pip3 install --user -r requirements.txt
-
-
-      #生成html
-      - name: build html
-        run: mkdocs build
+        run: |
+          pip3 install --user -r requirements.txt
+          mkdocs gh-deploy --force
       
       # 发布到指定目录
       - name: GitHub Pages action
         uses: peaceiris/actions-gh-pages@v3.9.2
         with:
           personal_token: ${{ secrets.ACCESS_TOKEN }}
-          publish_dir: ./site
+        
+          
