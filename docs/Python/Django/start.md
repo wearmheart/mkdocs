@@ -1,4 +1,3 @@
-<img src="https://images.pexels.com/photos/371633/pexels-photo-371633.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
 
 # Django
 
@@ -36,9 +35,13 @@ sudo lsof -i: 端口
 - 公有配置-Django官方提供的基础配置 https://docs.djangoproject.com/en/2.2/ref/settings/
 
 ## 项目 项目结构-公有配置
+
 ### BASEDIR
+
 - 用于绑定当前项目的绝对路径(动态计算出来的)，所有文件夹都可以依懒此路径
+
 ### DEBUG
+
 - 用于配置Django项目的启动模式,取值:
 - True表示开发环境中使用开发调试模式(用于开发中)
 - False 表示当前项目运行在生产环境中
@@ -132,6 +135,7 @@ return HttpResponse对象
 ```
 
 ## 小结
+
 ●URL全貌
 ●Django处理URL对应请求流程
 ●主路由
@@ -153,6 +157,8 @@ return HttpResponse对象
 - 作用: 若转换器类型匹配到对应类型的数据，则将数据按照关键字传参的方式传递给视图函数
 - 例子: path('page/ <int:page>', views.xxx)
 
+
+
 | 转换器类型 | 作用                                                    | 样例                                                 |
 | ---------- | ------------------------------------------------------- | ---------------------------------------------------- |
 | str        | 匹配除了'/' 之外的非空字符串                            | "v1/users/ <str:username>" 匹配 /v1/users/guoxiaonao |
@@ -161,7 +167,9 @@ return HttpResponse对象
 | path       | 匹配非空字段,包括路径分隔符'/'                          | "v1/users/ <path:ph> 匹配 /v1/goods/a/b/C            |
 
 
+
 ## 路由配置- re_path()
+
 - re_ path()函数
 - 在url的匹配过程中可以使用正则表达式进行精确匹配
 - 语法:
@@ -219,6 +227,7 @@ return HttpResponse对象
 
 
 ## Django中的响应对象
+
 构造函数格式:
 
     HttpResponse(content=响应体，content_type= 响应体数据类型(default = html), status=状态码)
@@ -239,6 +248,8 @@ return HttpResponse对象
 
 
 ## HttpResponse子类
+
+
 | 类型                    | 作用           | 状态码 |
 | ----------------------- | -------------- | ------ |
 | HttpResponseRedirect    | 重定向         | 302    |
@@ -253,6 +264,9 @@ return HttpResponse对象
 无论是GET还是POST，统一都由视图函数接收请求，通过判断request.method区分具体的请求动作
 
 样例:
+
+
+
 ```python
 if request. method == 'GET':
     处理GET请求时的业务逻辑
@@ -320,7 +334,9 @@ request.GET.getlist('参数名' )
 ![Django的MTV模式](https://foruda.gitee.com/images/1676289868421836822/48404061_10213136.png "Django的MTV模式")
 
 ## 模板配置 TEMPLATES
+
 创建模板文件夹<项目名>/templates
+
 - 在settings.py中TEMPLATES配置项
   1. BACKEND :指定模板的引擎
   2. DIRS: 模板的搜索目录(可以是一-个或多个)
@@ -414,6 +430,7 @@ if标签 语法:
 
 
 注意:
+
 1. if条件表达式里可以用的运算符==,!=, <,>, <=,>=, in, not  in, is, is not, not、 and、or
 2. 在if标记中使用实际括号是无效的语法。如果您需要它们指示优先级，则应使用嵌套的if标记。
 
@@ -496,6 +513,7 @@ print( reverse(' person'，kwargS=
 - url反向解析
 
 ## 静态文件 
+
 静态文件配置- settings.py中[该配置默认存在]
 
 1. 配置静态文件的访问路径
@@ -519,6 +537,7 @@ os.path.join(BASE_DIR,"static"),
 
 
 ## 静态文件访问(续)
+
 模板中访问静态文件- img标签为例
 方案2
 
@@ -733,7 +752,11 @@ systemctl status mysql.service
 - 模型是数据交互的接口，是表示和操作数据库的方法和方式
 
 ## ORM框架
+
+
 ![ORM](https://foruda.gitee.com/images/1676482006679819467/afffe6cf_10213136.png "ORM")
+
+
 - 定义: ORM (Object Relational Mapping) 即对象关系映射，它
 是一种程序技术，它允许你使用类和对象对数据库进行操作，从而
 避免通过SQL语句操作数据库
@@ -759,8 +782,10 @@ systemctl status mysql.service
 在映射过程中有性能损失.
 
 ## 模型示例
+
 - 此示例为添加一个 `bookstore_book` 数据表来存放图书
 馆中书目信息
+
 1. **添加一个bookstore的app**
     ```shell
     $ python3 manage.py startapp bookstore
@@ -1309,12 +1334,12 @@ $ sudo service nginx start|stop|restart|status
 
 [手把手教你如何巧用Github的Action功能](https://www.bilibili.com/read/cv9190554)
 
-1.workflow（工作流程）：持续集成一次运行的过程，就是一个workflow。
+1. workflow（工作流程）：持续集成一次运行的过程，就是一个workflow。
 
-2.job（任务）：一个workflow由一个或多个jobs构成，含义是一次持续集成的运行，可以完成多个任务。
+2. job（任务）：一个workflow由一个或多个jobs构成，含义是一次持续集成的运行，可以完成多个任务。
 
-3.step（步骤）：每个job由多个step构成，一步步完成。
+3. step（步骤）：每个job由多个step构成，一步步完成。
 
-4.action（动作）：每个step可以依次执行一个或多个命令（action）。 作者：xuexiangjys https://www.bilibili.com/read/cv9190554 出处：bilibili
+4. action（动作）：每个step可以依次执行一个或多个命令（action）。 作者：xuexiangjys https://www.bilibili.com/read/cv9190554 出处：bilibili
 
 - steps具体描述了该怎么执行脚本 `uses` 是使用了别人已经预先定义好的脚本，这里的 `actions/checkout@v2` 就是一个把仓库拉取到最新的脚本, 我们将仓库拉到最新后就直接运行 

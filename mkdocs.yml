@@ -84,4 +84,6 @@ nav:
   - Linux:
     - ssh的简单应用: Linux/ssh_简单使用.md
   - PyThon:
-    - django: Python/Django/start.md
+    - Django: Python/Django/start.md
+    - Tool:
+      - Miniconda的介绍和基本使用: Python/Development_tool/Miniconda的介绍和基本使用.md
