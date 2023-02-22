@@ -13,4 +13,4 @@ jobs:
         with:
           python-version: 3.10
       - run: pip install -r requirements.txt # 虚拟环境安装依赖
-      - run: mkdocs gh-deploy --force # 会在虚拟环境部署站点，无需本地使用此命令
+      - run: mkdocs gh-deploy --force #  会在虚拟环境部署站点，无需本地使用此命令
