@@ -9,5 +9,5 @@ echo "当前时间是：$now"
 git add .
 
 git commit -m "${now}"
-
-git push 
+ 
+git   push  
