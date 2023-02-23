@@ -1,6 +1,6 @@
 # warmheart 🚀, GPL-2.0 license
 
-site_name: 软萌兔开飙
+site_name: 兔小飙
 # repo_url: https://github.com/ultralytics/ultralytics
 # edit_uri: https://github.com/ultralytics/ultralytics/tree/main/docs
 # repo_name: ultralytics/ultralytics
@@ -82,11 +82,14 @@ plugins:
 nav:
   - Home: index.md 
   - Linux:
-    - ssh的简单应用: Linux/ssh_简单使用.md
+    - 工具:
+      - ssh的简单应用: Linux/ssh_简单使用.md
+      - rsync指令: Linux/rsync.md
   - PyThon:
     - Django: Python/Django/start.md
     - Tool:
       - Miniconda的介绍和基本使用: Python/Development_tool/Miniconda的介绍和基本使用.md
     - 基础笔记: 
+      - Ox00引言: Python/Python/Ox00引言.md
       - Ox01魔法方法: Python/Python/Ox01魔法方法.md
       - Ox02迭代器和生成器: Python/Python/Ox02迭代器和生成器.md

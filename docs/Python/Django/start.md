@@ -1,4 +1,3 @@
-
 # Django
 
 Django是一个开放源代码的Web应用框架,由Python写成。采用了MTV的框架模式,即模型M,视图V和模版T。
