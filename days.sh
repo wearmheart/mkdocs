@@ -1,5 +1,6 @@
 #!/bin/bash
 cd /home/warmheart/mkdocs
+git pull 
 
 # 获取当前时间戳并将其转换为可读的时间格式
 now=$(date -d @$(date +%s) +"%Y-%m-%d %H:%M:%S")

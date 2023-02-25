@@ -3,7 +3,7 @@
 site_name: 兔小飙
 # repo_url: https://github.com/ultralytics/ultralytics
 # edit_uri: https://github.com/ultralytics/ultralytics/tree/main/docs
-# repo_name: ultralytics/ultralytics
+repo_name: warmheart
 # remote_name: https://github.com/ultralytics/docs
 
 theme:
@@ -88,8 +88,9 @@ nav:
   - PyThon:
     - Django: Python/Django/start.md
     - Tool:
-      - Miniconda的介绍和基本使用: Python/Development_tool/Miniconda的介绍和基本使用.md
+      - Python包管理工具Conda: Python/Development_tool/Python包管理工具Conda.md
     - 基础笔记: 
       - Ox00引言: Python/Python/Ox00引言.md
       - Ox01魔法方法: Python/Python/Ox01魔法方法.md
       - Ox02迭代器和生成器: Python/Python/Ox02迭代器和生成器.md
+  temp: Python/Python/Ox03闭包.md
