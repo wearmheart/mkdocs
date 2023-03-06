@@ -12,12 +12,6 @@ sel=$1
 echo "当前时间是：$now" 
 
 
-if test "${sel}" -eq "1";
-then
-    echo "touch ${now}_TODE.md"
-    touch ${now}_TODE.md 
-fi 
-
 git add .
 
 git commit -m "${now}"
@@ -29,5 +23,6 @@ else
 fi
 
 
-
-# mkdocs gh-deploy
+if test "$sel" = "2";then
+    mkdocs gh-deploy
+fi 
