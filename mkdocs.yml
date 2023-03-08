@@ -96,3 +96,5 @@ nav:
       - Ox03闭包: Python/Python/Ox03闭包.md
       - Ox04自省和反射: Python/Python/Ox04自省和反射.md
       - Ox05生产者消费者模型: Python/Python/Ox05生产者消费者模型.md
+  - PyTorch:
+    - CONTRIBUTING: PyTorch/CONTRIBUTING.md 
