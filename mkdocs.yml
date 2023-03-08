@@ -93,4 +93,6 @@ nav:
       - Ox00引言: Python/Python/Ox00引言.md
       - Ox01魔法方法: Python/Python/Ox01魔法方法.md
       - Ox02迭代器和生成器: Python/Python/Ox02迭代器和生成器.md
-  - temp: Python/Python/Ox03闭包.md
+      - Ox03闭包: Python/Python/Ox03闭包.md
+      - Ox04自省和反射: Python/Python/Ox04自省和反射.md
+      - Ox05生产者消费者模型: Python/Python/Ox05生产者消费者模型.md
