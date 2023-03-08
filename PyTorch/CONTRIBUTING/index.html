@@ -1,0 +1,2575 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="https://github.com/ultralytics/assets/raw/main/logo/favicon-yolo.ico">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.11">
+    
+    
+      
+        <title>CONTRIBUTING - 兔小飙</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3754935a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#table-of-contents" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="兔小飙" class="md-header__button md-logo" aria-label="兔小飙" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            兔小飙
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CONTRIBUTING
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="兔小飙" class="md-nav__button md-logo" aria-label="兔小飙" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    兔小飙
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" data-md-state="indeterminate" type="checkbox" id="__nav_2_1" checked>
+      
+      <label class="md-nav__link" for="__nav_2_1">
+        工具
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="工具" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          工具
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/ssh_%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        ssh的简单应用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/rsync/" class="md-nav__link">
+        rsync指令
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        PyThon
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="PyThon" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          PyThon
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Django/start/" class="md-nav__link">
+        Django
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_2" checked>
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        Tool
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tool" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tool
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Development_tool/Python%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Conda/" class="md-nav__link">
+        Python包管理工具Conda
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_3_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3_3">
+        基础笔记
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="基础笔记" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          基础笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Python/Ox00%E5%BC%95%E8%A8%80/" class="md-nav__link">
+        Ox00引言
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Python/Ox01%E9%AD%94%E6%B3%95%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        Ox01魔法方法
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Python/Ox02%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        Ox02迭代器和生成器
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Python/Ox03%E9%97%AD%E5%8C%85/" class="md-nav__link">
+        Ox03闭包
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Python/Ox04%E8%87%AA%E7%9C%81%E5%92%8C%E5%8F%8D%E5%B0%84/" class="md-nav__link">
+        Ox04自省和反射
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Python/Ox05%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        Ox05生产者消费者模型
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        PyTorch
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="PyTorch" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          PyTorch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          CONTRIBUTING
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        CONTRIBUTING
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contributing-to-pytorch" class="md-nav__link">
+    Contributing to PyTorch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#developing-pytorch" class="md-nav__link">
+    Developing PyTorch
+  </a>
+  
+    <nav class="md-nav" aria-label="Developing PyTorch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tips-and-debugging" class="md-nav__link">
+    Tips and Debugging
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nightly-checkout-pull" class="md-nav__link">
+    Nightly Checkout &amp; Pull
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codebase-structure" class="md-nav__link">
+    Codebase structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    Unit testing
+  </a>
+  
+    <nav class="md-nav" aria-label="Unit testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-unit-testing" class="md-nav__link">
+    Python Unit Testing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#better-local-unit-tests-with-pytest" class="md-nav__link">
+    Better local unit tests with pytest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-linting" class="md-nav__link">
+    Local linting
+  </a>
+  
+    <nav class="md-nav" aria-label="Local linting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-mypy" class="md-nav__link">
+    Running mypy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-unit-testing" class="md-nav__link">
+    C++ Unit Testing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-specific-ci-jobs" class="md-nav__link">
+    Run Specific CI Jobs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merging-your-change" class="md-nav__link">
+    Merging your Change
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-documentation" class="md-nav__link">
+    Writing documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docstring-type-formatting" class="md-nav__link">
+    Docstring type formatting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-documentation" class="md-nav__link">
+    Building documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Building documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tips" class="md-nav__link">
+    Tips
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-c-documentation" class="md-nav__link">
+    Building C++ Documentation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#previewing-changes-locally" class="md-nav__link">
+    Previewing changes locally
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#previewing-documentation-on-prs" class="md-nav__link">
+    Previewing documentation on PRs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-documentation-tests" class="md-nav__link">
+    Adding documentation tests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profiling-with-py-spy" class="md-nav__link">
+    Profiling with py-spy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-multiple-build-trees" class="md-nav__link">
+    Managing multiple build trees
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-development-tips" class="md-nav__link">
+    C++ development tips
+  </a>
+  
+    <nav class="md-nav" aria-label="C++ development tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-only-what-you-need" class="md-nav__link">
+    Build only what you need
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-completion-and-ide-support" class="md-nav__link">
+    Code completion and IDE support
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#make-no-op-build-fast" class="md-nav__link">
+    Make no-op build fast
+  </a>
+  
+    <nav class="md-nav" aria-label="Make no-op build fast">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-ninja" class="md-nav__link">
+    Use Ninja
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-ccache" class="md-nav__link">
+    Use CCache
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-a-faster-linker" class="md-nav__link">
+    Use a faster linker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-pre-compiled-headers" class="md-nav__link">
+    Use pre-compiled headers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workaround-for-header-dependency-bug-in-nvcc" class="md-nav__link">
+    Workaround for header dependency bug in nvcc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-frontend-development-tips" class="md-nav__link">
+    C++ frontend development tips
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gdb-integration" class="md-nav__link">
+    GDB integration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-stacktraces" class="md-nav__link">
+    C++ stacktraces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuda-development-tips" class="md-nav__link">
+    CUDA development tips
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-development-tips" class="md-nav__link">
+    Windows development tips
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows development tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#known-msvc-and-msvc-with-nvcc-bugs" class="md-nav__link">
+    Known MSVC (and MSVC with NVCC) bugs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-on-legacy-code-and-cuda" class="md-nav__link">
+    Building on legacy code and CUDA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-clang-tidy" class="md-nav__link">
+    Running clang-tidy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-commit-tidylinting-hook" class="md-nav__link">
+    Pre-commit tidy/linting hook
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-pytorch-with-asan" class="md-nav__link">
+    Building PyTorch with ASAN
+  </a>
+  
+    <nav class="md-nav" aria-label="Building PyTorch with ASAN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-ccache-to-work" class="md-nav__link">
+    Getting ccache to work
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-stuff-with-ld_preload-and-libasan_rt" class="md-nav__link">
+    Why this stuff with LD_PRELOAD and LIBASAN_RT?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-ld_preload-in-the-build-function" class="md-nav__link">
+    Why LD_PRELOAD in the build function?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-no-leak-detection" class="md-nav__link">
+    Why no leak detection?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caffe2-notes" class="md-nav__link">
+    Caffe2 notes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ci-failure-tips" class="md-nav__link">
+    CI failure tips
+  </a>
+  
+    <nav class="md-nav" aria-label="CI failure tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#which-commit-is-used-in-ci" class="md-nav__link">
+    Which commit is used in CI?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dev-infra-office-hours" class="md-nav__link">
+    Dev Infra Office Hours
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contributing-to-pytorch" class="md-nav__link">
+    Contributing to PyTorch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#developing-pytorch" class="md-nav__link">
+    Developing PyTorch
+  </a>
+  
+    <nav class="md-nav" aria-label="Developing PyTorch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tips-and-debugging" class="md-nav__link">
+    Tips and Debugging
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nightly-checkout-pull" class="md-nav__link">
+    Nightly Checkout &amp; Pull
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#codebase-structure" class="md-nav__link">
+    Codebase structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    Unit testing
+  </a>
+  
+    <nav class="md-nav" aria-label="Unit testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-unit-testing" class="md-nav__link">
+    Python Unit Testing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#better-local-unit-tests-with-pytest" class="md-nav__link">
+    Better local unit tests with pytest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-linting" class="md-nav__link">
+    Local linting
+  </a>
+  
+    <nav class="md-nav" aria-label="Local linting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-mypy" class="md-nav__link">
+    Running mypy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-unit-testing" class="md-nav__link">
+    C++ Unit Testing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-specific-ci-jobs" class="md-nav__link">
+    Run Specific CI Jobs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merging-your-change" class="md-nav__link">
+    Merging your Change
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-documentation" class="md-nav__link">
+    Writing documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docstring-type-formatting" class="md-nav__link">
+    Docstring type formatting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-documentation" class="md-nav__link">
+    Building documentation
+  </a>
+  
+    <nav class="md-nav" aria-label="Building documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tips" class="md-nav__link">
+    Tips
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-c-documentation" class="md-nav__link">
+    Building C++ Documentation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#previewing-changes-locally" class="md-nav__link">
+    Previewing changes locally
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#previewing-documentation-on-prs" class="md-nav__link">
+    Previewing documentation on PRs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-documentation-tests" class="md-nav__link">
+    Adding documentation tests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profiling-with-py-spy" class="md-nav__link">
+    Profiling with py-spy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-multiple-build-trees" class="md-nav__link">
+    Managing multiple build trees
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-development-tips" class="md-nav__link">
+    C++ development tips
+  </a>
+  
+    <nav class="md-nav" aria-label="C++ development tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-only-what-you-need" class="md-nav__link">
+    Build only what you need
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-completion-and-ide-support" class="md-nav__link">
+    Code completion and IDE support
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#make-no-op-build-fast" class="md-nav__link">
+    Make no-op build fast
+  </a>
+  
+    <nav class="md-nav" aria-label="Make no-op build fast">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-ninja" class="md-nav__link">
+    Use Ninja
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-ccache" class="md-nav__link">
+    Use CCache
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-a-faster-linker" class="md-nav__link">
+    Use a faster linker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-pre-compiled-headers" class="md-nav__link">
+    Use pre-compiled headers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workaround-for-header-dependency-bug-in-nvcc" class="md-nav__link">
+    Workaround for header dependency bug in nvcc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-frontend-development-tips" class="md-nav__link">
+    C++ frontend development tips
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gdb-integration" class="md-nav__link">
+    GDB integration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-stacktraces" class="md-nav__link">
+    C++ stacktraces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuda-development-tips" class="md-nav__link">
+    CUDA development tips
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-development-tips" class="md-nav__link">
+    Windows development tips
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows development tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#known-msvc-and-msvc-with-nvcc-bugs" class="md-nav__link">
+    Known MSVC (and MSVC with NVCC) bugs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-on-legacy-code-and-cuda" class="md-nav__link">
+    Building on legacy code and CUDA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-clang-tidy" class="md-nav__link">
+    Running clang-tidy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-commit-tidylinting-hook" class="md-nav__link">
+    Pre-commit tidy/linting hook
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-pytorch-with-asan" class="md-nav__link">
+    Building PyTorch with ASAN
+  </a>
+  
+    <nav class="md-nav" aria-label="Building PyTorch with ASAN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-ccache-to-work" class="md-nav__link">
+    Getting ccache to work
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-stuff-with-ld_preload-and-libasan_rt" class="md-nav__link">
+    Why this stuff with LD_PRELOAD and LIBASAN_RT?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-ld_preload-in-the-build-function" class="md-nav__link">
+    Why LD_PRELOAD in the build function?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-no-leak-detection" class="md-nav__link">
+    Why no leak detection?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caffe2-notes" class="md-nav__link">
+    Caffe2 notes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ci-failure-tips" class="md-nav__link">
+    CI failure tips
+  </a>
+  
+    <nav class="md-nav" aria-label="CI failure tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#which-commit-is-used-in-ci" class="md-nav__link">
+    Which commit is used in CI?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dev-infra-office-hours" class="md-nav__link">
+    Dev Infra Office Hours
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="table-of-contents">Table of Contents</h1>
+<!-- toc -->
+
+<ul>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#contributing-to-pytorch">Contributing to PyTorch</a></li>
+<li><a href="#developing-pytorch">Developing PyTorch</a><ul>
+<li><a href="#tips-and-debugging">Tips and Debugging</a></li>
+</ul>
+</li>
+<li><a href="#nightly-checkout--pull">Nightly Checkout \&amp; Pull</a></li>
+<li><a href="#codebase-structure">Codebase structure</a></li>
+<li><a href="#unit-testing">Unit testing</a><ul>
+<li><a href="#python-unit-testing">Python Unit Testing</a></li>
+<li><a href="#better-local-unit-tests-with-pytest">Better local unit tests with <code>pytest</code></a></li>
+<li><a href="#local-linting">Local linting</a></li>
+<li><a href="#running-mypy">Running <code>mypy</code></a></li>
+<li><a href="#c-unit-testing">C++ Unit Testing</a></li>
+<li><a href="#run-specific-ci-jobs">Run Specific CI Jobs</a></li>
+</ul>
+</li>
+<li><a href="#merging-your-change">Merging your Change</a></li>
+<li><a href="#writing-documentation">Writing documentation</a><ul>
+<li><a href="#docstring-type-formatting">Docstring type formatting</a></li>
+<li><a href="#building-documentation">Building documentation</a></li>
+<li><a href="#tips">Tips</a></li>
+<li><a href="#building-c-documentation">Building C++ Documentation</a></li>
+<li><a href="#previewing-changes-locally">Previewing changes locally</a></li>
+<li><a href="#previewing-documentation-on-prs">Previewing documentation on PRs</a></li>
+<li><a href="#adding-documentation-tests">Adding documentation tests</a></li>
+</ul>
+</li>
+<li><a href="#profiling-with-py-spy">Profiling with <code>py-spy</code></a></li>
+<li><a href="#managing-multiple-build-trees">Managing multiple build trees</a></li>
+<li><a href="#c-development-tips">C++ development tips</a><ul>
+<li><a href="#build-only-what-you-need">Build only what you need</a></li>
+<li><a href="#code-completion-and-ide-support">Code completion and IDE support</a></li>
+<li><a href="#make-no-op-build-fast">Make no-op build fast</a></li>
+<li><a href="#use-ninja">Use Ninja</a></li>
+<li><a href="#use-ccache">Use CCache</a></li>
+<li><a href="#use-a-faster-linker">Use a faster linker</a></li>
+<li><a href="#use-pre-compiled-headers">Use pre-compiled headers</a></li>
+<li><a href="#workaround-for-header-dependency-bug-in-nvcc">Workaround for header dependency bug in nvcc</a></li>
+<li><a href="#c-frontend-development-tips">C++ frontend development tips</a></li>
+<li><a href="#gdb-integration">GDB integration</a></li>
+<li><a href="#c-stacktraces">C++ stacktraces</a></li>
+</ul>
+</li>
+<li><a href="#cuda-development-tips">CUDA development tips</a></li>
+<li><a href="#windows-development-tips">Windows development tips</a><ul>
+<li><a href="#known-msvc-and-msvc-with-nvcc-bugs">Known MSVC (and MSVC with NVCC) bugs</a></li>
+<li><a href="#building-on-legacy-code-and-cuda">Building on legacy code and CUDA</a></li>
+</ul>
+</li>
+<li><a href="#running-clang-tidy">Running clang-tidy</a></li>
+<li><a href="#pre-commit-tidylinting-hook">Pre-commit tidy/linting hook</a></li>
+<li><a href="#building-pytorch-with-asan">Building PyTorch with ASAN</a><ul>
+<li><a href="#getting-ccache-to-work">Getting <code>ccache</code> to work</a></li>
+<li><a href="#why-this-stuff-with-ld_preload-and-libasan_rt">Why this stuff with <code>LD_PRELOAD</code> and <code>LIBASAN_RT</code>?</a></li>
+<li><a href="#why-ld_preload-in-the-build-function">Why LD_PRELOAD in the build function?</a></li>
+<li><a href="#why-no-leak-detection">Why no leak detection?</a></li>
+</ul>
+</li>
+<li><a href="#caffe2-notes">Caffe2 notes</a></li>
+<li><a href="#ci-failure-tips">CI failure tips</a><ul>
+<li><a href="#which-commit-is-used-in-ci">Which commit is used in CI?</a></li>
+</ul>
+</li>
+<li><a href="#dev-infra-office-hours">Dev Infra Office Hours</a></li>
+</ul>
+<!-- tocstop -->
+
+<h2 id="contributing-to-pytorch">Contributing to PyTorch</h2>
+<p>Thank you for your interest in contributing to PyTorch! Before you begin writing code, it is important
+that you share your intention to contribute with the team, based on the type of contribution:</p>
+<ol>
+<li>You want to propose a new feature and implement it.<ul>
+<li>Post about your intended feature in an <a href="https://github.com/pytorch/pytorch/issues">issue</a>,
+and we shall discuss the design and implementation. Once we agree that the plan looks good,
+go ahead and implement it.</li>
+</ul>
+</li>
+<li>You want to implement a feature or bug-fix for an outstanding issue.<ul>
+<li>Search for your issue in the <a href="https://github.com/pytorch/pytorch/issues">PyTorch issue list</a>.</li>
+<li>Pick an issue and comment that you'd like to work on the feature or bug-fix.</li>
+<li>If you need more context on a particular issue, please ask and we shall provide.</li>
+</ul>
+</li>
+</ol>
+<p>Once you implement and test your feature or bug-fix, please submit a Pull Request to
+https://github.com/pytorch/pytorch.</p>
+<p>This document covers some of the more technical aspects of contributing
+to PyTorch.  For more non-technical guidance about how to contribute to
+PyTorch, see the <a href="docs/source/community/contribution_guide.rst">Contributing Guide</a>.</p>
+<h2 id="developing-pytorch">Developing PyTorch</h2>
+<p>Follow the instructions for <a href="https://github.com/pytorch/pytorch#from-source">installing PyTorch from source</a>. If you get stuck when developing PyTorch on your machine, check out the <a href="#tips-and-debugging">tips and debugging</a> section below for common solutions.</p>
+<h3 id="tips-and-debugging">Tips and Debugging</h3>
+<ul>
+<li>
+<p>If you want to have no-op incremental rebuilds (which are fast), see <a href="#make-no-op-build-fast">Make no-op build fast</a> below.</p>
+</li>
+<li>
+<p>When installing with <code>python setup.py develop</code> (in contrast to <code>python setup.py install</code>) you will symlink
+   the Python files from the current local source-tree into the Python install.
+  This way you do not need to repeatedly install after modifying Python files (<code>.py</code>).
+  However, you would need to reinstall if you modify Python interface (<code>.pyi</code>, <code>.pyi.in</code>) or
+   non-Python files (<code>.cpp</code>, <code>.cc</code>, <code>.cu</code>, <code>.h</code>, ...).</p>
+</li>
+</ul>
+<p>To reinstall, first uninstall all existing PyTorch installs. You may need to run <code>pip
+  uninstall torch</code> multiple times. You'll know <code>torch</code> is fully
+  uninstalled when you see <code>WARNING: Skipping torch as it is not
+  installed</code>. (You should only have to <code>pip uninstall</code> a few times, but
+  you can always <code>uninstall</code> with <code>timeout</code> or in a loop if you're feeling
+  lazy.)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>conda<span class="w"> </span>uninstall<span class="w"> </span>pytorch<span class="w"> </span>-y
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>yes<span class="w"> </span><span class="p">|</span><span class="w"> </span>pip<span class="w"> </span>uninstall<span class="w"> </span>torch
+</code></pre></div>
+<p>Next run <code>python setup.py clean</code>. After that, you can install in <code>develop</code> mode again.</p>
+<ul>
+<li>
+<p>If a commit is simple and doesn't affect any code (keep in mind that some docstrings contain code
+  that is used in tests), you can add <code>[skip ci]</code> (case sensitive) somewhere in your commit message to
+  <a href="https://github.blog/changelog/2021-02-08-github-actions-skip-pull-request-and-push-workflows-with-skip-ci/">skip all build / test steps</a>.
+  Note that changing the pull request body or title on GitHub itself has no effect.</p>
+</li>
+<li>
+<p>If you run into errors when running <code>python setup.py develop</code>, here are some debugging steps:</p>
+</li>
+<li>Run <code>printf '#include &lt;stdio.h&gt;\nint main() { printf("Hello World");}'|clang -x c -; ./a.out</code> to make sure
+  your CMake works and can compile this simple Hello World program without errors.</li>
+<li>Nuke your <code>build</code> directory. The <code>setup.py</code> script compiles binaries into the <code>build</code> folder and caches many
+  details along the way, which saves time the next time you build. If you're running into issues, you can always
+  <code>rm -rf build</code> from the toplevel <code>pytorch</code> directory and start over.</li>
+<li>If you have made edits to the PyTorch repo, commit any change you'd like to keep and clean the repo with the
+  following commands (note that clean <em>really</em> removes all untracked files and changes.):
+      <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>submodule<span class="w"> </span>deinit<span class="w"> </span>-f<span class="w"> </span>.
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>git<span class="w"> </span>clean<span class="w"> </span>-xdf
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>python<span class="w"> </span>setup.py<span class="w"> </span>clean
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--init<span class="w"> </span>--recursive<span class="w"> </span><span class="c1"># very important to sync the submodules</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>python<span class="w"> </span>setup.py<span class="w"> </span>develop<span class="w">                 </span><span class="c1"># then try running the command again</span>
+</code></pre></div></li>
+<li>
+<p>The main step within <code>python setup.py develop</code> is running <code>make</code> from the <code>build</code> directory. If you want to
+    experiment with some environment variables, you can pass them into the command:
+      <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">ENV_KEY1</span><span class="o">=</span>ENV_VAL1<span class="o">[</span>,<span class="w"> </span><span class="nv">ENV_KEY2</span><span class="o">=</span>ENV_VAL2<span class="o">]</span>*<span class="w"> </span>python<span class="w"> </span>setup.py<span class="w"> </span>develop
+</code></pre></div></p>
+</li>
+<li>
+<p>If you run into issue running <code>git submodule update --init --recursive</code>. Please try the following:</p>
+</li>
+<li>
+<p>If you encounter an error such as
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>error: Submodule &#39;third_party/pybind11&#39; could not be updated
+</code></pre></div>
+    check whether your Git local or global config file contains any <code>submodule.*</code> settings. If yes, remove them and try again.
+    (please reference <a href="https://git-scm.com/docs/git-config#Documentation/git-config.txt-submoduleltnamegturl">this doc</a> for more info).</p>
+</li>
+<li>
+<p>If you encounter an error such as
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>fatal: unable to access &#39;https://github.com/pybind11/pybind11.git&#39;: could not load PEM client certificate ...
+</code></pre></div>
+    this is likely that you are using HTTP proxying and the certificate expired. To check if the certificate is valid, run
+    <code>git config --global --list</code> and search for config like <code>http.proxysslcert=&lt;cert_file&gt;</code>. Then check certificate valid date by running
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>openssl<span class="w"> </span>x509<span class="w"> </span>-noout<span class="w"> </span>-in<span class="w"> </span>&lt;cert_file&gt;<span class="w"> </span>-dates
+</code></pre></div></p>
+</li>
+<li>
+<p>If you encounter an error that some third_party modules are not checked out correctly, such as
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Could not find .../pytorch/third_party/pybind11/CMakeLists.txt
+</code></pre></div>
+    remove any <code>submodule.*</code> settings in your local git config (<code>.git/config</code> of your pytorch repo) and try again.</p>
+</li>
+<li>If you're a Windows contributor, please check out <a href="https://github.com/pytorch/pytorch/wiki/Best-Practices-to-Edit-and-Compile-Pytorch-Source-Code-On-Windows">Best Practices</a>.</li>
+<li>For help with any part of the contributing process, please don’t hesitate to utilize our Zoom office hours! See details <a href="https://github.com/pytorch/pytorch/wiki/Dev-Infra-Office-Hours">here</a></li>
+</ul>
+<h2 id="nightly-checkout-pull">Nightly Checkout &amp; Pull</h2>
+<p>The <code>tools/nightly.py</code> script is provided to ease pure Python development of
+PyTorch. This uses <code>conda</code> and <code>git</code> to check out the nightly development
+version of PyTorch and installs pre-built binaries into the current repository.
+This is like a development or editable install, but without needing the ability
+to compile any C++ code.</p>
+<p>You can use this script to check out a new nightly branch with the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>./tools/nightly.py<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>my-nightly-branch
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>pytorch-deps
+</code></pre></div>
+<p>Or if you would like to re-use an existing conda environment, you can pass in
+the regular environment parameters (<code>--name</code> or <code>--prefix</code>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>./tools/nightly.py<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>my-nightly-branch<span class="w"> </span>-n<span class="w"> </span>my-env
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>my-env
+</code></pre></div>
+<p>You can also use this tool to pull the nightly commits into the current branch:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>./tools/nightly.py<span class="w"> </span>pull<span class="w"> </span>-n<span class="w"> </span>my-env
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>my-env
+</code></pre></div>
+<p>Pulling will reinstall the PyTorch dependencies as well as the nightly binaries
+into the repo directory.</p>
+<h2 id="codebase-structure">Codebase structure</h2>
+<ul>
+<li><a href="c10">c10</a> - Core library files that work everywhere, both server
+  and mobile. We are slowly moving pieces from <a href="aten/src/ATen/core">ATen/core</a>
+  here. This library is intended only to contain essential functionality,
+  and appropriate to use in settings where binary size matters. (But
+  you'll have a lot of missing functionality if you try to use it
+  directly.)</li>
+<li><a href="aten">aten</a> - C++ tensor library for PyTorch (no autograd support)</li>
+<li><a href="aten/src">src</a> - <a href="aten/src/README.md">README</a><ul>
+<li><a href="aten/src/ATen">ATen</a></li>
+<li><a href="aten/src/ATen/core">core</a> - Core functionality of ATen. This
+    is migrating to top-level c10 folder.</li>
+<li><a href="aten/src/ATen/native">native</a> - Modern implementations of
+    operators. If you want to write a new operator, here is where
+    it should go. Most CPU operators go in the top level directory,
+    except for operators which need to be compiled specially; see
+    cpu below.<ul>
+<li><a href="aten/src/ATen/native/cpu">cpu</a> - Not actually CPU
+  implementations of operators, but specifically implementations
+  which are compiled with processor-specific instructions, like
+  AVX. See the <a href="aten/src/ATen/native/cpu/README.md">README</a> for more
+  details.</li>
+<li><a href="aten/src/ATen/native/cuda">cuda</a> - CUDA implementations of
+  operators.</li>
+<li><a href="aten/src/ATen/native/sparse">sparse</a> - CPU and CUDA
+  implementations of COO sparse tensor operations</li>
+<li><a href="aten/src/ATen/native/mkl">mkl</a> <a href="aten/src/ATen/native/mkldnn">mkldnn</a>
+  <a href="aten/src/ATen/native/miopen">miopen</a> <a href="aten/src/ATen/native/cudnn">cudnn</a></li>
+<li>implementations of operators which simply bind to some
+    backend library.</li>
+<li><a href="aten/src/ATen/native/quantized/">quantized</a> - Quantized tensor (i.e. QTensor) operation implementations. <a href="aten/src/ATen/native/quantized/README.md">README</a> contains details including how to implement native quantized operations.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="torch">torch</a> - The actual PyTorch library. Everything that is not
+  in <a href="torch/csrc">csrc</a> is a Python module, following the PyTorch Python
+  frontend module structure.</li>
+<li><a href="torch/csrc">csrc</a> - C++ files composing the PyTorch library. Files
+    in this directory tree are a mix of Python binding code, and C++
+    heavy lifting. Consult <code>setup.py</code> for the canonical list of Python
+    binding files; conventionally, they are often prefixed with
+    <code>python_</code>. <a href="torch/csrc/README.md">README</a><ul>
+<li><a href="torch/csrc/jit">jit</a> - Compiler and frontend for TorchScript JIT
+  frontend. <a href="torch/csrc/jit/README.md">README</a></li>
+<li><a href="torch/csrc/autograd">autograd</a> - Implementation of reverse-mode automatic differentiation. <a href="torch/csrc/autograd/README.md">README</a></li>
+<li><a href="torch/csrc/api">api</a> - The PyTorch C++ frontend.</li>
+<li><a href="torch/csrc/distributed">distributed</a> - Distributed training
+  support for PyTorch.</li>
+</ul>
+</li>
+<li><a href="tools">tools</a> - Code generation scripts for the PyTorch library.
+  See <a href="tools/README.md">README</a> of this directory for more details.</li>
+<li><a href="test">test</a> - Python unit tests for PyTorch Python frontend.</li>
+<li><a href="test/test_torch.py">test_torch.py</a> - Basic tests for PyTorch
+    functionality.</li>
+<li><a href="test/test_autograd.py">test_autograd.py</a> - Tests for non-NN
+    automatic differentiation support.</li>
+<li><a href="test/test_nn.py">test_nn.py</a> - Tests for NN operators and
+    their automatic differentiation.</li>
+<li><a href="test/test_jit.py">test_jit.py</a> - Tests for the JIT compiler
+    and TorchScript.</li>
+<li>...</li>
+<li><a href="test/cpp">cpp</a> - C++ unit tests for PyTorch C++ frontend.<ul>
+<li><a href="test/cpp/api">api</a> - <a href="test/cpp/api/README.md">README</a></li>
+<li><a href="test/cpp/jit">jit</a> - <a href="test/cpp/jit/README.md">README</a></li>
+<li><a href="test/cpp/tensorexpr">tensorexpr</a> - <a href="test/cpp/tensorexpr/README.md">README</a></li>
+</ul>
+</li>
+<li><a href="test/expect">expect</a> - Automatically generated "expect" files
+    which are used to compare against expected output.</li>
+<li><a href="test/onnx">onnx</a> - Tests for ONNX export functionality,
+    using both PyTorch and Caffe2.</li>
+<li><a href="caffe2">caffe2</a> - The Caffe2 library.</li>
+<li><a href="caffe2/core">core</a> - Core files of Caffe2, e.g., tensor, workspace,
+    blobs, etc.</li>
+<li><a href="caffe2/operators">operators</a> - Operators of Caffe2.</li>
+<li><a href="caffe2/python">python</a> - Python bindings to Caffe2.</li>
+<li>...</li>
+<li><a href=".circleci">.circleci</a> - CircleCI configuration management. <a href=".circleci/README.md">README</a></li>
+</ul>
+<h2 id="unit-testing">Unit testing</h2>
+<h3 id="python-unit-testing">Python Unit Testing</h3>
+<p><strong>Prerequisites</strong>:
+The following packages should be installed with either <code>conda</code> or <code>pip</code>:
+- <code>expecttest</code> and <code>hypothesis</code> - required to run tests
+- <code>mypy</code> - recommended for linting
+- <code>pytest</code> - recommended to run tests more selectively</p>
+<p>All PyTorch test suites are located in the <code>test</code> folder and start with
+<code>test_</code>. Run the entire test
+suite with</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>python<span class="w"> </span>test/run_test.py
+</code></pre></div>
+<p>or run individual test suites using the command <code>python test/FILENAME.py</code>,
+where <code>FILENAME</code> represents the file containing the test suite you wish
+to run.</p>
+<p>For example, to run all the TorchScript JIT tests (located at
+<code>test/test_jit.py</code>), you would run:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>python<span class="w"> </span>test/test_jit.py
+</code></pre></div>
+<p>You can narrow down what you're testing even further by specifying the
+name of an individual test with <code>TESTCLASSNAME.TESTNAME</code>. Here,
+<code>TESTNAME</code> is the name of the test you want to run, and <code>TESTCLASSNAME</code>
+is the name of the class in which it is defined.</p>
+<p>Going off the above example, let's say you want to run
+<code>test_Sequential</code>, which is defined as part of the <code>TestJit</code> class
+in <code>test/test_jit.py</code>. Your command would be:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>python<span class="w"> </span>test/test_jit.py<span class="w"> </span>TestJit.test_Sequential
+</code></pre></div>
+<p><strong>Weird note:</strong> In our CI (Continuous Integration) jobs, we actually run the tests from the <code>test</code> folder and <strong>not</strong> the root of the repo, since there are various dependencies we set up for CI that expects the tests to be run from the test folder. As such, there may be some inconsistencies between local testing and CI testing--if you observe an inconsistency, please <a href="https://github.com/pytorch/pytorch/issues/new/choose">file an issue</a>.</p>
+<h3 id="better-local-unit-tests-with-pytest">Better local unit tests with <code>pytest</code></h3>
+<p>We don't officially support <code>pytest</code>, but it works well with our
+<code>unittest</code> tests and offers a number of useful features for local
+developing. Install it via <code>pip install pytest</code>.</p>
+<p>If you want to just run tests that contain a specific substring, you can
+use the <code>-k</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>pytest<span class="w"> </span>test/test_nn.py<span class="w"> </span>-k<span class="w"> </span>Loss<span class="w"> </span>-v
+</code></pre></div>
+<p>The above is an example of testing a change to all Loss functions: this
+command runs tests such as <code>TestNN.test_BCELoss</code> and
+<code>TestNN.test_MSELoss</code> and can be useful to save keystrokes.</p>
+<h3 id="local-linting">Local linting</h3>
+<p>Install all prerequisites by running</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>make<span class="w"> </span>setup_lint
+</code></pre></div>
+<p>You can now run the same linting steps that are used in CI locally via <code>make</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>make<span class="w"> </span>lint
+</code></pre></div>
+<p>Learn more about the linter on the <a href="https://github.com/pytorch/pytorch/wiki/lintrunner">lintrunner wiki page</a></p>
+<h4 id="running-mypy">Running <code>mypy</code></h4>
+<p><code>mypy</code> is an optional static type checker for Python. We have multiple <code>mypy</code>
+configs for the PyTorch codebase that are automatically validated against whenever the linter is run.</p>
+<p>See <a href="https://github.com/pytorch/pytorch/wiki/Guide-for-adding-type-annotations-to-PyTorch">Guide for adding type annotations to
+PyTorch</a>
+for more information on how to set up <code>mypy</code> and tackle type annotation
+tasks.</p>
+<h3 id="c-unit-testing">C++ Unit Testing</h3>
+<p>PyTorch offers a series of tests located in the <code>test/cpp</code> folder.
+These tests are written in C++ and use the Google Test testing framework.
+After compiling PyTorch from source, the test runner binaries will be
+written to the <code>build/bin</code> folder. The command to run one of these tests
+is <code>./build/bin/FILENAME --gtest_filter=TESTSUITE.TESTNAME</code>, where
+<code>TESTNAME</code> is the name of the test you'd like to run and <code>TESTSUITE</code> is
+the suite that test is defined in.</p>
+<p>For example, if you wanted to run the test <code>MayContainAlias</code>, which
+is part of the test suite <code>ContainerAliasingTest</code> in the file
+<code>test/cpp/jit/test_alias_analysis.cpp</code>, the command would be:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>./build/bin/test_jit<span class="w"> </span>--gtest_filter<span class="o">=</span>ContainerAliasingTest.MayContainAlias
+</code></pre></div>
+<h3 id="run-specific-ci-jobs">Run Specific CI Jobs</h3>
+<p>You can generate a commit that limits the CI to only run a specific job by using
+<code>tools/testing/explicit_ci_jobs.py</code> like so:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># --job: specify one or more times to filter to a specific job + its dependencies</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="c1"># --filter-gha: specify github actions workflows to keep</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1"># --make-commit: commit CI changes to git with a message explaining the change</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>python<span class="w"> </span>tools/testing/explicit_ci_jobs.py<span class="w"> </span>--job<span class="w"> </span>binary_linux_manywheel_3_6m_cpu_devtoolset7_nightly_test<span class="w"> </span>--filter-gha<span class="w"> </span><span class="s1">&#39;*generated*gcc5.4*&#39;</span><span class="w"> </span>--make-commit
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="c1"># Make your changes</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>ghstack<span class="w"> </span>submit
+</code></pre></div>
+<p><strong>NB</strong>: It is not recommended to use this workflow unless you are also using
+<a href="https://github.com/ezyang/ghstack"><code>ghstack</code></a>. It creates a large commit that is
+of very low signal to reviewers.</p>
+<h2 id="merging-your-change">Merging your Change</h2>
+<p>If you know the right people or team that should approve your PR (and you have the required permissions to do so), add them to the Reviewers list.</p>
+<p>If not, leave the Reviewers section empty. Our triage squad will review your PR, add a module label, and assign it to the appropriate reviewer in a couple business days.  The reviewer will then look at your PR and respond.</p>
+<p>Occasionally, things might fall through the cracks (sorry!). In case your PR either doesn't get assigned to a reviewer or doesn't get any response from the reviewer for 4 business days, please leave comment on the PR (mentioning the reviewer if one has been assigned). That'll get it nudged back onto people's radar.</p>
+<p>If that still doesn't help, come see us during <a href="https://github.com/pytorch/pytorch/wiki/Contact-Pytorch-Dev-Infra-Office">our office hours</a></p>
+<p>Once your PR is approved, you can merge it in by entering a comment with the content <code>@pytorchmergebot merge</code> (<a href="https://github.com/pytorch/pytorch/wiki/Bot-commands">what's this bot?</a>)</p>
+<h2 id="writing-documentation">Writing documentation</h2>
+<p>So you want to write some documentation and don't know where to start?
+PyTorch has two main types of documentation:
+- <strong>User facing documentation</strong>:
+These are the docs that you see over at <a href="https://pytorch.org/docs">our docs website</a>.
+- <strong>Developer facing documentation</strong>:
+Developer facing documentation is spread around our READMEs in our codebase and in
+the <a href="https://pytorch.org/wiki">PyTorch Developer Wiki</a>.
+If you're interested in adding new developer docs, please read this <a href="https://github.com/pytorch/pytorch/wiki/Where-or-how-should-I-add-documentation">page on the wiki</a> on our best practices for where to put it.</p>
+<p>The rest of this section is about user-facing documentation.</p>
+<p>PyTorch uses <a href="https://www.sphinx-doc.org/en/master/usage/extensions/example_google.html">Google style</a>
+for formatting docstrings. Each line inside a docstrings block must be limited to 80 characters so that it fits into Jupyter documentation popups.</p>
+<h3 id="docstring-type-formatting">Docstring type formatting</h3>
+<p>In addition to the standard Google Style docstring formatting rules, the following guidelines should be followed for docstring types (docstring types are the type information contained in the round brackets after the variable name):</p>
+<ul>
+<li>
+<p>The "<code>Callable</code>", "<code>Any</code>", "<code>Iterable</code>", "<code>Iterator</code>", "<code>Generator</code>" types should have their first letter capitalized.</p>
+</li>
+<li>
+<p>The "<code>list</code>" and "<code>tuple</code>" types should be completely lowercase.</p>
+</li>
+<li>
+<p>Types should not be made plural. For example: <code>tuple of int</code> should be used instead of <code>tuple of ints</code>.</p>
+</li>
+<li>
+<p>The only acceptable delimiter words for types are <code>or</code> and <code>of</code>. No other non-type words should be used other than <code>optional</code>.</p>
+</li>
+<li>
+<p>The word <code>optional</code> should only be used after the types, and it is only used if the user does not have to specify a value for the variable. Default values are listed after the variable description. Example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>my_var (int, optional): Variable description. Default: 1
+</code></pre></div>
+</li>
+<li>
+<p>Basic Python types should match their type name so that the <a href="https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html">Intersphinx</a> extension can correctly identify them. For example:</p>
+<ul>
+<li>Use <code>str</code> instead of <code>string</code>.</li>
+<li>Use <code>bool</code> instead of <code>boolean</code>.</li>
+<li>Use <code>dict</code> instead of <code>dictionary</code>.</li>
+</ul>
+</li>
+<li>
+<p>Square brackets should be used for the dictionary type. For example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>my_var (dict[str, int]): Variable description.
+</code></pre></div>
+</li>
+<li>
+<p>If a variable has two different possible types, then the word <code>or</code> should be used without a comma. Otherwise variables with 3 or more types should use commas to separate the types. Example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>x (type1 or type2): Variable description.
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>y (type1, type2, or type3): Variable description.
+</code></pre></div>
+</li>
+</ul>
+<h3 id="building-documentation">Building documentation</h3>
+<p>To build the documentation:</p>
+<ol>
+<li>
+<p>Build and install PyTorch</p>
+</li>
+<li>
+<p>Install the prerequisites</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">cd</span><span class="w"> </span>docs
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="c1"># `katex` must also be available in your PATH.</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1"># You can either install katex globally if you have properly configured npm:</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="c1"># npm install -g katex</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="c1"># Or if you prefer an uncontaminated global executable environment or do not want to go through the node configuration:</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="c1"># npm install katex &amp;&amp; export PATH=&quot;$PATH:$(pwd)/node_modules/.bin&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>Note: if you installed <code>nodejs</code> with a different package manager (e.g.,
+<code>conda</code>) then <code>npm</code> will probably install a version of <code>katex</code> that is not
+compatible with your version of <code>nodejs</code> and doc builds will fail.
+A combination of versions that is known to work is <code>node@6.13.1</code> and
+<code>katex@0.13.18</code>. To install the latter with <code>npm</code> you can run
+<code>npm install -g katex@0.13.18</code></p>
+<p>Note that if you are a Facebook employee using a devserver, yarn may be more convenient to install katex:</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>yarn<span class="w"> </span>global<span class="w"> </span>add<span class="w"> </span>katex
+</code></pre></div>
+<blockquote>
+<p>If a specific version is required you can use for example <code>yarn global add katex@0.13.18</code>.</p>
+</blockquote>
+<ol>
+<li>Generate the documentation HTML files. The generated files will be in <code>docs/build/html</code>.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>make<span class="w"> </span>html
+</code></pre></div>
+<h4 id="tips">Tips</h4>
+<p>The <code>.rst</code> source files live in <a href="docs/source">docs/source</a>. Some of the <code>.rst</code>
+files pull in docstrings from PyTorch Python code (for example, via
+the <code>autofunction</code> or <code>autoclass</code> directives). To vastly shorten doc build times,
+it is helpful to remove the files you are not working on, only keeping the base
+<code>index.rst</code> file and the files you are editing. The Sphinx build will produce
+missing file warnings but will still complete. For example, to work on <code>jit.rst</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">cd</span><span class="w"> </span>docs/source
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>rst<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>index<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>jit<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>rm
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c1"># Make your changes, build the docs, etc.</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="c1"># Don&#39;t commit the deletions!</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>git<span class="w"> </span>add<span class="w"> </span>index.rst<span class="w"> </span>jit.rst
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>...
+</code></pre></div>
+<h4 id="building-c-documentation">Building C++ Documentation</h4>
+<p>For C++ documentation (https://pytorch.org/cppdocs), we use
+<a href="http://www.doxygen.nl/">Doxygen</a> and then convert it to
+<a href="http://www.sphinx-doc.org/">Sphinx</a> via
+<a href="https://github.com/michaeljones/breathe">Breathe</a> and
+<a href="https://github.com/svenevs/exhale">Exhale</a>. Check the <a href="http://www.stack.nl/~dimitri/doxygen/manual/index.html">Doxygen
+reference</a> for more
+information on the documentation syntax.</p>
+<p>We run Doxygen in CI (Travis) to verify that you do not use invalid Doxygen
+commands. To run this check locally, run <code>./check-doxygen.sh</code> from inside
+<code>docs/cpp/source</code>.</p>
+<p>To build the documentation, follow the same steps as above, but run them from
+<code>docs/cpp</code> instead of <code>docs</code>.</p>
+<h3 id="previewing-changes-locally">Previewing changes locally</h3>
+<p>To view HTML files locally, you can open the files in your web browser. For example,
+navigate to <code>file:///your_pytorch_folder/docs/build/html/index.html</code> in a web
+browser.</p>
+<p>If you are developing on a remote machine, you can set up an SSH tunnel so that
+you can access the HTTP server on the remote machine from your local machine. To map
+remote port 8000 to local port 8000, use either of the following commands.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># For SSH</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>ssh<span class="w"> </span>my_machine<span class="w"> </span>-L<span class="w"> </span><span class="m">8000</span>:my_machine:8000
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="c1"># For Eternal Terminal</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>et<span class="w"> </span>my_machine<span class="w"> </span>-t<span class="o">=</span><span class="s2">&quot;8000:8000&quot;</span>
+</code></pre></div>
+<p>Then navigate to <code>localhost:8000</code> in your web browser.</p>
+<p><strong>Tip:</strong>
+You can start a lightweight HTTP server on the remote machine with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>python<span class="w"> </span>-m<span class="w"> </span>http.server<span class="w"> </span><span class="m">8000</span><span class="w"> </span>&lt;path_to_html_output&gt;
+</code></pre></div>
+<p>Alternatively, you can run <code>rsync</code> on your local machine to copy the files from
+your remote machine:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>build<span class="w"> </span>cpp/build
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>rsync<span class="w"> </span>-az<span class="w"> </span>me@my_machine:/path/to/pytorch/docs/build/html<span class="w"> </span>build
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>rsync<span class="w"> </span>-az<span class="w"> </span>me@my_machine:/path/to/pytorch/docs/cpp/build/html<span class="w"> </span>cpp/build
+</code></pre></div>
+<h3 id="previewing-documentation-on-prs">Previewing documentation on PRs</h3>
+<p>PyTorch will host documentation previews at <code>https://docs-preview.pytorch.org/&lt;pr number&gt;/</code> once the
+<code>pytorch_python_doc_build</code> GitHub Actions job has completed on your PR. You can visit that page directly
+or find its link in the automated Dr. CI comment on your PR.</p>
+<h3 id="adding-documentation-tests">Adding documentation tests</h3>
+<p>It is easy for code snippets in docstrings and <code>.rst</code> files to get out of date. The docs
+build includes the <a href="https://www.sphinx-doc.org/en/master/usage/extensions/doctest.html">Sphinx Doctest Extension</a>,
+which can run code in documentation as a unit test. To use the extension, use
+the <code>.. testcode::</code> directive in your <code>.rst</code> and docstrings.</p>
+<p>To manually run these tests, follow steps 1 and 2 above, then run:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nb">cd</span><span class="w"> </span>docs
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>make<span class="w"> </span>doctest
+</code></pre></div>
+<h2 id="profiling-with-py-spy">Profiling with <code>py-spy</code></h2>
+<p>Evaluating the performance impact of code changes in PyTorch can be complicated,
+particularly if code changes happen in compiled code. One simple way to profile
+both Python and C++ code in PyTorch is to use
+<a href="https://github.com/benfred/py-spy"><code>py-spy</code></a>, a sampling profiler for Python
+that has the ability to profile native code and Python code in the same session.</p>
+<p><code>py-spy</code> can be installed via <code>pip</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>pip<span class="w"> </span>install<span class="w"> </span>py-spy
+</code></pre></div>
+<p>To use <code>py-spy</code>, first write a Python test script that exercises the
+functionality you would like to profile. For example, this script profiles
+<code>torch.add</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="kn">import</span> <span class="nn">torch</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="n">t1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]])</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="n">t2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]])</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000000</span><span class="p">):</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>    <span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
+</code></pre></div>
+<p>Since the <code>torch.add</code> operation happens in microseconds, we repeat it a large
+number of times to get good statistics. The most straightforward way to use
+<code>py-spy</code> with such a script is to generate a <a href="http://www.brendangregg.com/flamegraphs.html">flame
+graph</a>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>py-spy<span class="w"> </span>record<span class="w"> </span>-o<span class="w"> </span>profile.svg<span class="w"> </span>--native<span class="w"> </span>--<span class="w"> </span>python<span class="w"> </span>test_tensor_tensor_add.py
+</code></pre></div>
+<p>This will output a file named <code>profile.svg</code> containing a flame graph you can
+view in a web browser or SVG viewer. Individual stack frame entries in the graph
+can be selected interactively with your mouse to zoom in on a particular part of
+the program execution timeline. The <code>--native</code> command-line option tells
+<code>py-spy</code> to record stack frame entries for PyTorch C++ code. To get line numbers
+for C++ code it may be necessary to compile PyTorch in debug mode by prepending
+your <code>setup.py develop</code> call to compile PyTorch with <code>DEBUG=1</code>. Depending on
+your operating system it may also be necessary to run <code>py-spy</code> with root
+privileges.</p>
+<p><code>py-spy</code> can also work in an <code>htop</code>-like "live profiling" mode and can be
+tweaked to adjust the stack sampling rate, see the <code>py-spy</code> readme for more
+details.</p>
+<h2 id="managing-multiple-build-trees">Managing multiple build trees</h2>
+<p>One downside to using <code>python setup.py develop</code> is that your development
+version of PyTorch will be installed globally on your account (e.g., if
+you run <code>import torch</code> anywhere else, the development version will be
+used.</p>
+<p>If you want to manage multiple builds of PyTorch, you can make use of
+<a href="https://conda.io/docs/using/envs.html">conda environments</a> to maintain
+separate Python package environments, each of which can be tied to a
+specific build of PyTorch. To set one up:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>pytorch-myfeature
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="nb">source</span><span class="w"> </span>activate<span class="w"> </span>pytorch-myfeature
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="c1"># if you run python now, torch will NOT be installed</span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>python<span class="w"> </span>setup.py<span class="w"> </span>develop
+</code></pre></div>
+<h2 id="c-development-tips">C++ development tips</h2>
+<p>If you are working on the C++ code, there are a few important things that you
+will want to keep in mind:</p>
+<ol>
+<li>How to rebuild only the code you are working on.</li>
+<li>How to make rebuilds in the absence of changes go faster.</li>
+</ol>
+<h3 id="build-only-what-you-need">Build only what you need</h3>
+<p><code>python setup.py build</code> will build everything by default, but sometimes you are
+only interested in a specific component.</p>
+<ul>
+<li>Working on a test binary? Run <code>(cd build &amp;&amp; ninja bin/test_binary_name)</code> to
+  rebuild only that test binary (without rerunning cmake). (Replace <code>ninja</code> with
+  <code>make</code> if you don't have ninja installed).</li>
+<li>Don't need Caffe2?  Pass <code>BUILD_CAFFE2=0</code> to disable Caffe2 build.</li>
+</ul>
+<p>On the initial build, you can also speed things up with the environment
+variables <code>DEBUG</code>, <code>USE_DISTRIBUTED</code>, <code>USE_MKLDNN</code>, <code>USE_CUDA</code>, <code>BUILD_TEST</code>, <code>USE_FBGEMM</code>, <code>USE_NNPACK</code> and <code>USE_QNNPACK</code>.</p>
+<ul>
+<li><code>DEBUG=1</code> will enable debug builds (-g -O0)</li>
+<li><code>REL_WITH_DEB_INFO=1</code> will enable debug symbols with optimizations (-g -O3)</li>
+<li><code>USE_DISTRIBUTED=0</code> will disable distributed (c10d, gloo, mpi, etc.) build.</li>
+<li><code>USE_MKLDNN=0</code> will disable using MKL-DNN.</li>
+<li><code>USE_CUDA=0</code> will disable compiling CUDA (in case you are developing on something not CUDA related), to save compile time.</li>
+<li><code>BUILD_TEST=0</code> will disable building C++ test binaries.</li>
+<li><code>USE_FBGEMM=0</code> will disable using FBGEMM (quantized 8-bit server operators).</li>
+<li><code>USE_NNPACK=0</code> will disable compiling with NNPACK.</li>
+<li><code>USE_QNNPACK=0</code> will disable QNNPACK build (quantized 8-bit operators).</li>
+<li><code>USE_XNNPACK=0</code> will disable compiling with XNNPACK.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nv">DEBUG</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">USE_DISTRIBUTED</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">USE_MKLDNN</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">USE_CUDA</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">BUILD_TEST</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">USE_FBGEMM</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">USE_NNPACK</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">USE_QNNPACK</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">USE_XNNPACK</span><span class="o">=</span><span class="m">0</span><span class="w"> </span>python<span class="w"> </span>setup.py<span class="w"> </span>develop
+</code></pre></div>
+<p>For subsequent builds (i.e., when <code>build/CMakeCache.txt</code> exists), the build
+options passed for the first time will persist; please run <code>ccmake build/</code>, run
+<code>cmake-gui build/</code>, or directly edit <code>build/CMakeCache.txt</code> to adapt build
+options.</p>
+<h3 id="code-completion-and-ide-support">Code completion and IDE support</h3>
+<p>When using <code>python setup.py develop</code>, PyTorch will generate
+a <code>compile_commands.json</code> file that can be used by many editors
+to provide command completion and error highlighting for PyTorch's
+C++ code. You need to <code>pip install ninja</code> to generate accurate
+information for the code in <code>torch/csrc</code>. More information at:
+- https://sarcasm.github.io/notes/dev/compilation-database.html</p>
+<h3 id="make-no-op-build-fast">Make no-op build fast</h3>
+<h4 id="use-ninja">Use Ninja</h4>
+<p>By default, cmake will use its Makefile generator to generate your build
+system.  You can get faster builds if you install the ninja build system
+with <code>pip install ninja</code>.  If PyTorch was already built, you will need
+to run <code>python setup.py clean</code> once after installing ninja for builds to
+succeed.</p>
+<h4 id="use-ccache">Use CCache</h4>
+<p>Even when dependencies are tracked with file modification, there are many
+situations where files get rebuilt when a previous compilation was exactly the
+same. Using ccache in a situation like this is a real time-saver.</p>
+<p>Before building pytorch, install ccache from your package manager of choice:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>conda<span class="w"> </span>install<span class="w"> </span>ccache<span class="w"> </span>-c<span class="w"> </span>conda-forge
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ccache
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>ccache
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>brew<span class="w"> </span>install<span class="w"> </span>ccache
+</code></pre></div>
+<p>You may also find the default cache size in ccache is too small to be useful.
+The cache sizes can be increased from the command line:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="c1"># config: cache dir is ~/.ccache, conf file ~/.ccache/ccache.conf</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="c1"># max size of cache</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>ccache<span class="w"> </span>-M<span class="w"> </span>25Gi<span class="w">  </span><span class="c1"># -M 0 for unlimited</span>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="c1"># unlimited number of files</span>
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>ccache<span class="w"> </span>-F<span class="w"> </span><span class="m">0</span>
+</code></pre></div>
+<p>To check this is working, do two clean builds of pytorch in a row. The second
+build should be substantially and noticeably faster than the first build. If
+this doesn't seem to be the case, check the <code>CMAKE_&lt;LANG&gt;_COMPILER_LAUNCHER</code>
+rules in <code>build/CMakeCache.txt</code>, where <code>&lt;LANG&gt;</code> is <code>C</code>, <code>CXX</code> and <code>CUDA</code>.
+Each of these 3 variables should contain ccache, e.g.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>//CXX compiler launcher
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>CMAKE_CXX_COMPILER_LAUNCHER:STRING=/usr/bin/ccache
+</code></pre></div>
+<p>If not, you can define these variables on the command line before invoking <code>setup.py</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">CMAKE_C_COMPILER_LAUNCHER</span><span class="o">=</span>ccache
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">CMAKE_CXX_COMPILER_LAUNCHER</span><span class="o">=</span>ccache
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">CMAKE_CUDA_COMPILER_LAUNCHER</span><span class="o">=</span>ccache
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>python<span class="w"> </span>setup.py<span class="w"> </span>develop
+</code></pre></div>
+<h4 id="use-a-faster-linker">Use a faster linker</h4>
+<p>If you are editing a single file and rebuilding in a tight loop, the time spent
+linking will dominate. The system linker available in most Linux distributions
+(GNU <code>ld</code>) is quite slow. Use a faster linker, like <a href="https://lld.llvm.org/">lld</a>.</p>
+<p>People on Mac, follow <a href="https://stackoverflow.com/questions/42730345/how-to-install-llvm-for-mac">this guide</a> instead.</p>
+<p>The easiest way to use <code>lld</code> this is download the
+<a href="http://releases.llvm.org/download.html#8.0.0">latest LLVM binaries</a> and run:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>ln<span class="w"> </span>-s<span class="w"> </span>/path/to/downloaded/ld.lld<span class="w"> </span>/usr/local/bin/ld
+</code></pre></div>
+<h4 id="use-pre-compiled-headers">Use pre-compiled headers</h4>
+<p>Sometimes there's no way of getting around rebuilding lots of files, for example
+editing <code>native_functions.yaml</code> usually means 1000+ files being rebuilt. If
+you're using CMake newer than 3.16, you can enable pre-compiled headers by
+setting <code>USE_PRECOMPILED_HEADERS=1</code> either on first setup, or in the
+<code>CMakeCache.txt</code> file.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="nv">USE_PRECOMPILED_HEADERS</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>python<span class="w"> </span>setup.py<span class="w"> </span>develop
+</code></pre></div>
+<p>This adds a build step where the compiler takes <code>&lt;ATen/ATen.h&gt;</code> and essentially
+dumps it's internal AST to a file so the compiler can avoid repeating itself for
+every <code>.cpp</code> file.</p>
+<p>One caveat is that when enabled, this header gets included in every file by default.
+Which may change what code is legal, for example:
+- internal functions can never alias existing names in <code>&lt;ATen/ATen.h&gt;</code>
+- names in <code>&lt;ATen/ATen.h&gt;</code> will work even if you don't explicitly include it.</p>
+<h4 id="workaround-for-header-dependency-bug-in-nvcc">Workaround for header dependency bug in nvcc</h4>
+<p>If re-building without modifying any files results in several CUDA files being
+re-compiled, you may be running into an <code>nvcc</code> bug where header dependencies are
+not converted to absolute paths before reporting it to the build system. This
+makes <code>ninja</code> think one of the header files has been deleted, so it runs the
+build again.</p>
+<p>A compiler-wrapper to fix this is provided in <code>tools/nvcc_fix_deps.py</code>. You can use
+this as a compiler launcher, similar to <code>ccache</code>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">CMAKE_CUDA_COMPILER_LAUNCHER</span><span class="o">=</span><span class="s2">&quot;python;`pwd`/tools/nvcc_fix_deps.py;ccache&quot;</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>python<span class="w"> </span>setup.py<span class="w"> </span>develop
+</code></pre></div></p>
+<h3 id="c-frontend-development-tips">C++ frontend development tips</h3>
+<p>We have very extensive tests in the <a href="test/cpp/api">test/cpp/api</a> folder. The
+tests are a great way to see how certain components are intended to be used.
+When compiling PyTorch from source, the test runner binary will be written to
+<code>build/bin/test_api</code>. The tests use the <a href="https://github.com/google/googletest/blob/master/googletest">GoogleTest</a>
+framework, which you can read up about to learn how to configure the test runner. When
+submitting a new feature, we care very much that you write appropriate tests.
+Please follow the lead of the other tests to see how to write a new test case.</p>
+<h3 id="gdb-integration">GDB integration</h3>
+<p>If you are debugging pytorch inside GDB, you might be interested in
+<a href="tools/gdb/pytorch-gdb.py">pytorch-gdb</a>. This script introduces some
+pytorch-specific commands which you can use from the GDB prompt. In
+particular, <code>torch-tensor-repr</code> prints a human-readable repr of an at::Tensor
+object. Example of usage:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>$ gdb python
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>GNU gdb (GDB) 9.2
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>[...]
+<a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>(gdb) # insert a breakpoint when we call .neg()
+<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a>(gdb) break at::Tensor::neg
+<a id="__codelineno-41-6" name="__codelineno-41-6" href="#__codelineno-41-6"></a>Function &quot;at::Tensor::neg&quot; not defined.
+<a id="__codelineno-41-7" name="__codelineno-41-7" href="#__codelineno-41-7"></a>Make breakpoint pending on future shared library load? (y or [n]) y
+<a id="__codelineno-41-8" name="__codelineno-41-8" href="#__codelineno-41-8"></a>Breakpoint 1 (at::Tensor::neg) pending.
+<a id="__codelineno-41-9" name="__codelineno-41-9" href="#__codelineno-41-9"></a>
+<a id="__codelineno-41-10" name="__codelineno-41-10" href="#__codelineno-41-10"></a>(gdb) run
+<a id="__codelineno-41-11" name="__codelineno-41-11" href="#__codelineno-41-11"></a>[...]
+<a id="__codelineno-41-12" name="__codelineno-41-12" href="#__codelineno-41-12"></a>&gt;&gt;&gt; import torch
+<a id="__codelineno-41-13" name="__codelineno-41-13" href="#__codelineno-41-13"></a>&gt;&gt;&gt; t = torch.tensor([1, 2, 3, 4], dtype=torch.float64)
+<a id="__codelineno-41-14" name="__codelineno-41-14" href="#__codelineno-41-14"></a>&gt;&gt;&gt; t
+<a id="__codelineno-41-15" name="__codelineno-41-15" href="#__codelineno-41-15"></a>tensor([1., 2., 3., 4.], dtype=torch.float64)
+<a id="__codelineno-41-16" name="__codelineno-41-16" href="#__codelineno-41-16"></a>&gt;&gt;&gt; t.neg()
+<a id="__codelineno-41-17" name="__codelineno-41-17" href="#__codelineno-41-17"></a>
+<a id="__codelineno-41-18" name="__codelineno-41-18" href="#__codelineno-41-18"></a>Thread 1 &quot;python&quot; hit Breakpoint 1, at::Tensor::neg (this=0x7ffb118a9c88) at aten/src/ATen/core/TensorBody.h:3295
+<a id="__codelineno-41-19" name="__codelineno-41-19" href="#__codelineno-41-19"></a>3295    inline at::Tensor Tensor::neg() const {
+<a id="__codelineno-41-20" name="__codelineno-41-20" href="#__codelineno-41-20"></a>(gdb) # the default repr of &#39;this&#39; is not very useful
+<a id="__codelineno-41-21" name="__codelineno-41-21" href="#__codelineno-41-21"></a>(gdb) p this
+<a id="__codelineno-41-22" name="__codelineno-41-22" href="#__codelineno-41-22"></a>$1 = (const at::Tensor * const) 0x7ffb118a9c88
+<a id="__codelineno-41-23" name="__codelineno-41-23" href="#__codelineno-41-23"></a>(gdb) p *this
+<a id="__codelineno-41-24" name="__codelineno-41-24" href="#__codelineno-41-24"></a>$2 = {impl_ = {target_ = 0x55629b5cd330}}
+<a id="__codelineno-41-25" name="__codelineno-41-25" href="#__codelineno-41-25"></a>(gdb) torch-tensor-repr *this
+<a id="__codelineno-41-26" name="__codelineno-41-26" href="#__codelineno-41-26"></a>Python-level repr of *this:
+<a id="__codelineno-41-27" name="__codelineno-41-27" href="#__codelineno-41-27"></a>tensor([1., 2., 3., 4.], dtype=torch.float64)
+</code></pre></div>
+<p>GDB tries to automatically load <code>pytorch-gdb</code> thanks to the
+<a href=".gdbinit">.gdbinit</a> at the root of the pytorch repo. However, auto-loadings is disabled by default, because of security reasons:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>$<span class="w"> </span>gdb
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>warning:<span class="w"> </span>File<span class="w"> </span><span class="s2">&quot;/path/to/pytorch/.gdbinit&quot;</span><span class="w"> </span>auto-loading<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>declined<span class="w"> </span>by<span class="w"> </span>your<span class="w"> </span><span class="sb">`</span>auto-load<span class="w"> </span>safe-path<span class="err">&#39;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$debugdir</span><span class="s2">:</span><span class="nv">$datadir</span><span class="s2">/auto-load&quot;</span>.
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>To<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>execution<span class="w"> </span>of<span class="w"> </span>this<span class="w"> </span>file<span class="w"> </span>add
+<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a><span class="w">        </span>add-auto-load-safe-path<span class="w"> </span>/path/to/pytorch/.gdbinit
+<a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a>line<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span><span class="s2">&quot;/home/YOUR-USERNAME/.gdbinit&quot;</span>.
+<a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a>To<span class="w"> </span>completely<span class="w"> </span>disable<span class="w"> </span>this<span class="w"> </span>security<span class="w"> </span>protection<span class="w"> </span>add
+<a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a><span class="w">        </span><span class="nb">set</span><span class="w"> </span>auto-load<span class="w"> </span>safe-path<span class="w"> </span>/
+<a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a>line<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>configuration<span class="w"> </span>file<span class="w"> </span><span class="s2">&quot;/home/YOUR-USERNAME/.gdbinit&quot;</span>.
+<a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a>For<span class="w"> </span>more<span class="w"> </span>information<span class="w"> </span>about<span class="w"> </span>this<span class="w"> </span>security<span class="w"> </span>protection<span class="w"> </span>see<span class="w"> </span>the
+<a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a><span class="s2">&quot;Auto-loading safe path&quot;</span><span class="w"> </span>section<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>GDB<span class="w"> </span>manual.<span class="w">  </span>E.g.,<span class="w"> </span>run<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>shell:
+<a id="__codelineno-42-11" name="__codelineno-42-11" href="#__codelineno-42-11"></a><span class="w">        </span>info<span class="w"> </span><span class="s2">&quot;(gdb)Auto-loading safe path&quot;</span>
+<a id="__codelineno-42-12" name="__codelineno-42-12" href="#__codelineno-42-12"></a><span class="o">(</span>gdb<span class="o">)</span>
+</code></pre></div>
+<p>As gdb itself suggests, the best way to enable auto-loading of <code>pytorch-gdb</code>
+is to add the following line to your <code>~/.gdbinit</code> (i.e., the <code>.gdbinit</code> file
+which is in your home directory, <strong>not</strong> <code>/path/to/pytorch/.gdbinit</code>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>add-auto-load-safe-path<span class="w"> </span>/path/to/pytorch/.gdbinit
+</code></pre></div>
+<h3 id="c-stacktraces">C++ stacktraces</h3>
+<p>Set <code>TORCH_SHOW_CPP_STACKTRACES=1</code> to get the C++ stacktrace when an error occurs in Python.</p>
+<h2 id="cuda-development-tips">CUDA development tips</h2>
+<p>If you are working on the CUDA code, here are some useful CUDA debugging tips:</p>
+<ol>
+<li><code>CUDA_DEVICE_DEBUG=1</code> will enable CUDA device function debug symbols (<code>-g -G</code>).
+    This will be particularly helpful in debugging device code. However, it will
+    slow down the build process for about 50% (compared to only <code>DEBUG=1</code>), so use wisely.</li>
+<li><code>cuda-gdb</code> and <code>cuda-memcheck</code> are your best CUDA debugging friends. Unlike<code>gdb</code>,
+   <code>cuda-gdb</code> can display actual values in a CUDA tensor (rather than all zeros).</li>
+<li>CUDA supports a lot of C++11/14 features such as, <code>std::numeric_limits</code>, <code>std::nextafter</code>,
+   <code>std::tuple</code> etc. in device code. Many of such features are possible because of the
+   <a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#constexpr-functions">--expt-relaxed-constexpr</a>
+   nvcc flag. There is a known <a href="https://github.com/ROCm-Developer-Tools/HIP/issues/374">issue</a>
+   that ROCm errors out on device code, which uses such stl functions.</li>
+<li>A good performance metric for a CUDA kernel is the
+   <a href="https://devblogs.nvidia.com/how-implement-performance-metrics-cuda-cc/">Effective Memory Bandwidth</a>.
+   It is useful for you to measure this metric whenever you are writing/optimizing a CUDA
+   kernel. Following script shows how we can measure the effective bandwidth of CUDA <code>uniform_</code>
+   kernel.
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="kn">import</span> <span class="nn">torch</span>
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="kn">from</span> <span class="nn">torch.utils.benchmark</span> <span class="kn">import</span> <span class="n">Timer</span>
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="n">size</span> <span class="o">=</span> <span class="mi">128</span><span class="o">*</span><span class="mi">512</span>
+<a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a><span class="n">nrep</span> <span class="o">=</span> <span class="mi">100</span>
+<a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a><span class="n">nbytes_read_write</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># this is number of bytes read + written by a kernel. Change this to fit your kernel.</span>
+<a id="__codelineno-44-6" name="__codelineno-44-6" href="#__codelineno-44-6"></a>
+<a id="__codelineno-44-7" name="__codelineno-44-7" href="#__codelineno-44-7"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<a id="__codelineno-44-8" name="__codelineno-44-8" href="#__codelineno-44-8"></a>    <span class="n">a</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span><span class="o">.</span><span class="n">uniform_</span><span class="p">()</span>
+<a id="__codelineno-44-9" name="__codelineno-44-9" href="#__codelineno-44-9"></a>    <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">synchronize</span><span class="p">()</span>
+<a id="__codelineno-44-10" name="__codelineno-44-10" href="#__codelineno-44-10"></a>    <span class="n">out</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">uniform_</span><span class="p">()</span>
+<a id="__codelineno-44-11" name="__codelineno-44-11" href="#__codelineno-44-11"></a>    <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">synchronize</span><span class="p">()</span>
+<a id="__codelineno-44-12" name="__codelineno-44-12" href="#__codelineno-44-12"></a>    <span class="n">t</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="n">stmt</span><span class="o">=</span><span class="s2">&quot;a.uniform_()&quot;</span><span class="p">,</span> <span class="nb">globals</span><span class="o">=</span><span class="nb">globals</span><span class="p">())</span>
+<a id="__codelineno-44-13" name="__codelineno-44-13" href="#__codelineno-44-13"></a>    <span class="n">res</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">blocked_autorange</span><span class="p">()</span>
+<a id="__codelineno-44-14" name="__codelineno-44-14" href="#__codelineno-44-14"></a>    <span class="n">timec</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">median</span>
+<a id="__codelineno-44-15" name="__codelineno-44-15" href="#__codelineno-44-15"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;uniform, size, elements&quot;</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="s2">&quot;forward&quot;</span><span class="p">,</span> <span class="n">timec</span><span class="p">,</span> <span class="s2">&quot;bandwidth (GB/s)&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">*</span><span class="p">(</span><span class="n">nbytes_read_write</span><span class="p">)</span><span class="o">*</span><span class="mf">1e-9</span><span class="o">/</span><span class="n">timec</span><span class="p">)</span>
+<a id="__codelineno-44-16" name="__codelineno-44-16" href="#__codelineno-44-16"></a>    <span class="n">size</span> <span class="o">*=</span><span class="mi">2</span>
+</code></pre></div></li>
+</ol>
+<p>See more cuda development tips <a href="https://github.com/pytorch/pytorch/wiki/CUDA-basics">here</a></p>
+<h2 id="windows-development-tips">Windows development tips</h2>
+<p>For building from source on Windows, consult
+<a href="https://pytorch.org/docs/stable/notes/windows.html">our documentation</a> on it.</p>
+<p>Occasionally, you will write a patch which works on Linux, but fails CI on Windows.
+There are a few aspects in which MSVC (the Windows compiler toolchain we use) is stricter
+than Linux, which are worth keeping in mind when fixing these problems.</p>
+<ol>
+<li>Symbols are NOT exported by default on Windows; instead, you have to explicitly
+   mark a symbol as exported/imported in a header file with <code>__declspec(dllexport)</code> /
+   <code>__declspec(dllimport)</code>. We have codified this pattern into a set of macros
+   which follow the convention <code>*_API</code>, e.g., <code>TORCH_API</code> inside Caffe2, Aten and Torch.
+   (Every separate shared library needs a unique macro name, because symbol visibility
+   is on a per shared library basis. See c10/macros/Macros.h for more details.)</li>
+</ol>
+<p>The upshot is if you see an "unresolved external" error in your Windows build, this
+   is probably because you forgot to mark a function with <code>*_API</code>. However, there is
+   one important counterexample to this principle: if you want a <em>templated</em> function
+   to be instantiated at the call site, do NOT mark it with <code>*_API</code> (if you do mark it,
+   you'll have to explicitly instantiate all of the specializations used by the call
+   sites.)</p>
+<ol>
+<li>
+<p>If you link against a library, this does not make its dependencies transitively
+   visible. You must explicitly specify a link dependency against every library whose
+   symbols you use. (This is different from Linux where in most environments,
+   transitive dependencies can be used to fulfill unresolved symbols.)</p>
+</li>
+<li>
+<p>If you have a Windows box (we have a few on EC2 which you can request access to) and
+   you want to run the build, the easiest way is to just run <code>.ci/pytorch/win-build.sh</code>.
+   If you need to rebuild, run <code>REBUILD=1 .ci/pytorch/win-build.sh</code> (this will avoid
+   blowing away your Conda environment.)</p>
+</li>
+</ol>
+<p>Even if you don't know anything about MSVC, you can use cmake to build simple programs on
+Windows; this can be helpful if you want to learn more about some peculiar linking behavior
+by reproducing it on a small example. Here's a simple example cmake file that defines
+two dynamic libraries, one linking with the other:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="nb">project</span><span class="p">(</span><span class="s">myproject</span><span class="w"> </span><span class="s">CXX</span><span class="p">)</span>
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span><span class="w"> </span><span class="s">14</span><span class="p">)</span>
+<a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="nb">add_library</span><span class="p">(</span><span class="s">foo</span><span class="w"> </span><span class="s">SHARED</span><span class="w"> </span><span class="s">foo.cpp</span><span class="p">)</span>
+<a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a><span class="nb">add_library</span><span class="p">(</span><span class="s">bar</span><span class="w"> </span><span class="s">SHARED</span><span class="w"> </span><span class="s">bar.cpp</span><span class="p">)</span>
+<a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a><span class="c"># NB: don&#39;t forget to __declspec(dllexport) at least one symbol from foo,</span>
+<a id="__codelineno-45-6" name="__codelineno-45-6" href="#__codelineno-45-6"></a><span class="c"># otherwise foo.lib will not be created.</span>
+<a id="__codelineno-45-7" name="__codelineno-45-7" href="#__codelineno-45-7"></a><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">bar</span><span class="w"> </span><span class="s">PUBLIC</span><span class="w"> </span><span class="s">foo</span><span class="p">)</span>
+</code></pre></div>
+<p>You can build it with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>mkdir<span class="w"> </span>build
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a><span class="nb">cd</span><span class="w"> </span>build
+<a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a>cmake<span class="w"> </span>..
+<a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a>cmake<span class="w"> </span>--build<span class="w"> </span>.
+</code></pre></div>
+<h3 id="known-msvc-and-msvc-with-nvcc-bugs">Known MSVC (and MSVC with NVCC) bugs</h3>
+<p>The PyTorch codebase sometimes likes to use exciting C++ features, and
+these exciting features lead to exciting bugs in Windows compilers.
+To add insult to injury, the error messages will often not tell you
+which line of code actually induced the erroring template instantiation.</p>
+<p>We've found the most effective way to debug these problems is to
+carefully read over diffs, keeping in mind known bugs in MSVC/NVCC.
+Here are a few well known pitfalls and workarounds:</p>
+<ul>
+<li>
+<p>This is not actually a bug per se, but in general, code generated by MSVC
+  is more sensitive to memory errors; you may have written some code
+  that does a use-after-free or stack overflows; on Linux the code
+  might work, but on Windows your program will crash. ASAN may not
+  catch all of these problems: stay vigilant to the possibility that
+  your crash is due to a real memory problem.</p>
+</li>
+<li>
+<p>(NVCC) <code>c10::optional</code> does not work when used from device code. Don't use
+  it from kernels. Upstream issue: https://github.com/akrzemi1/Optional/issues/58
+  and our local issue #10329.</p>
+</li>
+<li>
+<p><code>constexpr</code> generally works less well on MSVC.</p>
+</li>
+<li>
+<p>The idiom <code>static_assert(f() == f())</code> to test if <code>f</code> is constexpr
+    does not work; you'll get "error C2131: expression did not evaluate
+    to a constant". Don't use these asserts on Windows.
+    (Example: <code>c10/util/intrusive_ptr.h</code>)</p>
+</li>
+<li>
+<p>(NVCC) Code you access inside a <code>static_assert</code> will eagerly be
+  evaluated as if it were device code, and so you might get an error
+  that the code is "not accessible".</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">A</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">singleton_</span><span class="p">;</span>
+<a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a><span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">A</span><span class="o">*</span><span class="w"> </span><span class="nf">singleton</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">singleton_</span><span class="p">;</span>
+<a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a><span class="p">};</span>
+<a id="__codelineno-47-7" name="__codelineno-47-7" href="#__codelineno-47-7"></a><span class="k">static_assert</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same</span><span class="p">(</span><span class="n">A</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">A</span><span class="o">::</span><span class="n">singleton</span><span class="p">()))</span><span class="o">::</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hmm&quot;</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li>
+<p>The compiler will run out of heap space if you attempt to compile files that
+  are too large. Splitting such files into separate files helps.
+  (Example: <code>THTensorMath</code>, <code>THTensorMoreMath</code>, <code>THTensorEvenMoreMath</code>.)</p>
+</li>
+<li>
+<p>MSVC's preprocessor (but not the standard compiler) has a bug
+  where it incorrectly tokenizes raw string literals, ending when it sees a <code>"</code>.
+  This causes preprocessor tokens inside the literal like an<code>#endif</code>  to be incorrectly
+  treated as preprocessor directives. See https://godbolt.org/z/eVTIJq as an example.</p>
+</li>
+<li>
+<p>Either MSVC or the Windows headers have a PURE macro defined and will replace
+  any occurrences of the PURE token in code with an empty string. This is why
+  we have AliasAnalysisKind::PURE_FUNCTION and not AliasAnalysisKind::PURE.
+  The same is likely true for other identifiers that we just didn't try to use yet.</p>
+</li>
+</ul>
+<h3 id="building-on-legacy-code-and-cuda">Building on legacy code and CUDA</h3>
+<p>CUDA, MSVC, and PyTorch versions are interdependent; please install matching versions from this table:
+| CUDA version | Newest supported VS version                             | PyTorch version |
+| ------------ | ------------------------------------------------------- | --------------- |
+| 10.1         | Visual Studio 2019 (16.X) (<code>_MSC_VER</code> &lt; 1930)           |  1.3.0 ~ 1.7.0  |
+| 10.2         | Visual Studio 2019 (16.X) (<code>_MSC_VER</code> &lt; 1930)           |  1.5.0 ~ 1.7.0  |
+| 11.0         | Visual Studio 2019 (16.X) (<code>_MSC_VER</code> &lt; 1930)           |      1.7.0      |</p>
+<p>Note: There's a <a href="https://github.com/oneapi-src/oneDNN/issues/812">compilation issue</a> in several Visual Studio 2019 versions since 16.7.1, so please make sure your Visual Studio 2019 version is not in 16.7.1 ~ 16.7.5</p>
+<h2 id="running-clang-tidy">Running clang-tidy</h2>
+<p><a href="https://clang.llvm.org/extra/clang-tidy/index.html">Clang-Tidy</a> is a C++
+linter and static analysis tool based on the clang compiler. We run clang-tidy
+in our CI to make sure that new C++ code is safe, sane and efficient. See the
+<a href="https://github.com/pytorch/pytorch/blob/master/.github/workflows/lint.yml"><code>clang-tidy</code> job in our GitHub Workflow's
+lint.yml file</a>
+for the simple commands we use for this.</p>
+<p>To run clang-tidy locally, follow these steps:</p>
+<ol>
+<li>
+<p>Install clang-tidy.
+We provide custom built binaries which have additional checks enabled. You can install it by running:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>tools.linter.install.clang_tidy
+</code></pre></div>
+We currently only support Linux and MacOS (x86).</p>
+</li>
+<li>
+<p>Install clang-tidy driver script dependencies
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>tools/linter/clang_tidy/requirements.txt
+</code></pre></div></p>
+</li>
+<li>
+<p>Run clang-tidy
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="c1"># Run clang-tidy on the entire codebase</span>
+<a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>make<span class="w"> </span>clang-tidy
+<a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a><span class="c1"># Run clang-tidy only on your changes</span>
+<a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a>make<span class="w"> </span>clang-tidy<span class="w"> </span><span class="nv">CHANGED_ONLY</span><span class="o">=</span>--changed-only
+</code></pre></div>
+This internally invokes our driver script and closely mimics how clang-tidy is run on CI.</p>
+</li>
+</ol>
+<h2 id="pre-commit-tidylinting-hook">Pre-commit tidy/linting hook</h2>
+<p>We use clang-tidy to perform additional
+formatting and semantic checking of code. We provide a pre-commit git hook for
+performing these checks, before a commit is created:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>ln<span class="w"> </span>-s<span class="w"> </span>../../tools/git-pre-commit<span class="w"> </span>.git/hooks/pre-commit
+</code></pre></div>
+<p>If you have already committed files and
+CI reports <code>flake8</code> errors, you can run the check locally in your PR branch with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>flake8<span class="w"> </span><span class="k">$(</span>git<span class="w"> </span>diff<span class="w"> </span>--name-only<span class="w"> </span><span class="k">$(</span>git<span class="w"> </span>merge-base<span class="w"> </span>--fork-point<span class="w"> </span>master<span class="k">))</span>
+</code></pre></div>
+<p>You'll need to install an appropriately configured flake8; see
+<a href="https://github.com/pytorch/pytorch/wiki/Lint-as-you-type">Lint as you type</a>
+for documentation on how to do this.</p>
+<p>Fix the code so that no errors are reported when you re-run the above check again,
+and then commit the fix.</p>
+<h2 id="building-pytorch-with-asan">Building PyTorch with ASAN</h2>
+<p><a href="https://github.com/google/sanitizers/wiki/AddressSanitizer">ASAN</a> is very
+useful for debugging memory errors in C++. We run it in CI, but here's how to
+get the same thing to run on your local machine.</p>
+<p>First, install LLVM 8. The easiest way is to get <a href="http://releases.llvm.org/download.html#8.0.0">prebuilt
+binaries</a> and extract them to
+folder (later called <code>$LLVM_ROOT</code>).</p>
+<p>Then set up the appropriate scripts. You can put this in your <code>.bashrc</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="nv">LLVM_ROOT</span><span class="o">=</span>&lt;wherever<span class="w"> </span>your<span class="w"> </span>llvm<span class="w"> </span>install<span class="w"> </span>is&gt;
+<a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a><span class="nv">PYTORCH_ROOT</span><span class="o">=</span>&lt;wherever<span class="w"> </span>your<span class="w"> </span>pytorch<span class="w"> </span>checkout<span class="w"> </span>is&gt;
+<a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a>
+<a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a><span class="nv">LIBASAN_RT</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$LLVM_ROOT</span><span class="s2">/lib/clang/8.0.0/lib/linux/libclang_rt.asan-x86_64.so&quot;</span>
+<a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a>build_with_asan<span class="o">()</span>
+<a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a><span class="o">{</span>
+<a id="__codelineno-53-7" name="__codelineno-53-7" href="#__codelineno-53-7"></a><span class="w">  </span><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="si">${</span><span class="nv">LIBASAN_RT</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-53-8" name="__codelineno-53-8" href="#__codelineno-53-8"></a><span class="w">  </span><span class="nv">CC</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$LLVM_ROOT</span><span class="s2">/bin/clang&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-53-9" name="__codelineno-53-9" href="#__codelineno-53-9"></a><span class="w">  </span><span class="nv">CXX</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$LLVM_ROOT</span><span class="s2">/bin/clang++&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-53-10" name="__codelineno-53-10" href="#__codelineno-53-10"></a><span class="w">  </span><span class="nv">LDSHARED</span><span class="o">=</span><span class="s2">&quot;clang --shared&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-53-11" name="__codelineno-53-11" href="#__codelineno-53-11"></a><span class="w">  </span><span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">&quot;-stdlib=libstdc++&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-53-12" name="__codelineno-53-12" href="#__codelineno-53-12"></a><span class="w">  </span><span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;-fsanitize=address -fno-sanitize-recover=all -shared-libasan -pthread&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-53-13" name="__codelineno-53-13" href="#__codelineno-53-13"></a><span class="w">  </span><span class="nv">CXX_FLAGS</span><span class="o">=</span><span class="s2">&quot;-pthread&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-53-14" name="__codelineno-53-14" href="#__codelineno-53-14"></a><span class="w">  </span><span class="nv">USE_CUDA</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">USE_OPENMP</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">BUILD_CAFFE2_OPS</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">USE_DISTRIBUTED</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">DEBUG</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-53-15" name="__codelineno-53-15" href="#__codelineno-53-15"></a><span class="w">  </span>python<span class="w"> </span>setup.py<span class="w"> </span>develop
+<a id="__codelineno-53-16" name="__codelineno-53-16" href="#__codelineno-53-16"></a><span class="o">}</span>
+<a id="__codelineno-53-17" name="__codelineno-53-17" href="#__codelineno-53-17"></a>
+<a id="__codelineno-53-18" name="__codelineno-53-18" href="#__codelineno-53-18"></a>run_with_asan<span class="o">()</span>
+<a id="__codelineno-53-19" name="__codelineno-53-19" href="#__codelineno-53-19"></a><span class="o">{</span>
+<a id="__codelineno-53-20" name="__codelineno-53-20" href="#__codelineno-53-20"></a><span class="w">  </span><span class="nv">LD_PRELOAD</span><span class="o">=</span><span class="si">${</span><span class="nv">LIBASAN_RT</span><span class="si">}</span><span class="w"> </span><span class="nv">$@</span>
+<a id="__codelineno-53-21" name="__codelineno-53-21" href="#__codelineno-53-21"></a><span class="o">}</span>
+<a id="__codelineno-53-22" name="__codelineno-53-22" href="#__codelineno-53-22"></a>
+<a id="__codelineno-53-23" name="__codelineno-53-23" href="#__codelineno-53-23"></a><span class="c1"># you can look at build-asan.sh to find the latest options the CI uses</span>
+<a id="__codelineno-53-24" name="__codelineno-53-24" href="#__codelineno-53-24"></a><span class="nb">export</span><span class="w"> </span><span class="nv">ASAN_OPTIONS</span><span class="o">=</span><span class="nv">detect_leaks</span><span class="o">=</span><span class="m">0</span>:symbolize<span class="o">=</span><span class="m">1</span>:strict_init_order<span class="o">=</span><span class="nb">true</span>
+<a id="__codelineno-53-25" name="__codelineno-53-25" href="#__codelineno-53-25"></a><span class="nb">export</span><span class="w"> </span><span class="nv">UBSAN_OPTIONS</span><span class="o">=</span><span class="nv">print_stacktrace</span><span class="o">=</span><span class="m">1</span>:suppressions<span class="o">=</span><span class="nv">$PYTORCH_ROOT</span>/ubsan.supp
+<a id="__codelineno-53-26" name="__codelineno-53-26" href="#__codelineno-53-26"></a><span class="nb">export</span><span class="w"> </span><span class="nv">ASAN_SYMBOLIZER_PATH</span><span class="o">=</span><span class="nv">$LLVM_ROOT</span>/bin/llvm-symbolizer
+</code></pre></div>
+<p>Then you can use the scripts like:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>suo-devfair ~/pytorch ❯ build_with_asan
+<a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a>suo-devfair ~/pytorch ❯ run_with_asan python test/test_jit.py
+</code></pre></div>
+<h3 id="getting-ccache-to-work">Getting <code>ccache</code> to work</h3>
+<p>The scripts above specify the <code>clang</code> and <code>clang++</code> binaries directly, which
+bypasses <code>ccache</code>. Here's how to get <code>ccache</code> to work:</p>
+<ol>
+<li>Make sure the ccache symlinks for <code>clang</code> and <code>clang++</code> are set up (see
+   CONTRIBUTING.md)</li>
+<li>Make sure <code>$LLVM_ROOT/bin</code> is available on your <code>$PATH</code>.</li>
+<li>Change the <code>CC</code> and <code>CXX</code> variables in <code>build_with_asan()</code> to point
+   directly to <code>clang</code> and <code>clang++</code>.</li>
+</ol>
+<h3 id="why-this-stuff-with-ld_preload-and-libasan_rt">Why this stuff with <code>LD_PRELOAD</code> and <code>LIBASAN_RT</code>?</h3>
+<p>The “standard” workflow for ASAN assumes you have a standalone binary:</p>
+<ol>
+<li>Recompile your binary with <code>-fsanitize=address</code>.</li>
+<li>Run the binary, and ASAN will report whatever errors it find.</li>
+</ol>
+<p>Unfortunately, PyTorch is a distributed as a shared library that is loaded by
+a third-party executable (Python). It’s too much of a hassle to recompile all
+of Python every time we want to use ASAN. Luckily, the ASAN folks have a
+workaround for cases like this:</p>
+<ol>
+<li>Recompile your library with <code>-fsanitize=address -shared-libasan</code>. The
+   extra <code>-shared-libasan</code> tells the compiler to ask for the shared ASAN
+   runtime library.</li>
+<li>Use <code>LD_PRELOAD</code> to tell the dynamic linker to load the ASAN runtime
+   library before anything else.</li>
+</ol>
+<p>More information can be found
+<a href="https://github.com/google/sanitizers/wiki/AddressSanitizerAsDso">here</a>.</p>
+<h3 id="why-ld_preload-in-the-build-function">Why LD_PRELOAD in the build function?</h3>
+<p>We need <code>LD_PRELOAD</code> because there is a cmake check that ensures that a
+simple program builds and runs. If we are building with ASAN as a shared
+library, we need to <code>LD_PRELOAD</code> the runtime library, otherwise there will
+dynamic linker errors and the check will fail.</p>
+<p>We don’t actually need either of these if we fix the cmake checks.</p>
+<h3 id="why-no-leak-detection">Why no leak detection?</h3>
+<p>Python leaks a lot of memory. Possibly we could configure a suppression file,
+but we haven’t gotten around to it.</p>
+<h2 id="caffe2-notes">Caffe2 notes</h2>
+<p>In 2018, we merged Caffe2 into the PyTorch source repository. While the
+steady state aspiration is that Caffe2 and PyTorch share code freely,
+in the meantime there will be some separation.</p>
+<p>There are a few "unusual" directories which, for historical reasons,
+are Caffe2/PyTorch specific. Here they are:</p>
+<ul>
+<li>
+<p><code>CMakeLists.txt</code>, <code>Makefile</code>, <code>binaries</code>, <code>cmake</code>, <code>conda</code>, <code>modules</code>,
+  <code>scripts</code> are Caffe2-specific. Don't put PyTorch code in them without
+  extra coordination.</p>
+</li>
+<li>
+<p><code>mypy*</code>, <code>requirements.txt</code>, <code>setup.py</code>, <code>test</code>, <code>tools</code> are
+  PyTorch-specific. Don't put Caffe2 code in them without extra
+  coordination.</p>
+</li>
+</ul>
+<h2 id="ci-failure-tips">CI failure tips</h2>
+<p>Once you submit a PR or push a new commit to a branch that is in
+an active PR, CI jobs will be run automatically. Some of these may
+fail and you will need to find out why, by looking at the logs.</p>
+<p>Fairly often, a CI failure might be unrelated to your changes. You can
+confirm by going to our <a href="hud.pytorch.org">HUD</a> and seeing if the CI job
+is failing upstream already. In this case, you
+can usually ignore the failure. See <a href="#which-commit-is-used-in-ci">the following
+subsection</a> for more details.</p>
+<p>Some failures might be related to specific hardware or environment
+configurations. In this case, if you're a Meta employee, you can ssh into
+the job's session to perform manual debugging following the instructions in
+our <a href="https://github.com/pytorch/pytorch/wiki/Debugging-using-with-ssh-for-Github-Actions">CI wiki</a>.</p>
+<h3 id="which-commit-is-used-in-ci">Which commit is used in CI?</h3>
+<p>For CI run on <code>master</code>, this repository is checked out for a given <code>master</code>
+commit, and CI is run on that commit (there isn't really any other choice).</p>
+<p>For PRs, however, it's a bit more complicated. Consider this commit graph, where
+<code>master</code> is at commit <code>A</code>, and the branch for PR #42 (just a placeholder) is at
+commit <code>B</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>       o---o---B (refs/pull/42/head)
+<a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a>      /         \
+<a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a>     /           C (refs/pull/42/merge)
+<a id="__codelineno-55-4" name="__codelineno-55-4" href="#__codelineno-55-4"></a>    /           /
+<a id="__codelineno-55-5" name="__codelineno-55-5" href="#__codelineno-55-5"></a>---o---o---o---A (merge-destination) - usually master
+</code></pre></div>
+<p>There are two possible choices for which commit to use:</p>
+<ol>
+<li>Checkout commit <code>B</code>, the head of the PR (manually committed by the PR
+   author).</li>
+<li>Checkout commit <code>C</code>, the hypothetical result of what would happen if the PR
+   were merged into it's destination (usually <code>master</code>).</li>
+</ol>
+<p>For all practical purposes, most people can think of the commit being used as
+commit <code>B</code> (choice <strong>1</strong>).</p>
+<p>However, if workflow files (which govern CI behavior) were modified (either by your PR or since dev branch were created ) there's
+a nuance to know about:
+The workflow files themselves get taken from checkpoint <code>C</code>, the merger of your
+PR and the <code>master</code> branch. But only the workflow files get taken from that merged
+checkpoint. Everything else (tests, code, etc) all get taken directly from your
+PR's commit (commit <code>B</code>). Please note, this scenario would never affect PRs authored by <code>ghstack</code> as they would not automatically ingest the updates from default branch.</p>
+<h2 id="dev-infra-office-hours">Dev Infra Office Hours</h2>
+<p><a href="https://github.com/pytorch/pytorch/wiki/Dev-Infra-Office-Hours">Dev Infra Office Hours</a> are hosted every Friday to answer any questions regarding developer experience, Green HUD, and CI.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../Python/Python/Ox05%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9E%8B/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ox05生产者消费者模型" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Ox05生产者消费者模型
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "content.code.annotate", "content.tooltips", "search.highlight", "search.share", "search.suggest", "toc.follow", "navigation.top", "navigation.expand", "navigation.footer", "content.tabs.link"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      
+    
+  </body>
+</html>
