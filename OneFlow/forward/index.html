@@ -1,0 +1,1210 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="https://github.com/ultralytics/assets/raw/main/logo/favicon-yolo.ico">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.11">
+    
+    
+      
+        <title>如何在 OneFlow 中新增算子 - 兔小飙</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3754935a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#oneflow" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="兔小飙" class="md-header__button md-logo" aria-label="兔小飙" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            兔小飙
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              如何在 OneFlow 中新增算子
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="兔小飙" class="md-nav__button md-logo" aria-label="兔小飙" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    兔小飙
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" data-md-state="indeterminate" type="checkbox" id="__nav_2_1" checked>
+      
+      <label class="md-nav__link" for="__nav_2_1">
+        工具
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="工具" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          工具
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/ssh_%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        ssh的简单应用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux/rsync/" class="md-nav__link">
+        rsync指令
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        PyThon
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="PyThon" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          PyThon
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Django/start/" class="md-nav__link">
+        Django
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_2" checked>
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        Tool
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tool" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tool
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Development_tool/Python%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Conda/" class="md-nav__link">
+        Python包管理工具Conda
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_3_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3_3">
+        基础笔记
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="基础笔记" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          基础笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Python/Ox00%E5%BC%95%E8%A8%80/" class="md-nav__link">
+        Ox00引言
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Python/Ox01%E9%AD%94%E6%B3%95%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        Ox01魔法方法
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Python/Ox02%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        Ox02迭代器和生成器
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Python/Ox03%E9%97%AD%E5%8C%85/" class="md-nav__link">
+        Ox03闭包
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Python/Ox04%E8%87%AA%E7%9C%81%E5%92%8C%E5%8F%8D%E5%B0%84/" class="md-nav__link">
+        Ox04自省和反射
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Python/Ox05%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        Ox05生产者消费者模型
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        PyTorch
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="PyTorch" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          PyTorch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PyTorch/Ox01/" class="md-nav__link">
+        Ox01 gdb对pytorch进行c++语言级调试的过程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PyTorch/CONTRIBUTING.md" class="md-nav__link">
+        CONTRIBUTING
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        OneFlow
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="OneFlow" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          OneFlow
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/" class="md-nav__link">
+        utils
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    背景
+  </a>
+  
+    <nav class="md-nav" aria-label="背景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#op-kernel" class="md-nav__link">
+    op 与 kernel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oneflow-op-user-op" class="md-nav__link">
+    OneFlow 中的系统 op 与 user op
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ods-tablegen" class="md-nav__link">
+    ODS 与 TableGen
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#op" class="md-nav__link">
+    开发 op
+  </a>
+  
+    <nav class="md-nav" aria-label="开发 op">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#op_1" class="md-nav__link">
+    定义 op
+  </a>
+  
+    <nav class="md-nav" aria-label="定义 op">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#op-class" class="md-nav__link">
+    op class
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-output" class="md-nav__link">
+    输入 input 与输出 output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attrs" class="md-nav__link">
+    属性 attrs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    导出并实现推导接口
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kernel" class="md-nav__link">
+    实现 Kernel 逻辑
+  </a>
+  
+    <nav class="md-nav" aria-label="实现 Kernel 逻辑">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    CPU 计算逻辑
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kernel_1" class="md-nav__link">
+    注册 Kernel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu" class="md-nav__link">
+    GPU 计算逻辑
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functional" class="md-nav__link">
+    导出 functional 接口
+  </a>
+  
+    <nav class="md-nav" aria-label="导出 functional 接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functor" class="md-nav__link">
+    实现对应的 functor 并注册
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functional_apiyaml" class="md-nav__link">
+    在 functional_api.yaml 中添加接口描述
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    实现用于求导的反向逻辑
+  </a>
+  
+    <nav class="md-nav" aria-label="实现用于求导的反向逻辑">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eager" class="md-nav__link">
+    为 Eager 模式注册反向
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="oneflow">如何在 OneFlow 中新增算子</h1>
+<p>本文将以开发一个 leaky_relu（准确说是 leaky_relu_yzh op，因为 master 分支的 leaky_relu 组合了其它知识点，不适合作为教程展示）为例介绍如何在 OneFlow 中新增算子。</p>
+<p>本文对应的 PR 在 https://github.com/Oneflow-Inc/oneflow/pull/8350</p>
+<h2 id="_1">背景</h2>
+<h3 id="op-kernel">op 与 kernel</h3>
+<p>在上文提到 “定义 op” 与 “实现 kernel 计算逻辑” 两个步骤，这里的 op 与 kernel 是两个有关联的概念。</p>
+<p>op 是逻辑上的算子，包含 OneFlow Compiling Runtime 在构建计算图时所需要的必要信息，如输入、输出形状，哪些张量需要自动求导等信息。
+有了 op 中的信息，OneFlow Compiling Runtime 就可以构建计算图并依据计算图做资源申请、构建等操作（如根据张量的输入输出大小申请内存），
+但是 op 中不包含具体的处理数据的逻辑。</p>
+<p>在真正需要处理数据时，OneFlow Executing Runtime 会启动 kernel 完成计算，所以 kernel 中包含了具体处理数据的逻辑。
+对于一个逻辑上的 op，OneFlow Executing Runtime 会根据数据类型、硬件设备（比如是 CPU 还是 CUDA）的具体情况，选择启动不同的 kernel。</p>
+<h3 id="oneflow-op-user-op">OneFlow 中的系统 op 与 user op</h3>
+<p>在 OneFlow 系统中存在两类算子（op）：系统 op 和 user op。</p>
+<p>系统 op 定义在：<a href="https://github.com/Oneflow-Inc/oneflow/tree/master/oneflow/core/operator">oneflow/core/operator/</a> 目录，
+对应的 kernel 实现在：<a href="https://github.com/Oneflow-Inc/oneflow/tree/master/oneflow/core/kernel">oneflow/core/kernel</a> 目录。
+系统 op 是对构图、流水等系统性能较为关键的一些 op。</p>
+<p>除极少数 op 属于系统 op 外，大多数 op 都是 user op，这些 user op 和用户模型业务逻辑相关。
+OneFlow user op 的定义及 kernel 实现分别在 <a href="https://github.com/Oneflow-Inc/oneflow/tree/master/oneflow/user/ops">oneflow/user/ops</a> 和 <a href="https://github.com/Oneflow-Inc/oneflow/tree/master/oneflow/user/kernels">oneflow/user/kernels</a> 目录下。</p>
+<p>目前 OneFlow 已实现了丰富的算子库，但是当已有的算子库无法满足搭建模型的需求时，就需要新增算子。
+本文介绍的新增算子指的是 <strong>新增 user op</strong>。</p>
+<h3 id="ods-tablegen">ODS 与 TableGen</h3>
+<p><a href="https://llvm.org/docs/TableGen/index.html">TableGen</a> 是一个代码生成工具，简单而言，它读取并解析一个 <code>.td</code> 格式（语法接近 C++ 模板）的文件，然后交给 <a href="https://llvm.org/docs/TableGen/BackEnds.html">TableGen 后端</a> 生成另外格式的语言。</p>
+<p>MLIR 基于 TableGen 制定了一套算子定义规范 <a href="https://mlir.llvm.org/docs/OpDefinitions/">ODS</a> 以及对应的后端 <a href="https://github.com/llvm/llvm-project/blob/main/mlir/tools/mlir-tblgen/OpDefinitionsGen.cpp">OpDefinitionsGen</a></p>
+<p>OneFlow 在 ODS 的基础上，实现了 <a href="https://github.com/Oneflow-Inc/oneflow/tree/master/tools/oneflow-tblgen">TableGen OneFlow 后端</a>，并使用它来定义 OneFlow user op。</p>
+<p>因此，OneFlow 的 user op 定义写在 <a href="https://github.com/Oneflow-Inc/oneflow/blob/master/oneflow/ir/include/OneFlow/OneFlowUserOps.td">OneFlowUserOps.td</a> 文件中。</p>
+<h2 id="op">开发 op</h2>
+<p>在 OneFlow 中开发一个新的 user op，大致流程如下图。</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/118866310/226204352-90bf5617-e56d-4d9d-b342-cec25e37841c.png" /></p>
+<p>主要分为以下4步：
+1. 定义 op
+2. 实现 kernel 计算逻辑
+3. 导出 functional 接口
+4. 实现用于求导的反向逻辑 (上图中 4. 5.)</p>
+<h3 id="op_1">定义 op</h3>
+<p>定义 op 指的是，对 op 的名称，op 的输入、输出数据类型和 op 的属性进行声明。
+OneFlow 遵循 MLIR 的 <a href="https://mlir.llvm.org/docs/OpDefinitions/">ODS（Operation Definition Specification）</a> 实现了自己的 MLIR OneFlow Dialect。
+在算子定义方面，这样做的好处是，各种推导函数和序列化/反序列化的接口都可以委托给 ODS，降低了人工手写出错的概率，后续优化、格式转化等流程可以更灵活。</p>
+<p>定义一个 OneFlow user op，主要包括 5 个部分，分别是：</p>
+<ul>
+<li>op class</li>
+<li>输入 input</li>
+<li>输出 output</li>
+<li>属性 attrs</li>
+<li>导出并实现推导接口</li>
+</ul>
+<h4 id="op-class">op class</h4>
+<p>可以在 <a href="https://github.com/Oneflow-Inc/oneflow/blob/7ab4b0f08c86a6f8af08b44daa510725942288fb/oneflow/ir/include/OneFlow/OneFlowUserOps.td#L8418-L8451">oneflow/ir/include/OneFlow/OneFlowUserOps.td</a> 查看 op 定义的源码。</p>
+<p>以 <code>def</code> 关键字开头定义一个 op，该 op 继承 <code>OneFlow_BaseOp</code>，同时指定 <code>OneFlow_BaseOp</code> 的模版参数。
+模版参数依次为 op type name、<a href="https://mlir.llvm.org/docs/Traits/">Trait</a> 列表。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">def</span><span class="w"> </span><span class="n">OneFlow_LeakyReluYZHOp</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">OneFlow_BaseOp</span><span class="o">&lt;</span><span class="s">&quot;leaky_relu_yzh&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">NoSideEffect</span><span class="p">,</span><span class="w"> </span><span class="n">DeclareOpInterfaceMethods</span><span class="o">&lt;</span><span class="n">UserOpCompatibleInterface</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">//...</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>其中 <code>"leaky_relu_yzh"</code> 是指定的 op type name。每个 op 都需要指定一个全局唯一的 op type name 作为全局标识符。</p>
+<p>第二个模板参数是一个 list（<code>[...]</code>），其中的每一项都是一个 Trait，OneFlow 中常用的有：</p>
+<ul>
+<li><code>NoSideEffect</code> 表示该算子无副作用（即不会改变内存、网络、管道、磁盘等的系统状态），这个特性可以指导某些优化操作</li>
+<li><code>NoGrad</code> 表示该算子在数学上没有梯度（不可导）</li>
+<li><code>CpuOnly</code> 表示该算子只支持在 CPU 设备上执行</li>
+<li><code>SupportNonContiguous</code> 表示该算子是否支持 NonContiguous 张量（关于 Contiguous Tensor 的概念，可以参考 <a href="http://blog.ezyang.com/2019/05/pytorch-internals/">PyTorch Internals 中的相关内容</a> ）</li>
+</ul>
+<h4 id="input-output">输入 input 与输出 output</h4>
+<p>通过重写 <code>input</code> 域来定义 op 的输入，比如</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// 一个输入 x</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">let</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ins</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nl">OneFlow_Tensor</span><span class="p">:</span><span class="n">$x</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">);</span>
+</code></pre></div>
+<p>定义了一个输入张量 <code>x</code>。输入的格式为 <code>输入类型:$name</code>。</p>
+<p>输入类型目前包括：</p>
+<ul>
+<li><code>OneFlow_Tensor</code></li>
+<li><code>Variadic&lt;OneFlow_Tensor&gt;</code>：指可变 tensor，比如 concat op，支持 concat 可变个数的 tensor。</li>
+<li><code>Optional&lt;OneFlow_Tensor&gt;</code>：表示这个 tensor 是可选的，既可以有也可以没有，比如 conv op 中的 add_output。</li>
+</ul>
+<p>一个 op 也可以定义多个输入，比如：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">  </span><span class="c1">// 两个输入：a, b</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ins</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nl">OneFlow_Tensor</span><span class="p">:</span><span class="n">$a</span><span class="p">,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nl">OneFlow_Tensor</span><span class="p">:</span><span class="n">$b</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="p">);</span>
+</code></pre></div>
+<p>通过重写 <code>output</code> 域来定义 op 的输出，比如</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">let</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">outs</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nl">OneFlow_Tensor</span><span class="p">:</span><span class="n">$out0</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nl">OneFlow_Tensor</span><span class="p">:</span><span class="n">$out1</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">);</span>
+</code></pre></div>
+<p>定义了 2 个输出张量。</p>
+<h4 id="attrs">属性 attrs</h4>
+<p>通过重写 <code>attrs</code> 域定义 op 的属性，比如定义 <a href="https://oneflow.readthedocs.io/en/master/functional.html#oneflow.nn.functional.dropout">dropout</a> 中的 <code>rate</code> 属性，</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">attrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ins</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">DefaultValuedAttr</span><span class="o">&lt;</span><span class="n">F32Attr</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;0.&quot;</span><span class="o">&gt;:</span><span class="n">$rate</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="p">);</span>
+</code></pre></div>
+<p>它表示名为 <code>$rate</code> 的类型是 <code>F32Attr</code>，默认值是 <code>0.</code>。也可以不指定默认值：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">attrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ins</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="nl">F32Attr</span><span class="p">:</span><span class="n">$rate</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="p">);</span>
+</code></pre></div>
+<p>I32Attr、F32Attr、BoolAttr、StrAttr、I32ArrayAttr 等常见基础数据类型定义在 <a href="https://github.com/llvm/llvm-project/blob/main/mlir/include/mlir/IR/OpBase.td#L1077-L1086">OpBase.td</a> 中。</p>
+<p>OneFlow 自定义数据类型，如 ShapeAttr、DTArrayAttr 等定义在 <a href="https://github.com/Oneflow-Inc/oneflow/blob/master/oneflow/ir/include/OneFlow/OneFlowBase.td#L27-L35">OneFlowBase.td</a> 中。</p>
+<h4 id="_2">导出并实现推导接口</h4>
+<p>还有一些其它域，用于指定是否生成对应的接口。这些接口往往是构建计算图过程中的推导接口。</p>
+<p>比如 shape 推导（根据输入的 shape 推导输出的推导）、data type 推导、SBP 推导等。</p>
+<p>OneFlow-TableGen 仅负责生成这些函数的接口，开发者需要在其自动生成的 cpp 文件中实现这些接口。
+默认情况不会生成下列任何接口，开发者需要显式指定需要生成哪些接口。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">has_check_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                         </span><span class="c1">// 生成属性检查接口</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">has_logical_tensor_desc_infer_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">     </span><span class="c1">// 生成 logical shape 推导接口</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">has_physical_tensor_desc_infer_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">    </span><span class="c1">// 生成 physical shape 推导接口</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">has_get_sbp_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                       </span><span class="c1">// 生成 get sbp 接口</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">has_sbp_signature_infer_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">           </span><span class="c1">// 生成 sbp signature 推导接口，未来会移除，推荐使用 has_nd_sbp_infer_fn</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">has_data_type_infer_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">               </span><span class="c1">// 生成 data type 推导接口</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">has_device_and_stream_infer_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">       </span><span class="c1">// 生成 device 推导接口</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">has_input_arg_modify_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">              </span><span class="c1">// 生成输入 modify 接口，比如设置 is_mutable、requires_grad（用于Lazy）等</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">has_output_arg_modify_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">             </span><span class="c1">// 生成输出 modify 接口，比如设置 is_mutable、requires_grad（用于Lazy）等</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">has_output_blob_time_shape_infer_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span><span class="c1">// 生成输出 time shape 推导接口</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">  </span><span class="n">let</span><span class="w"> </span><span class="n">has_nd_sbp_infer_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                  </span><span class="c1">// 生成 nd sbp 推导接口</span>
+</code></pre></div>
+<p>一般常用的是下面几个，</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="w">    </span><span class="n">let</span><span class="w"> </span><span class="n">has_logical_tensor_desc_infer_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">     </span><span class="c1">// 生成 logical shape 推导接口</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">let</span><span class="w"> </span><span class="n">has_physical_tensor_desc_infer_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">    </span><span class="c1">// 生成 physical shape 推导接口</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="n">let</span><span class="w"> </span><span class="n">has_data_type_infer_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">               </span><span class="c1">// 生成 data type 推导接口</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="n">let</span><span class="w"> </span><span class="n">has_nd_sbp_infer_fn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                  </span><span class="c1">// 生成 nd sbp 推导接口</span>
+</code></pre></div>
+<p>了解完上面这些概念和用法后，可以开始修改 <a href="https://github.com/Oneflow-Inc/oneflow/blob/master/oneflow/ir/include/OneFlow/OneFlowUserOps.td">oneflow/ir/include/OneFlow/OneFlowUserOps.td</a>文件。</p>
+<p>leaky_relu_yzh op 完整的定义见 <a href="https://github.com/Oneflow-Inc/oneflow/blob/7ab4b0f08c86a6f8af08b44daa510725942288fb/oneflow/ir/include/OneFlow/OneFlowUserOps.td#L8418-L8433">这里</a>：</p>
+<p>在 <code>OneFlowUserOps.td</code> 中新增Op定义之后，重新 make 后会自动在 <strong>build</strong> 目录下的 <code>oneflow/core/framework/</code> 目录下生成文件以下几个文件：</p>
+<ul>
+<li><code>op_generated.h</code>：由解析 <code>.td</code> 文件生成的 op C++ 类</li>
+<li><code>op_generated.cpp</code>：由解析 <code>.td</code> 文件生成的 op 注册代码（包含调用 <code>REGISTER_USER_OP</code> 宏的代码）</li>
+</ul>
+<p>之后需要做的就是在 <a href="https://github.com/Oneflow-Inc/oneflow/tree/master/oneflow/user/ops">oneflow/user/ops</a> 目录下新加一个 cpp 文件，用于实现 op 的接口。</p>
+<p>比如 leaky_relu_yzh 对应的文件在 <a href="https://github.com/Oneflow-Inc/oneflow/blob/7ab4b0f08c86a6f8af08b44daa510725942288fb/oneflow/user/ops/leaky_relu_yzh_op.cpp#L21-L79">oneflow/user/ops/leaky_relu_yzh_op.cpp</a></p>
+<p>实现了推导逻辑张量、推导物理张量、推导 SBP 信息以及推导输出数据类型各接口。</p>
+<h3 id="kernel">实现 Kernel 逻辑</h3>
+<p>op 的计算支持多种设备（如 CPU、GPU、DCU 等），所以要分别实现计算逻辑。</p>
+<p>相关代码：</p>
+<ul>
+<li><a href="https://github.com/Oneflow-Inc/oneflow/blob/7ab4b0f08c86a6f8af08b44daa510725942288fb/oneflow/user/kernels/leaky_relu_yzh_kernel.cpp">Leaky ReLU CPU Kernel</a></li>
+<li><a href="https://github.com/Oneflow-Inc/oneflow/blob/7ab4b0f08c86a6f8af08b44daa510725942288fb/oneflow/user/kernels/leaky_relu_yzh_kernel.cu">Leaky ReLU GPU Kernel</a></li>
+</ul>
+<h4 id="cpu">CPU 计算逻辑</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">CpuLeakyReluYZHKernel</span><span class="w"> </span><span class="k">final</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">user_op</span><span class="o">::</span><span class="n">OpKernel</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="n">CpuLeakyReluYZHKernel</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="o">~</span><span class="n">CpuLeakyReluYZHKernel</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span><span class="p">;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w"> </span><span class="k">private</span><span class="o">:</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">Compute</span><span class="p">(</span><span class="n">user_op</span><span class="o">::</span><span class="n">KernelComputeContext</span><span class="o">*</span><span class="w"> </span><span class="n">ctx</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">user_op</span><span class="o">::</span><span class="n">Tensor</span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">Tensor4ArgNameAndIndex</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span><span class="n">user_op</span><span class="o">::</span><span class="n">Tensor</span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">Tensor4ArgNameAndIndex</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">elem_cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">-&gt;</span><span class="n">shape</span><span class="p">().</span><span class="n">elem_cnt</span><span class="p">();</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">*</span><span class="w"> </span><span class="n">x_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">-&gt;</span><span class="n">dptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">();</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">    </span><span class="n">T</span><span class="o">*</span><span class="w"> </span><span class="n">y_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="o">-&gt;</span><span class="n">mut_dptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">();</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">Attr</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;alpha&quot;</span><span class="p">);</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">    </span><span class="n">FOR_RANGE</span><span class="p">(</span><span class="kt">int32_t</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">elem_cnt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">y_ptr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x_ptr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">x_ptr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x_ptr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">AlwaysComputeWhenAllOutputsEmpty</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="p">};</span>
+</code></pre></div>
+<p>在 OneFlow 中实现 kernel， 必须定义一个继承自 <code>oneflow::user_op::OpKernel</code> 的类，并重写其中的虚函数。
+在以上代码中，重写了 <code>Compute</code> 与 <code>AlwaysComputeWhenAllOutputsEmpty</code> 两个虚函数，它们的意义分别是：</p>
+<ul>
+<li><code>Compute</code> 必须重写，在其中实现具体的运算逻辑</li>
+<li><code>AlwaysComputeWhenAllOutputsEmpty</code> 必须重写，对于绝大多数 op 而言，直接返回 false 即可。对于极少数内部需要维护状态，即使输出为空也需要调用 kernel 进行计算的 op 而言，应该返回 true</li>
+</ul>
+<p><code>Compute</code> 方法中通过调用 <code>user_op::KernelComputeContext* ctx</code> 中的接口，可以获取输入张量、输出张量、attr 具体的数据，再按照算子的算法逻辑对它们进行处理。
+以下是对 <code>CpuLeakyReluKernel::Compute</code> 处理逻辑的解读： </p>
+<ul>
+<li>首先取得 <code>"x"</code>，<code>"y"</code> 两个 Tensor。传入<code>Tensor4ArgNameAndIndex</code>的字符串要和之前在<code>OneFlowUserOps.td</code>设置的名称一致</li>
+<li>获取 <code>x</code> 的元素个数，以便后续用于 <code>for</code> 循环进行计算</li>
+<li>获取属性 <code>alpha</code></li>
+<li>进入次数为 <code>elem_cnt</code> 的 <code>for</code> 循环，将结果写入</li>
+</ul>
+<h4 id="kernel_1">注册 Kernel</h4>
+<p>实现 kernel 类后，需要调用 <code>REGISTER_USER_KERNEL</code> 注册。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="cp">#define REGISTER_CPU_LEAKY_RELU_YZH_KERNEL(dtype)                     \</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="cp">  REGISTER_USER_KERNEL(&quot;leaky_relu_yzh&quot;)                              \</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="cp">      .SetCreateFn&lt;CpuLeakyReluYZHKernel&lt;dtype&gt;&gt;()                    \</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="cp">      .SetIsMatchedHob((user_op::HobDeviceType() == DeviceType::kCPU) \</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="cp">                       &amp;&amp; (user_op::HobDataType(&quot;y&quot;, 0) == GetDataType&lt;dtype&gt;::value));</span>
+</code></pre></div>
+<p>这里会调用<code>REGISTER_USER_KERNEL</code>宏，包括以下信息：</p>
+<ol>
+<li>op type name：为哪个 op 注册 kernel</li>
+<li><code>SetCreateFn&lt;T&gt;()</code>：该模板方法的模板参数 <code>T</code>，就是我们实现的 kernel 类，OneFlow Runtime 将使用它创建 kernel 对象。</li>
+<li><code>SetIsMatchedHob</code>：因为一个 op 可能有多个 kernel，要想根据物理设备及数据格式的不同而选择不同的 kernel 进行计算，就需要调用 SetIsMatchedHob 进行设置。该方法接受一个表达式，表达式为 true 时，OneFlow 将调用该 kernel 完成计算。以上代码的匹配逻辑是：当硬件设备为 <code>cpu</code>，且 <code>y</code> 的数据类型和 <code>dtype</code> 一致时，选择调用注册的 kernel 类（<code>CpuLeakyReluYZHKernel&lt;dtype&gt;</code>）。</li>
+</ol>
+<h4 id="gpu">GPU 计算逻辑</h4>
+<p>CUDA 编程基础知识入门可以参考：</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1Mb4y1p7BG">视频：CUDA 的由来</a></li>
+<li><a href="https://www.bilibili.com/video/BV1bF411s76k">视频：CUDA 的入门小程序</a></li>
+<li><a href="https://www.bilibili.com/video/BV1MZ4y127Sq">视频：线程层级</a></li>
+</ul>
+<p>不过以上的视频都无法替代自己认真学习官方资料：<a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html">CUDA C Programming Guide</a></p>
+<p>了解了 CUDA 的基础知识，就不难理解 leaky_relu CUDA 版本的实现。</p>
+<p>首先定义了 leaky_relu 前向运算的 CUDA 核函数</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">LeakyReluForwardGpu</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">alpha</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="n">CUDA_1D_KERNEL_LOOP</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">alpha</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">}</span>
+</code></pre></div>
+<p>其中调用了宏 <a href="https://github.com/Oneflow-Inc/oneflow/blob/master/oneflow/core/device/cuda_util.h#L91-L94">CUDA_1D_KERNEL_LOOP</a> 进行运算</p>
+<p>在 Compute 函数中，调用了 <code>RUN_CUDA_KERNEL</code> (也是定义在 <code>cuda_util.h</code> 这个文件中)这个宏启动核函数。</p>
+<p>对应的 GPU kernel 类的实现见：</p>
+<p>https://github.com/Oneflow-Inc/oneflow/blob/7ab4b0f08c86a6f8af08b44daa510725942288fb/oneflow/user/kernels/leaky_relu_yzh_kernel.cu#L32-L49</p>
+<p>其中用到了启动 kernel 的宏 <code>RUN_CUDA_KERNEL</code>，它的定义是:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="cp">#define RUN_CUDA_KERNEL(func, device_ctx_ptr, thread_num, ...)           \</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="cp">  func&lt;&lt;&lt;SMBlocksNum4ThreadsNum(thread_num), kCudaThreadsNumPerBlock, 0, \</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="cp">         (device_ctx_ptr)-&gt;cuda_stream()&gt;&gt;&gt;(__VA_ARGS__)</span>
+</code></pre></div>
+<ol>
+<li>第一个参数是核函数名字</li>
+<li>第二个参数是 device context，后续获取对应的 cuda_stream</li>
+<li>第三个参数是要启动的线程数量，会根据线程数量来计算所需的 Block 数目。</li>
+</ol>
+<p>因为 leaky relu 是 elementwise 运算，各个元素互不影响，所以我们启动了 elem_cnt 个线程。</p>
+<p>后续的注册与 CPU 版本类似，这里不再赘述。直接参考以下代码即可：</p>
+<p>https://github.com/Oneflow-Inc/oneflow/blob/7ab4b0f08c86a6f8af08b44daa510725942288fb/oneflow/user/kernels/leaky_relu_yzh_kernel.cu#L51-L62</p>
+<blockquote>
+<p>可以看到不同设备类的 Compute 中大部分代码是重复的。一种更优的代码组织方式是用一个 <code>.cpp</code> 文件完成 kernel 和注册的逻辑，<code>.cu</code> 文件编写 GPU Kernel 函数和 GPU 模板特化的代码，<code>.h</code> 文件用于定义和编写注册宏。可参考 <a href="https://github.com/Oneflow-Inc/oneflow/tree/master/oneflow/user/kernels">dim_gather_kernel_*</a> 中的代码。</p>
+<p>OneFlow 为了适配多种设备，还提供了 Primitive 组件，可以参考：<a href="https://github.com/Oneflow-Inc/oneflow/pull/6234">Primitive PR</a></p>
+</blockquote>
+<h3 id="functional">导出 functional 接口</h3>
+<p>关于 functional 接口层的详细介绍在这里： https://github.com/Oneflow-Inc/oneflow/wiki/Functional-Interface</p>
+<p>概括而言，functional 层起到了“上接 Python，下联 C++”的作用：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>   ┌─────────────┐
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>   │   Module    │
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>   │  (Python)   │
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>   ├─────────────┤
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>   │             │
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>   │ Functional  │
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>   ├─────────────┤
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>   │             │
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>   │ Op/Kernels  │
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>   │   (C++)     │
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>   └─────────────┘
+</code></pre></div>
+<p>因此，在上文定义 op 和注册 kernel 后，需要为算子导出 functional 接口，才能使用户通过 Python 代码调用该算子。</p>
+<p>导出 functional 接口分为以下几个步骤：</p>
+<ol>
+<li>实现对应的 functor 并注册</li>
+<li>在 <a href="https://github.com/Oneflow-Inc/oneflow/blob/master/oneflow/core/functional/functional_api.yaml">oneflow/core/functional/functional_api.yaml</a> 中添加接口描述 </li>
+</ol>
+<h4 id="functor">实现对应的 functor 并注册</h4>
+<p>对于 leaky_relu_yzh op，在 <a href="https://github.com/Oneflow-Inc/oneflow/blob/7ab4b0f08c86a6f8af08b44daa510725942288fb/oneflow/core/functional/impl/activation_functor.cpp#L391-L421">activation_functor.cpp</a> 中，对其进行定义：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">LeakyReluYZHFunctor</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span><span class="n">LeakyReluYZHFunctor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="n">op_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CHECK_JUST</span><span class="p">(</span><span class="n">one</span><span class="o">::</span><span class="n">OpBuilder</span><span class="p">(</span><span class="s">&quot;leaky_relu_yzh&quot;</span><span class="p">).</span><span class="n">Input</span><span class="p">(</span><span class="s">&quot;x&quot;</span><span class="p">).</span><span class="n">Output</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">).</span><span class="n">Build</span><span class="p">());</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">  </span><span class="n">Maybe</span><span class="o">&lt;</span><span class="n">Tensor</span><span class="o">&gt;</span><span class="w"> </span><span class="k">operator</span><span class="p">()(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">one</span><span class="o">::</span><span class="n">Tensor</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="o">&amp;</span><span class="w"> </span><span class="n">alpha</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">    </span><span class="n">MutableAttrMap</span><span class="w"> </span><span class="n">attrs</span><span class="p">;</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">    </span><span class="n">JUST</span><span class="p">(</span><span class="n">attrs</span><span class="p">.</span><span class="n">SetAttr</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;alpha&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="p">));</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">OpInterpUtil</span><span class="o">::</span><span class="n">Dispatch</span><span class="o">&lt;</span><span class="n">one</span><span class="o">::</span><span class="n">Tensor</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">op_</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">x</span><span class="p">},</span><span class="w"> </span><span class="n">attrs</span><span class="p">);</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w"> </span><span class="k">private</span><span class="o">:</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">OpExpr</span><span class="o">&gt;</span><span class="w"> </span><span class="n">op_</span><span class="p">;</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="p">};</span>
+</code></pre></div>
+<ul>
+<li>在构造函数里，构造了 <code>leaky_relu</code> 这个op</li>
+<li>实现 <code>operator()</code> 重载运算符，通过 <code>Dispatch</code> 调用构造好的 op，并分别传入输入，属性</li>
+</ul>
+<p>类似的我们也给 LeakyReluGrad 导出 functional 接口，以便后续编写求导逻辑使用</p>
+<p>最后我们需要注册到 Functional Library：</p>
+<p>https://github.com/Oneflow-Inc/oneflow/blob/7ab4b0f08c86a6f8af08b44daa510725942288fb/oneflow/core/functional/impl/activation_functor.cpp#L610-L611</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">m</span><span class="p">.</span><span class="n">add_functor</span><span class="o">&lt;</span><span class="n">impl</span><span class="o">::</span><span class="n">LeakyReluYZHFunctor</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;LeakyReluYZH&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 注意最后字符串中的名字在后续的 functional_api.yaml 中会用到</span>
+</code></pre></div>
+<p>通过 <code>m.add_functor</code> 注册后的 functor，可以在 C++ 层使用，如通过 <code>functional::LeakyRelu</code> 就可以调用 <code>LeakyReluFunctor</code>。</p>
+<h4 id="functional_apiyaml">在 functional_api.yaml 中添加接口描述</h4>
+<p>functional 通过解析 yaml 配置文件，在 build 过程中自动帮我们生成接口。</p>
+<p>在<a href="https://github.com/Oneflow-Inc/oneflow/blob/master/oneflow/core/functional/functional_api.yaml">functional_api.yaml</a> 文件中，编写相关配置。</p>
+<p>https://github.com/Oneflow-Inc/oneflow/pull/8350/files#diff-4b35c1dcdbae81b75439ba570bc149554ca85b83757430613fcb612ae25972afR572-R579</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>- name: &quot;leaky_relu_yzh&quot;
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>  signature: &quot;Tensor (Tensor x, Float alpha) =&gt; LeakyReluYZH&quot;
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>  bind_python: True
+</code></pre></div>
+<ul>
+<li>其中 <code>name</code> 表示导出到 Python 接口后函数的名字，比如导出后在 Python 下使用就是
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">flow</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">leaky_relu_yzh</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div></li>
+<li><code>signature</code> 用于描述接口原型及 C++ 代码的对应关系。<code>=&gt;</code> 左边的为原型；<code>=&gt;</code> 右边为对应的 Functional Library 中的名字。这里<code>LeakyRelu</code> 和前面导出时指定的字符串是一致的。</li>
+<li><code>bind_python</code>，表示这个接口是否需要绑定 Python 接口 。比如下面的 <code>leaky_relu_grad</code>，我们不会在 Python 层用到（但会在 C++ 层求导使用），所以设置为 False。</li>
+</ul>
+<p>完成以上工作后，新增的算子已经支持正向运算，编译好代码便可以进行如下简单的测试：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">import</span> <span class="nn">oneflow</span> <span class="k">as</span> <span class="nn">flow</span> 
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="n">x_tensor</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="n">out</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">leaky_relu_yzh</span><span class="p">(</span><span class="n">x_tensor</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</code></pre></div>
+<p>但是，还需要注册反向，才能支持反向传播。我们也先将反向需要的 <code>LeakyReluGrad</code> 导出为 functional 接口。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="o">-</span><span class="w"> </span><span class="n">name</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;leaky_relu_yzh_grad&quot;</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span><span class="nl">signature</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Tensor (Tensor x, Tensor dy, Float alpha) =&gt; LeakyReluYZHGrad&quot;</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">  </span><span class="nl">bind_python</span><span class="p">:</span><span class="w"> </span><span class="n">False</span>
+</code></pre></div>
+<h3 id="_3">实现用于求导的反向逻辑</h3>
+<p>反向传播的本质就是高数中的链式法则，只不过 Autodiff 将链式法则变得模块化、易复用。</p>
+<p>可以先阅读 <a href="https://www.cs.toronto.edu/~rgrosse/courses/csc321_2018/slides/lec10.pdf">CSC321 Lecture 10: Automatic Differentiation
+</a> 了解 autodiff 的基本概念。</p>
+<p>从逻辑上而言，一个算子在反向过程中能够求导数，一般需要以下信息：</p>
+<ul>
+<li>正向过程中的输入、输出</li>
+<li>正向过程的 attr</li>
+<li>反向过程中上一层（正向过程中的下一层）传递过来的正向输出的梯度</li>
+</ul>
+<p>未来 Graph 模式和 Eager 模式下的反向逻辑会合并，但目前还是需要分别注册。</p>
+<h4 id="eager">为 Eager 模式注册反向</h4>
+<p>求导部分在 <a href="https://github.com/Oneflow-Inc/oneflow/pull/8350/files#diff-36aeebf7fd5a8b88bd5af87774e7b0b4f76fed42cfb75044d6eebdfe65628347R213-R253">oneflow/core/autograd/gradient_funcs/activation.cpp</a> 完成</p>
+<p>主要有以下几部分：</p>
+<ul>
+<li>LeakyReluYZHCaptureState ：用于存储数据的结构体</li>
+</ul>
+<p>这是一个简单的结构体，继承自 <code>AutoGradCaptureState</code>，用于存储 op 的属性，以便于后续求导。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">LeakyReluYZHCaptureState</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">AutoGradCaptureState</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">requires_grad</span><span class="p">;</span><span class="w"> </span><span class="c1">// 输入x是否需要梯度</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">;</span><span class="w"> </span><span class="c1">// 输入的参数alpha</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="p">};</span>
+</code></pre></div>
+<ul>
+<li>LeakyReluYZH 类：继承自 <code>OpExprGradFunction</code> 的类。需要重写三个函数：<code>Init</code>、<code>Capture</code>、<code>Apply</code>。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">LeakyReluYZH</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">OpExprGradFunction</span><span class="o">&lt;</span><span class="n">LeakyReluYZHCaptureState</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w"> </span><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">  </span><span class="n">Maybe</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Init</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">OpExpr</span><span class="o">&amp;</span><span class="w"> </span><span class="n">op</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">    </span><span class="c1">//...</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">  </span><span class="n">Maybe</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Capture</span><span class="p">(</span><span class="n">LeakyReluYZHCaptureState</span><span class="o">*</span><span class="w"> </span><span class="n">ctx</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TensorTuple</span><span class="o">&amp;</span><span class="w"> </span><span class="n">inputs</span><span class="p">,</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">                      </span><span class="k">const</span><span class="w"> </span><span class="n">TensorTuple</span><span class="o">&amp;</span><span class="w"> </span><span class="n">outputs</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">AttrMap</span><span class="o">&amp;</span><span class="w"> </span><span class="n">attrs</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="w">    </span><span class="c1">//...</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="w">  </span><span class="n">Maybe</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Apply</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">LeakyReluYZHCaptureState</span><span class="o">*</span><span class="w"> </span><span class="n">ctx</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TensorTuple</span><span class="o">&amp;</span><span class="w"> </span><span class="n">out_grads</span><span class="p">,</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="w">                    </span><span class="n">TensorTuple</span><span class="o">*</span><span class="w"> </span><span class="n">in_grads</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="w">    </span><span class="c1">//...</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="p">};</span>
+</code></pre></div>
+<ul>
+<li>Init：做的是一些初始化的工作，可以根据前向 op 的配置，来初始化属性。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="w">  </span><span class="n">Maybe</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Init</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">OpExpr</span><span class="o">&amp;</span><span class="w"> </span><span class="n">op</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">*</span><span class="w"> </span><span class="n">fw_op_expr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">UserOpExpr</span><span class="o">*&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">op</span><span class="p">);</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">    </span><span class="n">CHECK_NOTNULL_OR_RETURN</span><span class="p">(</span><span class="n">fw_op_expr</span><span class="p">);</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">    </span><span class="n">base_attrs_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MakeAttrMapFromUserOpConf</span><span class="p">(</span><span class="n">fw_op_expr</span><span class="o">-&gt;</span><span class="n">proto</span><span class="p">());</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Maybe</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;::</span><span class="n">Ok</span><span class="p">();</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">  </span><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Capture：用于捕捉前向的 Tensor，属性，用于后续的求导。</li>
+</ul>
+<p>以 LeakyReluYZH 为例子，我们需要得到：a) 输入的 Tensor，当 Tensor 数值大于 0，梯度为 1，当小于 0，梯度为 alpha b) alpha的数值</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="w">  </span><span class="n">Maybe</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Capture</span><span class="p">(</span><span class="n">LeakyReluYZHCaptureState</span><span class="o">*</span><span class="w"> </span><span class="n">ctx</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TensorTuple</span><span class="o">&amp;</span><span class="w"> </span><span class="n">inputs</span><span class="p">,</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">                      </span><span class="k">const</span><span class="w"> </span><span class="n">TensorTuple</span><span class="o">&amp;</span><span class="w"> </span><span class="n">outputs</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">AttrMap</span><span class="o">&amp;</span><span class="w"> </span><span class="n">attrs</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="n">CHECK_EQ_OR_RETURN</span><span class="p">(</span><span class="n">inputs</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">                      </span><span class="c1">// 判断输入个数是否为1</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">    </span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">requires_grad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inputs</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">requires_grad</span><span class="p">();</span><span class="w">        </span><span class="c1">// 判断输入是否需要梯度</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">requires_grad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Maybe</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;::</span><span class="n">Ok</span><span class="p">();</span><span class="w"> </span><span class="p">}</span><span class="w">     </span><span class="c1">// 如果不需要梯度，也就不需要求导了，直接返回 Maybe&lt;void&gt;::Ok()</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">    </span><span class="n">ComposedAttrMap</span><span class="w"> </span><span class="n">composed_attrs</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span><span class="w"> </span><span class="n">base_attrs_</span><span class="p">);</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">    </span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JUST</span><span class="p">(</span><span class="n">composed_attrs</span><span class="p">.</span><span class="n">GetAttr</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;alpha&quot;</span><span class="p">));</span><span class="w"> </span><span class="c1">// 获取 alpha，并存入 ctx-&gt;alpha 中</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="w">    </span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">SaveTensorForBackward</span><span class="p">(</span><span class="n">inputs</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span><span class="w">                  </span><span class="c1">// 调用 SaveTensorForBackward 方法，保存输入的 Tensor</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Maybe</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;::</span><span class="n">Ok</span><span class="p">();</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="w">  </span><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Apply：实际计算梯度的函数，我们可以拿到先前的 Tensor，并调用 functional 接口下注册的 LeakyReluGrad，求得梯度，并返回</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="w">  </span><span class="n">Maybe</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Apply</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">LeakyReluYZHCaptureState</span><span class="o">*</span><span class="w"> </span><span class="n">ctx</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">TensorTuple</span><span class="o">&amp;</span><span class="w"> </span><span class="n">out_grads</span><span class="p">,</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">                    </span><span class="n">TensorTuple</span><span class="o">*</span><span class="w"> </span><span class="n">in_grads</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="n">CHECK_EQ_OR_RETURN</span><span class="p">(</span><span class="n">out_grads</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// 检查梯度 Tensor 个数是否为 1</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">    </span><span class="n">in_grads</span><span class="o">-&gt;</span><span class="n">resize</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w">                      </span><span class="c1">// 因为输入只有一个，所以我们 resize(1)</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">requires_grad</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">SavedTensors</span><span class="p">().</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// 调用 SavedTensors 接口，拿到先前通过 SaveTensorForBackward 接口保存的 Tensor</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="w">      </span><span class="n">in_grads</span><span class="o">-&gt;</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JUST</span><span class="p">(</span><span class="n">functional</span><span class="o">::</span><span class="n">LeakyReluYZHGrad</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">out_grads</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">ctx</span><span class="o">-&gt;</span><span class="n">alpha</span><span class="p">));</span><span class="w"> </span><span class="c1">// 拿到 x，dy，alpha，传入给 LeakyReluYZHGrad 计算，并将梯度返回给 in_grads-&gt;at(0)</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Maybe</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;::</span><span class="n">Ok</span><span class="p">();</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="w">  </span><span class="p">}</span>
+</code></pre></div>
+<p>最后一步是注册，第一个参数是 op type name，第二个参数是继承自 <code>OpExprGradFunction</code> 的类。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">REGISTER_OP_EXPR_GRAD_FUNCTION</span><span class="p">(</span><span class="s">&quot;leaky_relu_yzh&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">LeakyReluYZH</span><span class="p">);</span><span class="w"> </span><span class="c1">// 第二个参数是用于求导的类名</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.edit", "content.code.annotate", "content.tooltips", "search.highlight", "search.share", "search.suggest", "toc.follow", "navigation.top", "navigation.expand", "navigation.footer", "content.tabs.link"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      
+    
+  </body>
+</html>

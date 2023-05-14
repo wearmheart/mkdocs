@@ -1,0 +1,2545 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="https://github.com/ultralytics/assets/raw/main/logo/favicon-yolo.ico">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.1.11">
+    
+    
+      
+        <title>Django - 兔小飙</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3754935a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7C&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:""}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/style.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#django" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="兔小飙" class="md-header__button md-logo" aria-label="兔小飙" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            兔小飙
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Django
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="兔小飙" class="md-nav__button md-logo" aria-label="兔小飙" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    兔小飙
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Linux
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" data-md-state="indeterminate" type="checkbox" id="__nav_2_1" checked>
+      
+      <label class="md-nav__link" for="__nav_2_1">
+        工具
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="工具" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          工具
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/ssh_%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        ssh的简单应用
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/rsync/" class="md-nav__link">
+        rsync指令
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        PyThon
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="PyThon" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          PyThon
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Django
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Django
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#managepy" class="md-nav__link">
+    manage.py包含项目管理的子命令,如:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    项目结构-项目同名文件夹
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-settingspy" class="md-nav__link">
+    项目结构- settings.py
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-_1" class="md-nav__link">
+    项目 项目结构-公有配置
+  </a>
+  
+    <nav class="md-nav" aria-label="项目 项目结构-公有配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basedir" class="md-nav__link">
+    BASEDIR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug" class="md-nav__link">
+    DEBUG
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-_2" class="md-nav__link">
+    项目结构-自定义配置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    URL和视图
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url_1" class="md-nav__link">
+    处理URL请求
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-urlspy" class="md-nav__link">
+    主路由- urls.py
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    视图函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    小结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-path" class="md-nav__link">
+    路由配置- path
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#path" class="md-nav__link">
+    path转换器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-re_path" class="md-nav__link">
+    路由配置- re_path()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    请求方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_1" class="md-nav__link">
+    Django中的请求
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_2" class="md-nav__link">
+    Django中的请求(续)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#httphttp-status-code" class="md-nav__link">
+    HTTP状态码的英文为HTTP Status Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_3" class="md-nav__link">
+    Django中的响应对象
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#httpresponse" class="md-nav__link">
+    HttpResponse子类
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getpost" class="md-nav__link">
+    GET请求和POST请求
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    GET处理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post" class="md-nav__link">
+    POST处理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_4" class="md-nav__link">
+    Django的设计模式及模板层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#templates" class="md-nav__link">
+    模板配置 TEMPLATES
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    视图层与模板层之间的交互
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-_3" class="md-nav__link">
+    模板层-变量和标签
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    模板过滤器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url_2" class="md-nav__link">
+    URL解析
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url_3" class="md-nav__link">
+    URL反向解析
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_2" checked>
+      
+      <label class="md-nav__link" for="__nav_3_2">
+        Tool
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tool" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tool
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Development_tool/Python%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Conda/" class="md-nav__link">
+        Python包管理工具Conda
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_3_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3_3">
+        基础笔记
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="基础笔记" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          基础笔记
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Ox00%E5%BC%95%E8%A8%80/" class="md-nav__link">
+        Ox00引言
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Ox01%E9%AD%94%E6%B3%95%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        Ox01魔法方法
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Ox02%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8/" class="md-nav__link">
+        Ox02迭代器和生成器
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Ox03%E9%97%AD%E5%8C%85/" class="md-nav__link">
+        Ox03闭包
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Ox04%E8%87%AA%E7%9C%81%E5%92%8C%E5%8F%8D%E5%B0%84/" class="md-nav__link">
+        Ox04自省和反射
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Ox05%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        Ox05生产者消费者模型
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+      
+      <label class="md-nav__link" for="__nav_4">
+        PyTorch
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="PyTorch" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          PyTorch
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PyTorch/Ox01/" class="md-nav__link">
+        Ox01 gdb对pytorch进行c++语言级调试的过程
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PyTorch/CONTRIBUTING.md" class="md-nav__link">
+        CONTRIBUTING
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        OneFlow
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="OneFlow" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          OneFlow
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../OneFlow/utils/" class="md-nav__link">
+        utils
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#managepy" class="md-nav__link">
+    manage.py包含项目管理的子命令,如:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    项目结构-项目同名文件夹
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-settingspy" class="md-nav__link">
+    项目结构- settings.py
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-_1" class="md-nav__link">
+    项目 项目结构-公有配置
+  </a>
+  
+    <nav class="md-nav" aria-label="项目 项目结构-公有配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basedir" class="md-nav__link">
+    BASEDIR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug" class="md-nav__link">
+    DEBUG
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-_2" class="md-nav__link">
+    项目结构-自定义配置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    URL和视图
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url_1" class="md-nav__link">
+    处理URL请求
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-urlspy" class="md-nav__link">
+    主路由- urls.py
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    视图函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    小结
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-path" class="md-nav__link">
+    路由配置- path
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#path" class="md-nav__link">
+    path转换器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-re_path" class="md-nav__link">
+    路由配置- re_path()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    请求方法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_1" class="md-nav__link">
+    Django中的请求
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_2" class="md-nav__link">
+    Django中的请求(续)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#httphttp-status-code" class="md-nav__link">
+    HTTP状态码的英文为HTTP Status Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_3" class="md-nav__link">
+    Django中的响应对象
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#httpresponse" class="md-nav__link">
+    HttpResponse子类
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getpost" class="md-nav__link">
+    GET请求和POST请求
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    GET处理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post" class="md-nav__link">
+    POST处理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django_4" class="md-nav__link">
+    Django的设计模式及模板层
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#templates" class="md-nav__link">
+    模板配置 TEMPLATES
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    视图层与模板层之间的交互
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-_3" class="md-nav__link">
+    模板层-变量和标签
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    模板过滤器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url_2" class="md-nav__link">
+    URL解析
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url_3" class="md-nav__link">
+    URL反向解析
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="django">Django</h1>
+<p>Django是一个开放源代码的Web应用框架,由Python写成。采用了MTV的框架模式,即模型M,视图V和模版T。</p>
+<p>django-admin startproject mysitel
+cd mysitel 
+sudo lsof -i: 端口 </p>
+<h2 id="managepy">manage.py包含项目管理的子命令,如:</h2>
+<ol>
+<li>
+<p>python3 manage.py runserver启动服务</p>
+</li>
+<li>
+<p>python3 manage.py startapp创建应用</p>
+</li>
+<li>
+<p>python3 manage.py migrate数据库迁移</p>
+</li>
+<li>
+<p>直接执行python3 manage.py可列出所有的Django子命令</p>
+</li>
+</ol>
+<h2 id="-">项目结构-项目同名文件夹</h2>
+<p>项目同名文件夹- mysite1/mysite1
+-  <code>__init__</code>  : Python包的初始化文件
+- wsgi.py : WEB服务网关的配置文件- Django正式启动时，需要用到
+- urls.py : 项目的主路由配置- HTTP请求进入Django时，优先调用该文件
+- settings.py : 项目的配置文件-包含项目启动时需要的配置</p>
+<h2 id="-settingspy">项目结构- settings.py</h2>
+<ul>
+<li>settings.py 包含了Django项目启动的所有配置项</li>
+<li>配置项分为公有配置和自定义配置</li>
+<li>配置项格式例: BASE DIR = 'xxxx'</li>
+<li>公有配置-Django官方提供的基础配置 https://docs.djangoproject.com/en/2.2/ref/settings/</li>
+</ul>
+<h2 id="-_1">项目 项目结构-公有配置</h2>
+<h3 id="basedir">BASEDIR</h3>
+<ul>
+<li>用于绑定当前项目的绝对路径(动态计算出来的)，所有文件夹都可以依懒此路径</li>
+</ul>
+<h3 id="debug">DEBUG</h3>
+<ul>
+<li>用于配置Django项目的启动模式,取值:</li>
+<li>True表示开发环境中使用开发调试模式(用于开发中)</li>
+<li>
+<p>False 表示当前项目运行在生产环境中</p>
+</li>
+<li>
+<p>INSTALLED_ APPS -指定当前项目中安装的应用列表 :</p>
+</li>
+<li>MIDDLEWARE -用于注册中间件</li>
+<li>TEMPLATES -用于指定模板的配置信息</li>
+<li>DATABASES -用于指定数据库的配置信息</li>
+<li>
+<p>LANGUAGE CODE -用于指定语言配置</p>
+<ul>
+<li>英文: "en-us"</li>
+<li>中文: "zh-Hans"</li>
+</ul>
+</li>
+<li>
+<p>TIME_ZONE-用于指定当前服务器端时区</p>
+<ul>
+<li>世界标准时间: "UTC"</li>
+<li>中国时区: "Asia/Shanghai"</li>
+</ul>
+</li>
+<li>ROOT_ _URLCONF -用于配置主 url配置'mysite1.urls'</li>
+<li>ROOT URLCONF = 'mysite 1.urls'</li>
+</ul>
+<h2 id="-_2">项目结构-自定义配置</h2>
+<ul>
+<li>settings.py中也可以添加开发人员自定义的配置</li>
+<li>配置建议:名字尽量个性化-以防覆盖掉公有配置<ul>
+<li>例如: (ALIPAY KEY= 'xxXxXX'</li>
+<li>settings.py中的所有配置项，都可以按需的在代码中引入</li>
+<li>引入方式: from django.conf import settings</li>
+</ul>
+</li>
+</ul>
+<h2 id="url">URL和视图</h2>
+<p>URL - 结构
+- 定义一即统一资源定位符Uniform Resource Locator
+- 作用-用来表示互联网上某个资源的地址
+- URL的一般语法格式为(注: []代表其中的内容可省略) :
+protocol :// hostname[:port] / path [?query][#fragment]
+●http://tts.tmooc.cn/video/showVideo?menuld =657421
+&amp;version= AID999#subject</p>
+<ol>
+<li>protocol (协议) http://tts.tmooc.cn<ul>
+<li>http通过HTTP访问该资源。 格式http:// </li>
+<li>https通过安全的HTTPS访问该资源。格式https://</li>
+<li>file资源是本地计算机.上的文件。格式: file:///</li>
+</ul>
+</li>
+<li>
+<p>hostname (主机名) http://tts.tmooc.cn
+是指存放资源的服务器的域名系统(DNS)主机名、域名或IP地址</p>
+</li>
+<li>
+<p>port (端口号) http://tts.tmooc.cn:80</p>
+<ul>
+<li>整数，可选，省略时使用方案的默认端口</li>
+<li>各种传输协议都有默认的端口号,如http的默认端口为80</li>
+</ul>
+</li>
+<li>
+<p>path (路由地址) http://tts.tmooc.cn/video/showVideo</p>
+<ul>
+<li>由零或多个"/"符号隔开的字符串，一般用来表示主机上的
+一个目录或文件地址。路由地址决定了服务器端如何处理这
+个请求</li>
+</ul>
+</li>
+<li>
+<p>query(查询)</p>
+<ul>
+<li>/video/showVided?menuld=657421 &amp;version= AID999</li>
+<li>可选，用于给动态网页传递参数，可有多个参数,用“&amp;”符
+号隔开，每个参数的名和值用“=" 符号隔开。</li>
+</ul>
+</li>
+<li>fragment (信息片断)<ul>
+<li>version= AID999#subject</li>
+<li>字符串，用于指定网络资源中的片断。例如一个网页中有多个
+名词解释，可使用fragment直接定位到某一名词解释。</li>
+</ul>
+</li>
+</ol>
+<h2 id="url_1">处理URL请求</h2>
+<p>浏览器地址栏- &gt; http://127.0.0.1:8000/page/2003</p>
+<ol>
+<li>Django 从配置文件中根据ROOT_ URLCONF找到主路由文件;默认情况下,
+该文件在项目同名目录下的urls;例如 mysite1/mysite1/urls.py</li>
+<li>Django 加载主路由文件中的urlpatterns 变量[包含很多路由的数组]</li>
+<li>依次匹配urlpatterns中的path，匹配到第一 个合适的中断后续匹配</li>
+<li>匹配成功-调用对应的视图函数处理请求，返回响应</li>
+<li>匹配失败-返回404响应</li>
+</ol>
+<h2 id="-urlspy">主路由- urls.py</h2>
+<ul>
+<li>主路由-urls.py样例</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">urlpatterns</span><span class="p">[</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;page/2003/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">page_</span> <span class="mi">2003</span><span class="p">),</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;page/2004/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">page_</span> <span class="mi">2004</span><span class="p">),</span> 
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">]</span>
+</code></pre></div>
+<h2 id="_1">视图函数</h2>
+<ul>
+<li>视图函数是用于接收一个浏览器请求(HttpRequest对象)</li>
+<li>并通过HttpResponse对象返回响应的函数。</li>
+<li>此函数可以接收浏览器请求并根据业务逻辑返回相应的响应内容给浏览器</li>
+<li>语法:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span> <span class="nf">xXX_</span> <span class="n">_view</span><span class="p">(</span><span class="n">request</span><span class="p">[,</span> <span class="n">其它参数</span><span class="o">..</span><span class="p">]):</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">return</span> <span class="n">HttpResponse对象</span>
+</code></pre></div></li>
+</ul>
+<h2 id="_2">小结</h2>
+<p>●URL全貌
+●Django处理URL对应请求流程
+●主路由
+●视图函数</p>
+<h2 id="-path">路由配置- path</h2>
+<ul>
+<li>path()函数.</li>
+<li>导入- from django.urls import path</li>
+<li>语法- path(route, views, name= None)</li>
+<li>参数:<ol>
+<li>route:字符串类型，匹配的请求路径</li>
+<li>views:指定路径所对应的视图处理函数的名称()</li>
+<li>name:为地址起别名，在模板中地址反向解析时使用</li>
+</ol>
+</li>
+</ul>
+<h2 id="path">path转换器</h2>
+<ul>
+<li>语法: &lt;转换器类型:自定义&gt;</li>
+<li>作用: 若转换器类型匹配到对应类型的数据，则将数据按照关键字传参的方式传递给视图函数</li>
+<li>例子: path('page/ <int:page>', views.xxx)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>转换器类型</th>
+<th>作用</th>
+<th>样例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str</td>
+<td>匹配除了'/' 之外的非空字符串</td>
+<td>"v1/users/ <str:username>" 匹配 /v1/users/guoxiaonao</td>
+</tr>
+<tr>
+<td>int</td>
+<td>匹配0或任何正整数。返回一个 int</td>
+<td>"page/ <int:page>" 匹配 /page/100</td>
+</tr>
+<tr>
+<td>slug</td>
+<td>匹配任意由ASCII字母或数字以及连字符和下划线组成的短标签</td>
+<td>"detail/ <slug:sl>" 匹配 /detail/this-is-django</td>
+</tr>
+<tr>
+<td>path</td>
+<td>匹配非空字段,包括路径分隔符'/'</td>
+<td>"v1/users/ <path:ph> 匹配 /v1/goods/a/b/C</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-re_path">路由配置- re_path()</h2>
+<ul>
+<li>re_ path()函数</li>
+<li>在url的匹配过程中可以使用正则表达式进行精确匹配</li>
+<li>语法:</li>
+<li>re_ path(reg, view, name=xxx)</li>
+<li>正则表达式为命名分组模式(?P<name>pattern) ;匹配提取
+  参数后用关键字传参方式传递给视图函数</li>
+</ul>
+<h2 id="_3">请求方法</h2>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>GET</td>
+<td>请求指定的页面信息，并返回实体主体。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>HEAD</td>
+<td>类似于get请求，只不过返回的响应中没有具体的内 容，甩于获取报头</td>
+</tr>
+<tr>
+<td>3</td>
+<td>POST</td>
+<td>向指定资源提交数据进行处理请求(例如提交表单或者上传文件)。数据被包含在请求体中。POST请求  可能会导致新的资源的建立和/或已有资源的修改。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>PUT</td>
+<td>从客户端向服务器传送的数据取代指定的文档的内容。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>DELETE</td>
+<td>请求服务器删除指定的页面。</td>
+</tr>
+<tr>
+<td>6</td>
+<td>CONNECT</td>
+<td>HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。</td>
+</tr>
+<tr>
+<td>7</td>
+<td>OPTIONS</td>
+<td>允许客户端查看服务器的性能。</td>
+</tr>
+<tr>
+<td>8</td>
+<td>TRACE</td>
+<td>回显服务器收到的请求，主要用于测试或诊断。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="django_1">Django中的请求</h2>
+<ul>
+<li>请求在Django中实则就是视图函数的第一-个参数， 即HttpRequest对象</li>
+<li>Django接收到http协议的请求后，会根据请求数据报文创建HttpRequest对象</li>
+<li>HttpRequest对象通过属性描述了请求的所有相关信息</li>
+</ul>
+<h2 id="django_2">Django中的请求(续)</h2>
+<ul>
+<li>path_ info: URL字符串</li>
+<li>method:字符串，表示HTTP请求方法，常用值: 'GET'、 'POST'</li>
+<li>GET: QueryDict查询字典的对象，包含get请求方式的所有数据</li>
+<li>POST: QueryDict查询字典的对象，包含post请求方式的所有数据</li>
+<li>
+<p>FILES: 类似于字典的对象，包含所有的上传文件信息</p>
+</li>
+<li>
+<p>COOKIES: Python字典， 包含所有的cookie, 键和值都为字符串</p>
+</li>
+<li>session: 似于字典的对象，表示当前的会话</li>
+<li>body:字符串，请求体的内容(POST或PUT)</li>
+<li>scheme :请求协议('http'/'https')</li>
+<li>request.get_ full_ path() :请求的完整路径</li>
+<li>request.META: 请求中的元数据(消息头)</li>
+<li>request.META['REMOTE ADDR'] :客户端IP地址</li>
+</ul>
+<h2 id="httphttp-status-code">HTTP状态码的英文为HTTP Status Code</h2>
+<p>下面是常见的HTTP状态码:
+- 200 -请求成功
+- 301 -永久重定向-资源(网页等)被永久转移到其它URL
+- 302 -临时重定向
+- 404 -请求的资源(网页等)不存在
+- 500 -内部服务器错误;</p>
+<h2 id="django_3">Django中的响应对象</h2>
+<p>构造函数格式:</p>
+<div class="highlight"><pre><span></span><code>HttpResponse(content=响应体，content_type= 响应体数据类型(default = html), status=状态码)
+</code></pre></div>
+<p>作用: </p>
+<div class="highlight"><pre><span></span><code>向客户端浏览器返回响应，同时携带响应体内容
+</code></pre></div>
+<p>常用的Content-Type如下</p>
+<ul>
+<li>'text/htm]' (默认的，htmI文件)</li>
+<li>'text/plain' (纯文本)</li>
+<li>'text/css' (css文件)</li>
+<li>'text/javascript' (js文件)</li>
+<li>'multipart/form-data' (文件提交)</li>
+<li>'application/json' (json传输)</li>
+<li>'application/xml' (xml文件)</li>
+</ul>
+<h2 id="httpresponse">HttpResponse子类</h2>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>作用</th>
+<th>状态码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HttpResponseRedirect</td>
+<td>重定向</td>
+<td>302</td>
+</tr>
+<tr>
+<td>HttpResponseNotModified</td>
+<td>未修改</td>
+<td>304</td>
+</tr>
+<tr>
+<td>HttpResponseBadRequest</td>
+<td>错误请求</td>
+<td>400</td>
+</tr>
+<tr>
+<td>HttpResponseNotFound</td>
+<td>没有对应的资源</td>
+<td>404</td>
+</tr>
+<tr>
+<td>HttpResponseForbidden</td>
+<td>请求被禁止</td>
+<td>403</td>
+</tr>
+<tr>
+<td>HttpResponseServerError</td>
+<td>服务器错误</td>
+<td>500</td>
+</tr>
+</tbody>
+</table>
+<h2 id="getpost">GET请求和POST请求</h2>
+<p>无论是GET还是POST，统一都由视图函数接收请求，通过判断request.method区分具体的请求动作</p>
+<p>样例:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">if</span> <span class="n">request</span><span class="o">.</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">处理GET请求时的业务逻辑</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">elif</span> <span class="n">request</span> <span class="o">.</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39; POST&#39;</span> <span class="p">:</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">处理POST请求的业务逻辑</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">其他请求业务逻辑</span>
+</code></pre></div>
+<ul>
+<li>GET请求动作， - -般用于向 服务器获取数据</li>
+<li>能够产生GET请求的场景:</li>
+<li>浏览器地址栏中输入URL,回车后</li>
+<li><code>&lt;a href="地址?参数=值&amp;参数=值" &gt;</code></li>
+<li>form表单中的method为get</li>
+</ul>
+<p>GET请求方式中，如果有数据需要传递给服务器，通常会用
+查询字符串(Query String)传递
+[注意:不要传递敏感数据]</p>
+<p>URL格式: xxx?参数名1=值1&amp;参数名2=值2...
+ - 如: http://127.0.0.1:8000/page1?a= 100&amp;b=200</p>
+<p>服务器端接收参数</p>
+<ul>
+<li>获取客户端请求GET请求提交的数据_</li>
+</ul>
+<h2 id="get">GET处理</h2>
+<p>方法示例:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span> <span class="s1">&#39;参数名&#39;</span> <span class="p">]</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># QueryDict</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;参数名&#39;</span><span class="err">，</span><span class="s1">&#39;默认值&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s1">&#39;参数名&#39;</span> <span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># mypage?a=100&amp;b=200&amp;C= 300&amp;b=400</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># request. GET=QueryDict({&#39;a&#39;:[&#39;100&#39;] ，&#39;b&#39;:[ &#39; 200&#39;, &#39;400&#39;]，&#39;c&#39;:[&#39; 300&#39;] </span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1"># a = request.GET[&#39; a&#39;] </span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1"># b = request.GET.getlist(&#39;b&#39;)</span>
+</code></pre></div></p>
+<h2 id="post">POST处理</h2>
+<ul>
+<li>POST请求动作，-般用于向服务器提交大量/隐私数据数 据</li>
+</ul>
+<p>-客户端通过表单等POST请求将数据传递给服务器端，如:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span> <span class="s">&quot; post&#39; actign=&quot;</span><span class="err">/</span><span class="na">1ogin</span><span class="err">&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>姓名: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot; username&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span> <span class="s">&#39; submit&#39;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#39;登陆 &#39;</span><span class="p">&gt;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<h2 id="django_4">Django的设计模式及模板层</h2>
+<p><img alt="传统的MVC" src="https://foruda.gitee.com/images/1676289633364816667/a79cf741_10213136.png" title="传统的MVC" /></p>
+<p><img alt="Django的MTV模式" src="https://foruda.gitee.com/images/1676289868421836822/48404061_10213136.png" title="Django的MTV模式" /></p>
+<h2 id="templates">模板配置 TEMPLATES</h2>
+<p>创建模板文件夹&lt;项目名&gt;/templates</p>
+<ul>
+<li>在settings.py中TEMPLATES配置项</li>
+<li>BACKEND :指定模板的引擎</li>
+<li>DIRS: 模板的搜索目录(可以是一-个或多个)</li>
+<li>APP_DIRS:是否要在应用中的templates文件夹中搜索模板文件</li>
+<li>OPTIONS :有关模板的选项</li>
+<li>配置项中需要修改部分</li>
+<li>设置 DIRS - "DIRS': [os.path.join(BASE_ DIR, 'templates')],</li>
+</ul>
+<p>在视图函数中:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">django.</span> <span class="n">shortcuts</span> <span class="kn">import</span> <span class="nn">render</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;模板文件名&#39;</span><span class="err">，</span><span class="n">字典数据</span><span class="p">)</span>
+</code></pre></div></p>
+<h2 id="_4">视图层与模板层之间的交互</h2>
+<ol>
+<li>视图函数中可以将Python变量封装到字典中传递到模板</li>
+</ol>
+<p>样例:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">def</span> <span class="nf">xXx_</span> <span class="n">_vi</span> <span class="n">ew</span><span class="p">(</span> <span class="n">request</span><span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">dic</span><span class="o">=</span><span class="p">{</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="s2">&quot;变量1&quot;</span><span class="p">:</span><span class="s2">&quot;值1&quot;</span><span class="err">，</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="s2">&quot;变量2&quot;</span><span class="p">:</span><span class="s2">&quot;值2&quot;</span><span class="err">，</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">}</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">return</span> <span class="n">render</span><span class="p">(</span> <span class="n">request</span><span class="err">，</span><span class="s1">&#39;xxx.html&#39;</span> <span class="p">,</span><span class="n">dic</span><span class="p">)</span> 
+</code></pre></div></p>
+<ol>
+<li>模板中，我们可以用{{变量名}}的语法调用视图传进来的变量</li>
+</ol>
+<h2 id="-_3">模板层-变量和标签</h2>
+<p>视图函数中可以将Python变量封装到字典中传递到模板上</p>
+<p>样例:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span> <span class="nf">xxx_view</span><span class="p">(</span> <span class="n">request</span><span class="p">)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="n">dic</span><span class="p">,</span><span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="s2">&quot;变量1&quot;</span><span class="p">:</span><span class="s2">&quot;值1&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="s2">&quot;变量2&quot;</span><span class="p">:</span><span class="s2">&quot;值2&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="p">}</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="err">，</span><span class="s1">&#39; xxx.htm1&#39;</span><span class="err">，</span><span class="nb">dict</span><span class="p">)</span>
+</code></pre></div>
+<p>能传递到模板中的数据类型</p>
+<ol>
+<li>str 字符串 </li>
+<li>int- 整型</li>
+<li>list -数组</li>
+<li>tuple -元组</li>
+<li>dict -字典</li>
+<li>func-方法</li>
+<li>obj-类实例化的对象</li>
+</ol>
+<p>在模板中使用变量语法</p>
+<ul>
+<li>{{变量名}}</li>
+<li>{{变量名.index }}</li>
+<li>{{变量名.key}}</li>
+<li>{{对象.方法}</li>
+<li>{{函数名}}</li>
+</ul>
+<p>作用:将一些服务器端的功能嵌入到模板中，例如流程控制等
+标签语法</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span><span class="o">%</span><span class="n">标签</span><span class="err">、</span><span class="o">%</span><span class="p">}</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="p">{</span><span class="o">%</span><span class="n">结束标签</span><span class="o">%</span><span class="p">}</span>
+</code></pre></div>
+<p>if标签 语法:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span><span class="o">%</span> <span class="n">if条件表达式1</span> <span class="o">%</span><span class="p">}</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="o">...</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">{</span><span class="o">%</span> <span class="n">elif条件表达式2</span> <span class="o">%</span><span class="p">}</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="o">...</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="p">{</span><span class="o">%</span> <span class="n">elif条件表达式3</span> <span class="o">%</span><span class="p">}</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="o">...</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="p">{</span><span class="o">%</span> <span class="n">eIse</span> <span class="o">%</span><span class="p">}</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="o">...</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="p">{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}</span>
+</code></pre></div>
+<p>注意:</p>
+<ol>
+<li>if条件表达式里可以用的运算符==,!=, &lt;,&gt;, &lt;=,&gt;=, in, not  in, is, is not, not、 and、or</li>
+<li>在if标记中使用实际括号是无效的语法。如果您需要它们指示优先级，则应使用嵌套的if标记。</li>
+</ol>
+<h2 id="_5">模板过滤器</h2>
+<ul>
+<li>定义:在变量输出时对变量的值进行处理</li>
+<li>作用:可以通过使用过滤器来改变变量的输出显示</li>
+<li>语法: {{变量|过滤器1:参数值1' | 过滤器2:参数值2' .. }}
+官方文档:
+https://docs.djangoproject.com/en/2.2/ref/templates/builtins/</li>
+</ul>
+<p>常用过滤器
+| 过滤器            | 说明                                                                                        |
+| ----------------- | ------------------------------------------------------------------------------------------- |
+| lower             | 将字符串转换为全部小写。                                                                    |
+| upper             | 将字符串转换为大写形式                                                                      |
+| safe              | 默认不对变量内的字符串进行htmI转义                                                          |
+| add: "n"          | 将value的值增加n                                                                            |
+| truncatechars:'n' | 如果字符串字符多于指定的字符数量,那么会被截断。截断的字符串将以可翻译的省略号序列....结尾。 |</p>
+<h2 id="url_2">URL解析</h2>
+<ol>
+<li>绝对地址:  http://127.0.0.1:8000/page/1</li>
+<li>相对地址: <ol>
+<li>'/page/1' - '' 开头的相对地址，浏览器会把当前地址栏
+   里的协议，ip和端口加上这个地址，作为最终访问地址，即如果当
+   前页面地址栏为http://127.0.0.1:8000/page/3;当前相对地址最终
+   结果为http://127.0.0.1:8000 + /page/1</li>
+</ol>
+</li>
+<li>'page/1'- 没有/' 开头的相对地址，浏览器会根据当前
+url的最后-一个 <code>/</code> 之前的内容加上该相对地址作为最终访问地址，例
+如当前地址栏地址为http://127.0.0.1:8000/topic<code>/</code>detail; 则该相对
+地址最终结果为http://127.0.0.1:8000/topic/ + page/1</li>
+</ol>
+<h2 id="url_3">URL反向解析</h2>
+<ul>
+<li>url反向解析是指在视图或模板中，用path定义的名称来动态查找
+或计算出相应的路由</li>
+<li>
+<p>path函数的语法</p>
+<ul>
+<li>path(route, views, name="别名")</li>
+<li>path('page', views.page_view, name='page_url')</li>
+</ul>
+</li>
+<li>
+<p>根据path中的name='关键字传参给url确定了个唯一确定的名字，在模板或视图中，可以通过这个名字反向推断出此url信息</p>
+</li>
+</ul>
+<details open>
+<summary>模板中-通过ur|标签实现地址的反向解析 </summary>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="o">{</span>%<span class="w"> </span>ur<span class="o">]</span><span class="w"> </span><span class="s1">&#39;别名&#39;</span><span class="w"> </span>%<span class="o">}</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="o">{</span>%<span class="w"> </span>ur<span class="o">]</span><span class="w"> </span>别名<span class="s1">&#39; &#39;</span><span class="w"> </span>参数值1<span class="s1">&#39; &#39;</span>参数值2<span class="s1">&#39; %}</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="s1">ex :</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="s1">{% ur] &#39;</span>pagen<span class="s1">&#39; &#39;</span><span class="m">400</span><span class="s1">&#39; %}</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="s1">{% ur] &#39;</span>person<span class="s1">&#39; age=&#39;</span><span class="m">18</span><span class="s1">&#39; name=&#39;</span>gxn<span class="err">&#39;</span><span class="w"> </span>%<span class="o">}</span>
+</code></pre></div>
+</detail>
+
+## url反向解析(续1)
+
+<details open>
+<summary> 在视图函数中->可调用django中的reverse方法进行反向 </summary>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">from</span> <span class="nn">django.ur1s</span> <span class="kn">import</span> <span class="n">reverse</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;别名&#39;</span><span class="err">，</span><span class="n">args</span><span class="o">=</span><span class="p">[]</span><span class="err">，</span> <span class="n">kwargs</span><span class="o">=</span><span class="p">{})</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">ex</span> <span class="p">:</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nb">print</span><span class="p">(</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39; pagen&#39;</span> <span class="p">,</span> <span class="n">args</span><span class="o">=</span> <span class="p">[</span> <span class="mi">300</span><span class="p">]</span> <span class="p">))</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nb">print</span><span class="p">(</span> <span class="n">reverse</span><span class="p">(</span><span class="s1">&#39; person&#39;</span><span class="err">，</span><span class="n">kwargS</span><span class="o">=</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="p">{</span><span class="s1">&#39; name&#39;</span><span class="p">:</span> <span class="s1">&#39;xixi&#39;</span><span class="p">,</span><span class="s1">&#39;age&#39;</span> <span class="p">:</span><span class="mi">18</span><span class="p">}))</span>
+</code></pre></div>
+</details>
+
+
+## 小结
+
+- 请求(request)和响 应(HttpResponse)
+- GET/POST处理- request.GET/POST
+- MVC和MTV
+- 模板层基础配置
+- 模板变量/标签/过滤器/继承
+- url反向解析
+
+## 静态文件 
+
+静态文件配置- settings.py中[该配置默认存在]
+
+1. 配置静态文件的访问路径
+    - 通过哪个ur|地址找静态文件
+    - STATIC URL = '/static/'
+    - 说明:
+    指定访问静态文件时是需要通过/static/xxx或
+    http://127.0.0.1:8000/static/xxx
+    [xxx表示具体的静态资源位置]
+2. 配置静态文件的存储路径 `STATICELES_DIRS`
+<details open>
+<summary> STATICFILES_DIRS 保存的是静态文件在服务器端的存储位置 </summary>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># file: setting.py</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nv">STATICFILES_DIRS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>os.path.join<span class="o">(</span>BASE_DIR,<span class="s2">&quot;static&quot;</span><span class="o">)</span>,
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="o">)</span>
+</code></pre></div>
+</details>
+
+
+## 静态文件访问(续)
+
+模板中访问静态文件- img标签为例
+方案2
+
+通过{%static%}标签访问静态文件
+1. 加载 static - {% load static %}
+2. 使用静态资源- {% static '静态资源路径' %}
+   示例
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{% static &#39;images/lena.jpg&#39; %}&quot;</span><span class="p">&gt;</span>
+</code></pre></div>
+
+## Django 应用分布式路由 
+![什么是应用?](https://foruda.gitee.com/images/1676475979524645667/45b27197_10213136.png "什么是应用?")
+
+### 创建应用
+1. 步骤1:  用manage.py中的子命令 `startapp` 创建应用文件夹
+`python3 manage.py startapp music`
+2. 步骤2:  在settings.py的 `INSTALLED_APPS` 列表中配置安装此应用 
+
+<details open>
+<summary> settings.py配置样例 </summary>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    <span class="c1"># ....</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="c1"># 用户信息模块 </span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="s1">&#39;music&#39;</span><span class="p">,</span><span class="c1"># 音乐模块</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="p">]</span>
+</code></pre></div>
+</details>
+
+<details open>
+<summary> 创建后 </summary>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>├──<span class="w"> </span>music
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>│<span class="w">   </span>├──<span class="w"> </span>admin.py
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>│<span class="w">   </span>├──<span class="w"> </span>apps.py
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>│<span class="w">   </span>├──<span class="w"> </span>__init__.py
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>│<span class="w">   </span>├──<span class="w"> </span>migrations<span class="w">    </span><span class="c1"># M: DB 数据库</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>__init__.py
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>│<span class="w">   </span>├──<span class="w"> </span>models.py<span class="w">     </span><span class="c1"># M: DB 模型层</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>│<span class="w">   </span>├──<span class="w"> </span>tests.py<span class="w">      </span><span class="c1"># 测试模块</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>│<span class="w">   </span>└──<span class="w"> </span>views.py<span class="w">      </span><span class="c1"># V: 应用视图</span>
+</code></pre></div>
+</details>
+
+
+
+![分布式路由](https://foruda.gitee.com/images/1676476577884293103/b1bf5d48_10213136.png "分布式路由")
+
+## 配置分布式路由 
+
+### 步骤 1 - 主路由中调用include函数
+- 语法: `include('app名 字.url模块名')`
+- 作用:用于将当前路由转到各个应用的路由配置文件的urlpatterns
+进行分布式处理
+
+示例：
+以 `http://127.0.0.1:8000/music/index` 为例:
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span><span class="n">include</span> 
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="n">path</span><span class="p">(</span> <span class="s1">&#39;admin/&#39;</span><span class="err">，</span><span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">)</span> <span class="p">,</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="n">path</span><span class="p">(</span> <span class="s1">&#39;test static&#39;</span> <span class="err">，</span><span class="n">views</span><span class="o">.</span><span class="n">test_static</span><span class="p">)</span> <span class="p">,</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="n">path</span><span class="p">(</span> <span class="s1">&#39;music/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;music.urls&#39;</span> <span class="p">)</span> <span class="p">)</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="p">]</span>
+</code></pre></div>
+
+### 步骤2 - 应用下配置 urls.py
+应用下手动创建 uris.py 文件
+内容结构同主路由完全一样
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="n">urlpatterns</span> <span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="c1">#http://127.0.0.1:8000/music/index</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="n">path</span><span class="p">(</span> <span class="s1">&#39;index&#39;</span><span class="err">，</span> <span class="n">views</span><span class="o">.</span><span class="n">index_view</span> <span class="p">)</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="p">]</span>
+</code></pre></div>
+
+
+## 应用内部可以配置模板目录
+
+1. 应用下手动创建 `templates` 文件夹 N
+2. settings.py中 开启应用模板功能
+  `TEMPLATE配置项中的'APP_DIRS'值为True即可`
+
+应用下 `templates` 和外层 `templates` 都存在时，django 查找模板规则
+1. 优先查找外层 `templates` 目录下的模板
+2. 按 `INSTALLED_APPS` 配置下的应用顺序逐层查找
+
+
+## 小结
+- 应用
+  - 创建
+  - 注册
+- 分布式路由
+  - 主路由 - include
+  - 应用下urls.py编写 urlpatterns
+
+## 模型层 
+
+![MTV](https://foruda.gitee.com/images/1676478089132948278/958ced12_10213136.png "MTV")
+
+## Django配置mysq|
+- 安装mysqlclient [版本mysqlclient 1.3.13以上]
+- 安装前确认ubuntu是否已安装`python3-dev` 和`default-libmysqlclient-dev`
+
+1. `sudo apt list --installed|grep -E 'libmysqlclient-dev|python3-dev'` .
+2. 若命令无输出则需要安装 - `sudo apt-get install python3-dev default-libmysqlclient-dev`
+
+`sudo pip3 install mysqlclient` 注意：`conda 环境直接用 conda  install mysqlclient 就好`
+
+检测是否装好 `mysqlclient` 包：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="o">(</span>qqhr<span class="o">)</span><span class="w"> </span>warmheart@VM-12-12-ubuntu:~/learn_django$<span class="w"> </span>sudo<span class="w"> </span>pip3<span class="w"> </span>freeze<span class="p">|</span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;mysql&#39;</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nv">mysqlclient</span><span class="o">==</span><span class="m">2</span>.1.1
+</code></pre></div>
+## mysql的安装（linux、ubuntu20.04）
+
+- 第一步 安装:
+    - 步骤一； 打开管理员权限+输入密码；
+
+      <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>su
+</code></pre></div>
+
+    - 步骤二；安装
+
+      <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>$<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>mysql-server
+</code></pre></div>
+
+- 第二步 安装完查看mysql启动状态:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>$<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>mysql<span class="w"> </span>
+</code></pre></div>
+    或者
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>$<span class="w"> </span>service<span class="w"> </span>mysql<span class="w"> </span>status
+</code></pre></div>
+
+- 第三步 直接使用root账户登录然后修改密码就可以了，可代替下面第3步的操作：
+    1. `sudo mysql -uroot -p  `    回车输入`密码` 登录
+    2. 修改密码：`alter user 'root'@'localhost' identified with mysql_native_password by '这里是密码';`  注意：`;`号结尾 。
+    3. 执行：`flush privileges;`；使密码生效，然后使用root用户登录。
+
+- 第四步 创建自己的用户：
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>create<span class="w"> </span>user<span class="w"> </span><span class="s1">&#39;用户名&#39;</span>@<span class="s1">&#39;%&#39;</span><span class="w"> </span>identified<span class="w"> </span>with<span class="w"> </span>mysql_native_password<span class="w"> </span>by<span class="w"> </span><span class="s1">&#39;密码&#39;</span><span class="p">;</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>grant<span class="w"> </span>all<span class="w"> </span>privileges<span class="w"> </span>on<span class="w"> </span>*.*<span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;用户&#39;</span>@<span class="s1">&#39;%&#39;</span><span class="w"> </span>with<span class="w"> </span>grant<span class="w"> </span>option<span class="p">;</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>flush<span class="w"> </span>privileges<span class="p">;</span><span class="w"> </span><span class="c1"># 保存策略 </span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># 完成了，直接远程登录。</span>
+</code></pre></div>
+    注意： "localhost"，是指该用户只能在本地登录，不能在另外一台机器上远程登录。如果想远程登录的话，将"localhost"改为"%"，表示在任何一台电脑上都可以登录。也可以指定某台机器可以远程登录。
+
+- 其他 数据库的启动|重启|关机命令 ；
+
+    | 数据库的            | 启动  | 重启    | 关机命令 |
+    | ------------------- | ----- | ------- | -------- |
+    | sudo  service mysql | strat | restart | stop     |
+
+    及是 `sudo service mysql start/restart/stop`
+
+相关教程:
+- [Ubuntu 20.04 安装mysql数据库教程](https://blog.csdn.net/cyz141001/article/details/119028923)
+
+
+或者
+
+systemctl status mysql.service
+
+
+
+## Django配置mysql (续)
+
+
+- 1. 创建数据库,进入mysql数据库执行
+     - `create database 数据库名 default charset utf8;`
+     - `通常数据库名跟项目名保持一致`
+
+- 2. settings.py里进行数据库的配置修改 
+    1.  `DATABASES` 配置项的内容，由 `'ENGINE': 'django.db.backends.sqlite3'` 变为 `'ENGINE': 'django.db.backends.mysql'`,
+    2.  添加 其他配置示例如下:
+
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>    <span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>        <span class="s1">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s1">&#39;django.db.backends.mysql&#39;</span><span class="p">,</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>        <span class="s1">&#39;NAME&#39;</span><span class="p">:</span><span class="s1">&#39;mysitel&#39;</span><span class="p">,</span> <span class="c1"># 数据库名</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>        <span class="s1">&#39;USER&#39;</span><span class="p">:</span> <span class="s1">&#39;warmheart&#39;</span><span class="p">,</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>        <span class="s1">&#39;PASSWORD&#39;</span><span class="p">:</span><span class="s1">&#39;13467947371fwFW!&#39;</span><span class="p">,</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>        <span class="s1">&#39;HOST&#39;</span><span class="p">:</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>        <span class="s1">&#39;PORT&#39;</span><span class="p">:</span><span class="s1">&#39;3306&#39;</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>    <span class="p">}</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="p">}</span>
+</code></pre></div>
+
+## 什么是模型
+
+- 模型是一个Python类,它是由django.db.models.Model派生出的子类。
+
+- 一个模型类代表数据库中的一张数据表
+
+- 模型类中每一个类属性都代表数据库中的一个字段。
+
+- 模型是数据交互的接口，是表示和操作数据库的方法和方式
+
+## ORM框架
+
+
+![ORM](https://foruda.gitee.com/images/1676482006679819467/afffe6cf_10213136.png "ORM")
+
+
+- 定义: ORM (Object Relational Mapping) 即对象关系映射，它
+是一种程序技术，它允许你使用类和对象对数据库进行操作，从而
+避免通过SQL语句操作数据库
+
+- 作用:
+  1. 建立模型类和表之间的对应关系，允许我们通过面向对象的方式来操作数据库。
+  2. 根据设计的模型类生成数据库中的表格。
+  3. 通过简单的配置就可以进行数据库的切换。
+
+## ORM框架(续)
+### 优点:
+- 只需要面向对象编程，不需要面向数据库编写代码.
+  - 对数据库的操作都转化成对类属性和方法的操作.
+  - 不用编写各种数据库的sql语句.
+- 实现了数据模型与数据库的解耦，屏蔽了不同数据库操作上的差
+异.
+  - 不在关注用的是mysql、oracl..等数据库的内部细节.
+  - 通过简单的配置就可以轻松更换数据库,而不需要修改代码
+
+### 缺点
+- 对于复杂业务，使用成本较高
+- 根据对象的操作转换成SQL语句，根据查询的结果转化成对象,
+在映射过程中有性能损失.
+
+## 模型示例
+
+- 此示例为添加一个 `bookstore_book` 数据表来存放图书
+馆中书目信息
+
+1. **添加一个bookstore的app**
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>$<span class="w"> </span>python3<span class="w"> </span>manage.py<span class="w"> </span>startapp<span class="w"> </span>bookstore
+</code></pre></div>
+
+2. **添加模型类并注册app**
+
+模型类代码示例
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># file : bookstore/models.py </span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="c1"># Create your models here.</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s2">&quot;书名&quot;</span><span class="p">,</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>    <span class="n">price</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="s1">&#39;定价&#39;</span><span class="p">,</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span> <span class="c1"># 00000.00</span>
+</code></pre></div>
+
+3. 数据库迁移
+      - 迁移是Django同步您对模型所做更改(添加字段，删除模型等)到您的数据库模式的方式
+      - 生成迁移文件- 执行 `python manage.py makemigrations` 将应用下的models.py文件生成一个中间文 件并保存在 `migrations` 文件夹中
+      - 执行迁移脚本程序-执行 `python manage.py migrate`执行迁移程序实现迁移。将每个应用下的migrations目录中的中间文件同步回数据库
+
+
+`python manage.py migrate`可能遇到错误:
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>django.db.utils.OperationalError:<span class="w"> </span><span class="o">(</span><span class="m">1044</span>,<span class="w"> </span><span class="s2">&quot;Access denied for user &#39;warmheart&#39;@&#39;%&#39; to database &#39;mysitel&#39;&quot;</span><span class="o">)</span>
+</code></pre></div>
+
+原因权限不够：
+解决方案，在Mysql里面写入本地访问权限：
+`GRANT ALL PRIVILEGES ON *.* TO 'warmheart'@'%';`
+
+- [访问MySQL数据库提示权限不够的解决方案](https://huaweicloud.csdn.net/6335795ed3efff3090b584b7.html?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Eactivity-1-116140575-blog-113163490.pc_relevant_3mothn_strategy_recovery&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Eactivity-1-116140575-blog-113163490.pc_relevant_3mothn_strategy_recovery&utm_relevant_index=2)
+
+- [修改mysql的密码时遇到问题ERROR 1064 (42000): You have an error in your SQL syntax； check the manual that corre](https://blog.csdn.net/lic1697067085/article/details/120234287)
+
+其他 mysql常用指令:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>$<span class="w"> </span>SHOW<span class="w"> </span>DATABASES<span class="p">;</span><span class="w">  </span><span class="c1"># 语句用于列出数据库系统中所有的数据库</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>$<span class="w"> </span>flush<span class="w"> </span>privileges<span class="p">;</span><span class="w"> </span><span class="c1"># 保存策略</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>$<span class="w"> </span>desc<span class="w"> </span>table<span class="p">;</span><span class="w"> </span><span class="c1"># 查看表结构</span>
+</code></pre></div>
+## 模型类-创建
+●模型类-创建
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="k">class</span> <span class="nc">模型类名</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Mode1</span><span class="p">):</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>    <span class="n">字段名</span><span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">字段类型</span><span class="p">(</span><span class="n">字段选项</span><span class="p">)</span>
+</code></pre></div>
+## 小结
+- 模型层介绍
+- 配置mysql
+- ORM
+- 创建模型类 
+
+## 创建模型类流程(续)
+- 任何关于表结构的修改，务必在对应模型类.上修改
+
+例:为bookstore_ book表添加一个名为info的字段
+varchar(100)
+解决方案
+1. 模型类中添加对应类属性
+2. 执行数据库迁移
+
+## 模型类- 字段类型
+- BooleanField()
+      1. 数据库类型:tinyint(1)
+      2. 编程语言中:使用Irue或Fa!se来表示值
+      3. 在数据库中:使用1或0来表示具体的值
+
+- CharField()
+      1. 数据库类型:varchar
+      2. 注意:必须要指定max_length参数值
+      3. 
+
+- DateField()
+    1. 数据库类型:date
+    2. 作用:表示日期.
+    3. 参数:
+        1. auto_ now:每次保存对象时，自动设置该字段为当前时间(取值:True/False)。
+        2. auto_now_add:当对象第-次被创建时自动设置当前时间(取值:True/False)。
+        3. default: 设置当前时间(取值:字符串格式时间如: '2019-6-1)。
+        4. 以上三个参数只能多选一
+
+
+- DateTimeField()
+    1. 数据库类型:datetime(6)
+    2. 作用:表示日期和时间
+    3. 参数同DateField
+
+- FloatField()
+    1. 数据库类型:double
+    2. 编程语言中和数据库中都使用小数表示值
+
+
+- DecimalField()
+    1. 数据库类型:decimal(x,y)
+    2. 编程语言中:使用小数表示该列的值
+    3. 在数据库中:使用小数
+    4. 参数:
+       - max_ digits: 位数总数，包括小数点后的位数。该值必须大于等于decimal_places.
+       - decimal_places:小数点后的数字数量
+
+
+- EmailField()
+    1. 数据库类型:varchar
+    2. 编程语言和数据库中使用字符串
+
+- IntegerField()
+    1. 数据库类型:int
+    2. 编程语言和数据库中使用整数
+
+- ImageField()
+    1. 数据库类型:varchar(100)
+    2. 作用:在数据库中为了保存图片的路径
+    3. 编程语言和数据库中使用字符串
+- TextField()
+    1. 数据库类型:longtext
+    2. 作用:表示不定长的字符数据
+
+更多精彩请阅官方文档
+https://docs.djangoproject.com/en/2.2/ref/models/fields/#field-types
+
+## 模型类-字段选项
+
+- 字段选项,指定创建的列的额外的信息
+- 允许出现多个字段选项，多个选项之间使用,隔开
+- primary_key: 如果设置为True,表示该列为主键，如果指定一个字段为主键，则此
+数库表不会创建id字段
+- blank: 设置为True时， 字段可以为空。设置为 False 时, 字段是必须填写
+- null:
+    - 如果设置为True,表示该列值允许为空。
+    - 默认为False,如果此选项为False建议加入 default 选项来设置默认值
+
+- default：设置所在列的默认值如果字段选项 null = False 建议添加此项
+- db_ index： 如果设置为True,表示为该列增加索引
+- unique： 如果设置为True,表示该字段在数据库中的值必须是唯一(不能
+重复出现的)
+- db_column：指定列的名称如果不指定的话则采用属性名作为列名
+- verbose_ name： 设置此字段在admin界面以上的显示名称
+
+字段选项样例
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1">#创建一个属性,表示用户名称，长度30个字符,必须是唯一的,不能为空，添加</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="n">索引</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="n">name</span> <span class="o">=</span> <span class="n">mode1s</span><span class="o">.</span><span class="n">charFie1d</span> <span class="p">(</span><span class="n">max_1ength</span><span class="o">=</span><span class="mi">30</span><span class="err">，</span><span class="n">unique</span><span class="o">=</span><span class="kc">True</span> <span class="err">，</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="n">nu11</span><span class="o">=</span><span class="kc">False</span><span class="err">，</span><span class="n">db_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+更多精彩，请参阅官方文档
+https://docs.djangoproject.com/en/2.2/ref/models/fields/#field-options
+
+好习惯:修改过字段选项{添加或更改] 均要执行
+makemigrations和migrate
+
+## 模型类-Meta类
+使用内部Meta类来给模型赋予属性，Meta类下有很多内建的类属
+性，可对模型类做一些控制
+示例: .
+# file : bookstore/models.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="c1"># Create your models here.</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="k">class</span> <span class="nc">Book</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s2">&quot;书名&quot;</span><span class="p">,</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>    <span class="n">price</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="s1">&#39;定价&#39;</span><span class="p">,</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span> <span class="c1"># 00000.00 </span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>        <span class="n">db_table</span> <span class="o">=</span> <span class="s1">&#39;book&#39;</span> <span class="c1"># 可改变当前模型类对应的表名</span>
+</code></pre></div>
+
+
+
+## 修改模型类
+模型类 - **Book表名book**
+- title - CharField(50)-书名唯一
+
+- pub - CharField(100)-出版社(非空
+
+- (price - DecimalField - 图书定价 ~ 总位7/小数点2位
+
+- market price -图书零售价总位7/小数点2位
+
+模型类 - **Author表名author**
+- name - CharField(11)– 姓名非空
+- age - IntegerField - 年龄默认值为 1
+- email - EmailField - 邮箱允许为空
+
+## 小结
+字段选项& Meta内部类
+
+## ORM-基本操作-创建数据
+数据库的迁移文件混乱的解决办法
+数据库中django_migte与之对应，否则migrate会报错目各应用中的migrate文件应与之对应，否则migrate会报错
+解决方案:
+- 1.删除所有migrations 里所有的000?_XXXX.py ( _init_.py 除外)
+- 2．删除数据库: `sql> drop database mywebdb;`
+- 3.重新创建数据库 sql> create datebase mywebdb default charset...;
+- 4.重新生成migrations里所有的000?_XXXX.pypython3 manage.py makemigrations 
+- 5.重新更新数据库 python3 manage.py migrate
+
+
+## ORM-操作
+
+基本操作包括增删改查操作，即(CRUD操作)
+CRUD是指在做计算处理时的增加(Create)、读取查询(Read)、更新(Update)和删除(Delete)
+心
+ORM CRUD核心->模型类.管理器对象
+
+## 创建数据
+
+每个继承自models.Model的模型类，都会 有一个objects对象被同样继承下来。这个对象叫管理器对象
+数据库的增删改查可以通过模型的管理器实现
+
+class MyMode1 (models.Mode1):
+    MyMode1.objects.create(...) # objects是管理器对象
+
+DjangoORM使用一种直观的方式把数据库表中的数据表示成
+Python对象
+创建数据中每一条记录就是创建一个数据对象
+
+- 方案1 MyModel.objects.create(属性1=值1,属性2=值...)
+    - 成功:返回创建好的实体对象
+    - 失败: 抛出异常
+
+- 方案2 创建MyModel实例对象，并调用save()进行保存
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">obj</span> <span class="o">=</span> <span class="n">MyMode1</span> <span class="p">(</span><span class="n">属性</span><span class="o">=</span><span class="n">值</span><span class="p">,</span><span class="n">属性</span><span class="o">=</span><span class="n">值</span><span class="p">)</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="n">obj</span><span class="o">.</span><span class="n">属性</span><span class="o">=</span><span class="n">值</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="n">obj</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</code></pre></div>
+
+Django Shell
+
+在Django提供了一个交互式的操作项目叫 `Django Shell` 它能够在
+交互模式用项目工程的代码执行相应的操作
+利用`Django Shell`可以代替编写view的代码来进行直接操作
+注意:项目代码发生变化时，重新进入Django shell
+启动方式: 
+ `python3 manage.py shell`
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>show<span class="w"> </span>databases<span class="p">;</span><span class="w"> </span><span class="c1"># 查看数据库，选中使用数据库，并查看数据库表，具体操作命令如下：</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>use<span class="w"> </span>xxxx<span class="p">;</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>show<span class="w"> </span>tables<span class="p">;</span>
+</code></pre></div>
+
+##  ORM-查询操作
+
+- 数据库的查询需要使用管理器对象进行
+- 通过MyModel.objects管理器方法调用查询方法
+| 方法      | 说明                              |
+| --------- | --------------------------------- |
+| all()     | 查询全部记录,返回QuerySet查询对象 |
+| get()     | 查询符合条件的单一记录            |
+| filter()  | 查询符合条件的多条记录            |
+| exclude() | 查询符合条件之外的全部记录        |
+
+- all()方法
+用法: MyModel.objects.all()
+作用:查询MyModel实体中所有的数据
+等同于 select * from tabel
+返回值: QuerySet容器对象，内部存放MyModel实例
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="kn">from</span> <span class="nn">bookstore.models</span> <span class="kn">import</span> <span class="n">Book</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="n">books</span> <span class="o">=</span> <span class="n">Book</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">a11</span><span class="p">()</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">books</span> <span class="p">:</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;书名&quot;</span><span class="err">，</span><span class="n">book</span><span class="o">.</span><span class="n">title</span><span class="err">，</span> <span class="s1">&#39; 出版社:&#39;</span><span class="err">，</span><span class="n">book</span><span class="o">.</span> <span class="n">pub</span><span class="p">)</span>
+</code></pre></div>
+
+
+可以在模型类中定义 __str__ 方法， 自定义 `QuerySet` 中的输出格式
+例如在Book模型类下定义如下:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>    <span class="k">return</span> <span class="s1">&#39;%S_ %S_ %S_ %S&#39;</span><span class="o">%</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">price</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pub</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">market_</span> <span class="n">price</span><span class="p">)</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>则在djangoshell中可得到如下显示输出
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>In<span class="w"> </span><span class="o">[</span><span class="m">20</span><span class="o">]</span>:<span class="w"> </span>Book.objects.all<span class="o">()</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>0ut<span class="o">[</span><span class="m">20</span><span class="o">]</span>:<span class="w"> </span>&lt;QuerySet<span class="w"> </span><span class="o">[</span>&lt;Book:<span class="w"> </span>Python_<span class="w"> </span><span class="m">20</span>.00<span class="w"> </span>清华大学出版社25.<span class="w"> </span><span class="m">00</span>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>&gt;，&lt;Book:<span class="w"> </span>Django_<span class="w"> </span><span class="m">70</span>.00_<span class="w"> </span>清华大学出版社_<span class="w"> </span><span class="m">75</span>.00&gt;，<span class="w"> </span>&lt;Book:<span class="w"> </span>HTML5_<span class="w"> </span><span class="m">9</span>
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="m">0</span>.00_清华大学出版社_<span class="w"> </span><span class="m">105</span>.00&gt;,<span class="w"> </span>&lt;Book:<span class="w"> </span>JQuery_<span class="w"> </span><span class="m">90</span>.00_<span class="w"> </span>机械工业出
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>版社_<span class="w"> </span><span class="m">85</span>.<span class="w"> </span><span class="m">00</span>&gt;,<span class="w"> </span>&lt;Book:<span class="w"> </span>Linux_<span class="w"> </span><span class="m">80</span>.00机械工业出版社_<span class="w"> </span><span class="m">65</span>.<span class="w"> </span><span class="m">00</span>&gt;<span class="o">]</span>&gt;
+</code></pre></div>
+
+- values('列1'，'列2'..)
+    - 用法: MyModel.objects.values(..)
+    - 作用: 查询部分列的数据并返回
+    - 等同于 select 列1，列2 from xXx
+    - 返回值: QuerySet
+    - 返回查询结果容器，容器内存字典，每个字典代表一条数据,
+    - 格式为 : {'列1':值1,'列2':值2}
+
+-  values_list('列1';列...)
+   - 用法:MyModel.objects.values_list(...)
+   - 作用:返回元组形式的查询结果
+   - 等同于select列1,列2 from xxx
+   - 返回值:QuerySet容器对象,内部存放元组
+   - 会将查询出来的数据封装到元组中，再封装到查询集合QuenySer中
+
+- order_by()
+- 用法:MyModel.objects.order_by('-列;列")
+- 作用:与all()方法不同，它会用SQL语句的ORDER BY子句对查询结果
+进行根据某个字段选择性的进行排序
+说明:
+- 默认是按照升序排序，降序排序则需要在列前增加'-'表示
+
+## 小结
+
+●查询方法- all()
+
+●查询方法- values()
+
+●查询方法- values_ list()
+
+●查询方法-order_ _by()
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>    <span class="p">&lt;</span><span class="nt">table</span> <span class="na">border</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span> id<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>title<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>pub<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>price<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span> market_price<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+<a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a>            <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span> op <span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a>        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a>
+<a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a>        {% for book in all_book %}
+<a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a>            <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+<a id="__codelineno-37-13" name="__codelineno-37-13" href="#__codelineno-37-13"></a>                <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>{{ book.id }}<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+<a id="__codelineno-37-14" name="__codelineno-37-14" href="#__codelineno-37-14"></a>                <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>{{ book.title }}<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+<a id="__codelineno-37-15" name="__codelineno-37-15" href="#__codelineno-37-15"></a>                <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>{{ book.pub }}<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+<a id="__codelineno-37-16" name="__codelineno-37-16" href="#__codelineno-37-16"></a>                <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>{{ book.price }} <span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+<a id="__codelineno-37-17" name="__codelineno-37-17" href="#__codelineno-37-17"></a>                <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>{{ book.mark_price }}<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+<a id="__codelineno-37-18" name="__codelineno-37-18" href="#__codelineno-37-18"></a>                <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+<a id="__codelineno-37-19" name="__codelineno-37-19" href="#__codelineno-37-19"></a>                    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span>更新<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a id="__codelineno-37-20" name="__codelineno-37-20" href="#__codelineno-37-20"></a>                    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span>删除<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<a id="__codelineno-37-21" name="__codelineno-37-21" href="#__codelineno-37-21"></a>                <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+<a id="__codelineno-37-22" name="__codelineno-37-22" href="#__codelineno-37-22"></a>            <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+<a id="__codelineno-37-23" name="__codelineno-37-23" href="#__codelineno-37-23"></a>        {% endfor %}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>+----+--------+-------+------------+-----------------+
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="p">|</span><span class="w"> </span>id<span class="w"> </span><span class="p">|</span><span class="w"> </span>title<span class="w">  </span><span class="p">|</span><span class="w"> </span>price<span class="w"> </span><span class="p">|</span><span class="w"> </span>mark_price<span class="w"> </span><span class="p">|</span><span class="w"> </span>pub<span class="w">             </span><span class="p">|</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>+----+--------+-------+------------+-----------------+
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="p">|</span><span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Python<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="m">20</span>.00<span class="w"> </span><span class="p">|</span><span class="w">      </span><span class="m">25</span>.00<span class="w"> </span><span class="p">|</span><span class="w"> </span>清华出版社<span class="w">      </span><span class="p">|</span>
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a><span class="p">|</span><span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>HTML<span class="w">   </span><span class="p">|</span><span class="w"> </span><span class="m">90</span>.00<span class="w"> </span><span class="p">|</span><span class="w">     </span><span class="m">100</span>.00<span class="w"> </span><span class="p">|</span><span class="w"> </span>清华出版社<span class="w">      </span><span class="p">|</span>
+<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a><span class="p">|</span><span class="w">  </span><span class="m">3</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Vuen<span class="w">   </span><span class="p">|</span><span class="w"> </span><span class="m">20</span>.00<span class="w"> </span><span class="p">|</span><span class="w">      </span><span class="m">35</span>.00<span class="w"> </span><span class="p">|</span><span class="w"> </span>清华出版社<span class="w">      </span><span class="p">|</span>
+<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a>+----+--------+-------+------------+-----------------+
+</code></pre></div>
+
+
+
+## ORM-查询操作-2
+> 条件查询，怎么加条件
+- filter(条件)
+    - 语法: MyModel.objects.filter(属性1=值1,属性2=值2)
+    - 作用:返回包含此条件的全部的数据集
+    - 返回值:QuerySet容器对象，内部存放MyModel实例
+    说明: 当多个属性在一起时为"与"关系，即当
+
+![输入图片说明](https://foruda.gitee.com/images/1676559782766302544/319e3eba_10213136.png "屏幕截图")
+
+![输入图片说明](https://foruda.gitee.com/images/1676559924965392641/9dfabedc_10213136.png "屏幕截图")
+
+![输入图片说明](https://foruda.gitee.com/images/1676559963190245200/f314e324_10213136.png "屏幕截图")
+
+思考?如何做非等值的过滤查询，即where id > 1
+
+尝试: Book.objects.filter(id > 1) ?
+
+![输入图片说明](https://foruda.gitee.com/images/1676560311810794298/6fc5ecdc_10213136.png "屏幕截图")
+
+![输入图片说明](https://foruda.gitee.com/images/1676560336738175966/de77bc00_10213136.png "屏幕截图")
+
+![输入图片说明](https://foruda.gitee.com/images/1676560413733223425/b8fd47f3_10213136.png "屏幕截图")
+
+![输入图片说明](https://foruda.gitee.com/images/1676560440059950264/4cf897b3_10213136.png "屏幕截图")
+
+更多精彩，请参阅官方文档: 
+https://docs.djangoproject.com/en/2.2/ref/models/querysets/#field-lookups
+
+## 小结 
+条件查询
+1.  filter/exclude - QuerySet
+2. get - obj
+- 查询谓词
+- 类属性 + '__' + 谓词
+
+
+## ORM - 更新操作
+
+## ORM - 删除操作
+
+## F对象 和 Q对象
+
+## 聚合查询和原生数据库操作
+
+## 项目部署
+
+1. 用 `uWSGI` 替代 `python manage.py runserver` 方法启动服务器
+2. 配置 `nginx` 反向代理服务器
+3. 用 `nginx` 配置静态文件路径解决静态路径问题
+
+WSGI (Web Server Gateway Interface)Web服务器网关接口，是
+Python应用程序或框架和Web服务器之间的一种接口，被广泛使
+用,使用 `python manage.py runserver` 通常只在开发和测试环境中使用, 当开发结束后，完善的项目代码需要在一个高效稳定的环境中运行这时可以使用WSGI。
+
+uWSGI是WSGI的一种, 它实现了http协议WSGl协议以及uwsgi协议
+uWSGI功能完善，支持协议众多，在python web圈热度极高
+
+**uWSGI主要以学习配置为主**
+## 配置uWSGI
+
+添加配置文件项目同名文件夹/uwsgi.ini
+如: `mysite1/mysite1/uwsgi.ini`
+文件以[uwsgi]开头，有如下配置项:
+
+套接字方式的IP地址:端口号[此模式 需要有nginx]
+
+`socket= 127.0.0.1:8000`
+
+Http通信方式的IP地址:端口号
+
+`http = 127.0.0.1:8000`
+
+
+![输入图片说明](https://foruda.gitee.com/images/1676560795505499865/f28b933c_10213136.png "屏幕截图")
+
+
+<summary>uwsgi.ini</summary>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>项目当前工作目录
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="w">  </span><span class="nv">chdir</span><span class="o">=</span>/home/tarena/.../my_project
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>项目中wsgi.py文件的目录，相对于当前工作目录
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="w">  </span>wsgi-file<span class="w"> </span><span class="o">=</span><span class="w"> </span>my_project/wsgi.py
+<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>进程个数
+<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="w">  </span><span class="nv">process</span><span class="o">=</span><span class="m">4</span>
+<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>每个进程的线程个数
+<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a><span class="w"> </span><span class="nv">threads</span><span class="o">=</span><span class="m">2</span>
+<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a>服务的pid记录文件
+<a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a><span class="w"> </span><span class="nv">pidfile</span><span class="o">=</span>uwsgi.pid
+<a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a>服务的目志文件位置
+<a id="__codelineno-39-12" name="__codelineno-39-12" href="#__codelineno-39-12"></a><span class="w"> </span><span class="nv">daemonize</span><span class="o">=</span>uwsgi.log
+<a id="__codelineno-39-13" name="__codelineno-39-13" href="#__codelineno-39-13"></a>开启主进程管理模式
+<a id="__codelineno-39-14" name="__codelineno-39-14" href="#__codelineno-39-14"></a><span class="w"> </span><span class="nv">master</span><span class="o">=</span>True
+</code></pre></div>
+注意:
+<details close>
+<summary> 解决conda环境安装 uwsgi 错误 </summary>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>I<span class="w"> </span>almost<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>give<span class="w"> </span>up,<span class="w"> </span><span class="k">then</span><span class="w"> </span>I<span class="w"> </span>find<span class="w"> </span>this<span class="w"> </span>page:<span class="w"> </span>https://github.com/conda-forge/uwsgi-feedstock
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>Now<span class="w"> </span>you<span class="w"> </span>can<span class="w"> </span>install<span class="w"> </span>uwsgi<span class="w"> </span>though<span class="w"> </span>conda:
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>channels<span class="w"> </span>conda-forge
+<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>
+<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a>conda<span class="w"> </span>install<span class="w"> </span>uwsgi
+</code></pre></div>
+</details>
+
+特殊说明: Django 的settings.py需要做如下配置
+
+1. 修改settings.py将 DEBUG=True 改为 DEBUG=False
+2. 修改settings.py将 ALLOWED_HOSTS = [] 改为
+ALLOWED_HOSTS = ['网站域名']或者['服务监听的ip地址']
+
+## uWSGI的运行管理
+- 启动uwsgi
+cd到 uWSGI.ini 配置文件所在目录
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>$<span class="w">   </span>uwsgi<span class="w"> </span>--ini<span class="w"> </span>uwsgi.ini
+</code></pre></div>
+- 停止uwsgi 
+
+cd到 uWSGI.ini 配置文件所在目录 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>$<span class="w">  </span>uwsgi<span class="w"> </span>--stop<span class="w"> </span>uwsgi.pid
+</code></pre></div>
+- 检测： `ps aux | grep 'uwsgi'`
+
+
+## 配置 nginx 
+修改nginx的配置文件 `/etc/nginx/sites-enabled/default`;
+`sudo vim 该文件`
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>#在server节点下添加新的Tocation项，指向uwsgi的ip与端口。
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>server {
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a> location / {
+<a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>uwsgi_pass 127.0.0.1:8000; # 重定向到127 .0.0.1的
+<a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a>8000端口
+<a id="__codelineno-43-6" name="__codelineno-43-6" href="#__codelineno-43-6"></a>include /etc/nginx/uwsgi_params; #将所有的参数转到uwsgi下
+<a id="__codelineno-43-7" name="__codelineno-43-7" href="#__codelineno-43-7"></a>  }
+<a id="__codelineno-43-8" name="__codelineno-43-8" href="#__codelineno-43-8"></a>}
+</code></pre></div>
+
+## nginx 启动/停止
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>/etc/init.d/nginx<span class="w"> </span>start<span class="p">|</span>stop<span class="p">|</span>restart<span class="p">|</span>status
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="c1">#或</span>
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>$<span class="w"> </span>sudo<span class="w"> </span>service<span class="w"> </span>nginx<span class="w"> </span>start<span class="p">|</span>stop<span class="p">|</span>restart<span class="p">|</span>status
+</code></pre></div>
+- 启动- sudo /etc/init.d/nginx start
+- 停止- sudo /etc/init.d/nginx stop
+- 重启- sudo /etc/init.d/nginx restart
+
+注意: nginx配置 只要修改，就需要进行重启，否则配置不生效
+
+- `sudo nginx -t` 检测配置文件语法
+
+![输入图片说明](https://foruda.gitee.com/images/1676611029506777917/37d3b521_10213136.png "屏幕截图")
+
+
+## nginx配置静态文件
+
+
+## git Action 入门教程 
+
+持续集成（Continuous integration），也就是我们经常说的CI。它是一种软件开发实践，可以让团队在持续的基础上收到反馈并进行改进，不必等到开发后期才寻找和修复缺陷，常运用于软件的敏捷开发中。Jenkins就是我们常用的持续集成平台工具。
+
+理解了持续集成的概念之后，下面我简单讲一下使用持续集成的好处：
+
+提高效率，减少了重复性工作：一些重复性的工作写成脚本交给持续集成服务执行。
+
+减少了人工带来的错误：机器通过预先写好的脚本执行犯错的几率比人工低很多。
+
+减少等待的时间：一套完备的持续集成服务涵盖了开发、集成、测试、部署等各个环节。
+
+提高产品质量：很多大公司在代码提交后都会有一套代码检视脚本（俗称门禁）来检查代码的提交是否符合规范，从而从源头遏制问题的产生。 
+
+[https://docs.github.com/zh/actions/using-workflows](https://docs.github.com/zh/actions/using-workflows)
+
+[GitHub Actions 入门教程](http://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html)
+
+[GitHub也能CI/CD了 如何使用GitHub的Action？](https://blog.csdn.net/qq_41636947/article/details/121683905)
+
+[手把手教你如何巧用Github的Action功能](https://www.bilibili.com/read/cv9190554)
+
+1. workflow（工作流程）：持续集成一次运行的过程，就是一个workflow。
+
+2. job（任务）：一个workflow由一个或多个jobs构成，含义是一次持续集成的运行，可以完成多个任务。
+
+3. step（步骤）：每个job由多个step构成，一步步完成。
+
+4. action（动作）：每个step可以依次执行一个或多个命令（action）。 作者：xuexiangjys https://www.bilibili.com/read/cv9190554 出处：bilibili
+
+- steps具体描述了该怎么执行脚本 `uses` 是使用了别人已经预先定义好的脚本，这里的 `actions/checkout@v2` 就是一个把仓库拉取到最新的脚本, 我们将仓库拉到最新后就直接运行
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../../Linux/rsync/" class="md-footer__link md-footer__link--prev" aria-label="Previous: rsync指令" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              rsync指令
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../Development_tool/Python%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Conda/" class="md-footer__link md-footer__link--next" aria-label="Next: Python包管理工具Conda" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Python包管理工具Conda
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.edit", "content.code.annotate", "content.tooltips", "search.highlight", "search.share", "search.suggest", "toc.follow", "navigation.top", "navigation.expand", "navigation.footer", "content.tabs.link"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      
+    
+  </body>
+</html>
