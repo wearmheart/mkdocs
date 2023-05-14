@@ -18,6 +18,7 @@ git commit -m "${now}"
 
 if test "$sel" = "1";then
     git push --set-upstream origin $now  
+    mkdocs gh-deploy
 else
     git push  
 fi
